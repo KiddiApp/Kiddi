@@ -1,0 +1,161 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="manifest" href="site.webmanifest">
+		<link rel="apple-touch-icon" href="icon.png">
+
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/boilerplate.css">
+		<link rel="stylesheet" href="css/base.css">
+		<link rel="stylesheet" href="css/mobile.css">
+		<link rel="stylesheet" href="css/tablet.css">
+		<link rel="stylesheet" href="css/not_supported.css">
+
+		<meta name="theme-color" content="#fafafa">
+	</head>
+
+	<body>
+		
+		<div id="top_bar">
+			<img src="img/back_button.png" id="back_button">
+			<h3 id="page_name" class="text_center"></h3>
+		</div>
+
+		<div class="hidden" id="popup">
+			<div id="popup_text_container">
+				<h2 class="text_center">POPUP TITLE</h2>
+				<p class="hidden text_center">popup extra information</p>
+			</div>
+			<div class="hidden" id="popup_buttons_container">
+				<div class="hidden" id="yes_no_container">
+					<div id="confirm_yes"></div>
+					<div id="confirm_no"></div>	
+				</div>
+				<div id="confirm_ok"></div>
+			</div>
+		</div>
+
+		<div class="view_container" id="home_view">
+			<div class="content_padding">
+				<h1 class="text_center title_padding">Welcome to<br>KiddiApp</h1>
+				<p class="text_center">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis, repellat? Adipisci quibusdam dolore modi veniam temporibus odio cupiditate animi officia neque enim in laborum.</p>
+			
+				<div id="home_circle"></div>
+
+				<div id="scan_image">
+					<img src="img/camera_icon.png">
+					<h2>ESCANEAR PAGINA</h2>
+				</div>
+
+				<p id="help_needed">¿Necesitas ayuda?</p>
+			</div>
+		</div>
+
+		<div class="view_container hidden" id="instructions_view">
+			<div class="content_padding">
+				<h1 class="text_center">Welcome to KiddiApp</h1>
+				<p class="text_center">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis, repellat? Adipisci quibusdam dolore modi veniam temporibus odio cupiditate animi officia neque enim in laborum.</p>
+			
+				<div id="home_circle"></div>
+
+				<div id="scan_image">
+					<img src="img/camera_icon.png">
+					<h2>ESCANEAR PAGINA</h2>
+				</div>
+
+				<p id="help_needed">¿Necesitas ayuda?</p>
+			</div>
+		</div>
+
+		<div class="hidden view_container" id="scan_view">
+			<div class="hidden" id="scanning">ESCANEANDO</div>
+
+			<div class="hidden" id="scan_succes">
+				<h3>Pagina</h3>
+				<h1 id="found_page"></h1>
+			</div>
+		</div>
+
+		<div class="hidden view_container" id="video_container">
+			<!-- DO the youtube video stuff here -->
+		</div>
+
+		<div class="hidden view_container" id="threejs_canvas">
+			<canvas id="canvas3d"></canvas>
+		</div>
+
+		<div class="hidden view_container" id="select_character">
+			<h1>!Elije personaje!</h1>
+			<div id="character">
+				<img src="img/character1.png">
+				<h2>Lapi</h2>
+			</div>
+		</div>
+
+		<div class="hidden view_container" id="paint_canvas">
+			<canvas id="paint2d"></canvas>
+		</div>
+
+		<div class="hidden view_container" id="answers">
+			<h3>Some sort of title</h3>
+			<div class="cards_scroll_container">
+				<div class="answer_card">
+					<h4 class="card_identifier">1 some answer i guess</h4>
+					<h2 class="card_main">Some bold text</h2>
+					<p class="card_info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis, voluptas aspernatur. Similique illum, quidem quisquam tempora ad atque fugit quaerat eligendi officia at voluptate tempore suscipit, soluta aut voluptas quod!</p>
+				</div>
+				<div class="answer_card">
+					<h4 class="card_identifier">1 some answer i guess</h4>
+					<h2 class="card_main">Some bold text</h2>
+					<p class="card_info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis, voluptas aspernatur. Similique illum, quidem quisquam tempora ad atque fugit quaerat eligendi officia at voluptate tempore suscipit, soluta aut voluptas quod!</p>
+				</div>
+				<div class="answer_card">
+					<h4 class="card_identifier">1 some answer i guess</h4>
+					<h2 class="card_main">Some bold text</h2>
+					<p class="card_info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis, voluptas aspernatur. Similique illum, quidem quisquam tempora ad atque fugit quaerat eligendi officia at voluptate tempore suscipit, soluta aut voluptas quod!</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="hidden view_container" id="information">
+			<h3>Some sort of title</h3>
+			<div class="cards_scroll_container">
+				<div class="answer_card">
+					<h4 class="card_identifier">1 some answer i guess</h4>
+					<h2 class="card_main">Some bold text</h2>
+					<p class="card_info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis, voluptas aspernatur. Similique illum, quidem quisquam tempora ad atque fugit quaerat eligendi officia at voluptate tempore suscipit, soluta aut voluptas quod!</p>
+				</div>
+				<div class="answer_card">
+					<h4 class="card_identifier">1 some answer i guess</h4>
+					<h2 class="card_main">Some bold text</h2>
+					<p class="card_info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis, voluptas aspernatur. Similique illum, quidem quisquam tempora ad atque fugit quaerat eligendi officia at voluptate tempore suscipit, soluta aut voluptas quod!</p>
+				</div>
+				<div class="answer_card">
+					<h4 class="card_identifier">1 some answer i guess</h4>
+					<h2 class="card_main">Some bold text</h2>
+					<p class="card_info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis, voluptas aspernatur. Similique illum, quidem quisquam tempora ad atque fugit quaerat eligendi officia at voluptate tempore suscipit, soluta aut voluptas quod!</p>
+				</div>
+			</div>
+		</div>
+
+
+
+		<script src="js/plugins.js"></script>
+		<script src="js/vendor/three.min.js"></script>
+		<script src="js/vendor/three.module.js"></script>
+		<script src="js/main.js"></script>
+
+		<script>
+			window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+			ga('create', 'UA-XXXXX-Y', 'auto'); ga('set','transport','beacon'); ga('send', 'pageview')
+		</script>
+		<script src="https://www.google-analytics.com/analytics.js" async></script>
+	</body>
+
+</html>
