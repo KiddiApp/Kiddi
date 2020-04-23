@@ -1,0 +1,6 @@
+@media (max-width: 600px) {
+	#popup {
+		width: 80%;
+		max-width: 350px;
+	}
+}
