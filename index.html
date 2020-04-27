@@ -11,7 +11,7 @@
 		<link rel="apple-touch-icon" href="icon.png">
 
 		<script src="js/vendor/mobile_detect.js"></script>
-		<script src="js/vendor/modernizr_webgl_canvas.js"></script>
+		<script src="js/vendor/modernizr_checks.js"></script>
 
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/boilerplate.css">
@@ -67,7 +67,7 @@
 			</div>
 		</div>
 
-		<div class="view_container" id="instructions_view">
+		<div class="hidden view_container" id="instructions_view">
 			<div class="content_padding">
 				<h1 class="text_left">Escanea tu libro de Kiddi y desbloquea los contenidos!</h1>
 				<p class="text_left" id="information_text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis, repellat? Adipisci quibusdam dolore modi veniam temporibus odio cupiditate animi officia neque enim in laborum. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis, repellat? Adipisci quibusdam dolore modi veniam temporibus odio cupiditate animi officia neque enim in laborum.</p>
@@ -75,6 +75,7 @@
 		</div>
 
 		<div class="hidden view_container" id="scan_view">
+			<video id="tracking_video"></video>
 			<div class="hidden" id="scanning">ESCANEANDO</div>
 
 			<div class="hidden" id="scan_succes">
@@ -148,9 +149,11 @@
 
 		<script src="js/initialize.js"></script>
 		<script src="js/plugins.js"></script>
-		<script src="js/vendor/ar-nft.js"></script>
 		<script src="js/vendor/three.min.js"></script>
 		<script src="js/vendor/three.module.js"></script>
+		<script src="build/artoolkit.min.js"></script>
+		<script src="js/nftObject.js"></script>
+		<script src="js/webcam_ar_tracking.js"></script>
 		<script src="js/main.js"></script>
 
 		<script>

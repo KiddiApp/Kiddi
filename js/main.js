@@ -11,9 +11,6 @@ const states = {
 	Painting3dAnimation: 9
 }
 
-let currentState = states.HomePage;
-let currentContent = homepage;
-
 function Display(show, element) {
 	if(show) {
 		element.classList.remove("hidden");
@@ -22,7 +19,7 @@ function Display(show, element) {
 	}
 }
 
-let homepage = {
+let homepage_content = {
 	container: document.getElementById("home_view"),
 	Show() {
 		Display(true, this.container);
@@ -31,7 +28,7 @@ let homepage = {
 		Display(false, this.container);
 	}
 }
-let instructions = {
+let instructions_content = {
 	container: document.getElementById("instructions_view"),
 	Show() {
 		Display(true, this.container);
@@ -40,16 +37,18 @@ let instructions = {
 		Display(false, this.container);
 	}
 }
-let scan = {
+let scan_content = {
 	container: document.getElementById("scan_view"),
 	Show() {
 		Display(true, this.container);
+		EnableTracking(true);
+		ShowPopup("Some information about the scanning action", "this is some long subtitle with relevant and interesting information this is just a great read which this never ends", 0, 5);
 	}, 
 	Hide() {
 		Display(false, this.container);
 	}
 }
-let video = {
+let video_content = {
 	container: document.getElementById("video_container"),
 	Show() {
 		Display(true, this.container);
@@ -58,7 +57,7 @@ let video = {
 		Display(false, this.container);
 	}
 }
-let painting = {
+let painting_content = {
 	container: document.getElementById(""),
 	Show() {
 		Display(true, this.container);
@@ -67,7 +66,7 @@ let painting = {
 		Display(false, this.container);
 	}
 }
-let cardgame = {
+let cardgame_content = {
 	container: document.getElementById("threejs_canvas"),
 	Show() {
 		Display(true, this.container);
@@ -76,7 +75,7 @@ let cardgame = {
 		Display(false, this.container);
 	}
 }
-let information = {
+let information_content = {
 	container: document.getElementById("information"),
 	Show() {
 		Display(true, this.container);
@@ -85,7 +84,7 @@ let information = {
 		Display(false, this.container);
 	}
 }
-let answers = {
+let answers_content = {
 	container: document.getElementById("answers"),
 	Show() {
 		Display(true, this.container);
@@ -137,3 +136,9 @@ back_button.addEventListener('click', () => {
 
 let scan_button = document.getElementById("scan_image");
 let instructions_button = document.getElementById("help_needed");
+
+let currentState = states.HomePage;
+let currentContent = scan_content;
+let newContent = null;
+
+currentContent.Show();

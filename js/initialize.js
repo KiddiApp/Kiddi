@@ -44,7 +44,7 @@ let popup_confirm_ok = document.getElementById("confirm_ok");
 let popup_confirm_yes_no = document.getElementById("yes_no_container");
 
 
-function ShowPopup(title, subtitle, buttonCount) {
+function ShowPopup(title, subtitle, buttonCount, removeDelay) {
 	popup_title.innerHTML = title;
 	if(subtitle == null) {
 		popup_subtitle.classList.add("hidden");
@@ -68,6 +68,11 @@ function ShowPopup(title, subtitle, buttonCount) {
 		}
 	} else {
 		popup_buttons_container.classList.add("hidden");
+		if(removeDelay > 0) {
+			setTimeout(function() {
+				HidePopup();
+			}, removeDelay * 1000);
+		}
 	}
 
 	popup_container.classList.remove("hidden");
