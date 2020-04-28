@@ -43,8 +43,7 @@ let popup_buttons_container = document.getElementById("popup_buttons_container")
 let popup_confirm_ok = document.getElementById("confirm_ok");
 let popup_confirm_yes_no = document.getElementById("yes_no_container");
 
-
-function ShowPopup(title, subtitle, buttonCount, removeDelay) {
+function ShowPopup(title, subtitle, buttonCount, removeDelay, callback) {
 	popup_title.innerHTML = title;
 	if(subtitle == null) {
 		popup_subtitle.classList.add("hidden");
@@ -71,6 +70,7 @@ function ShowPopup(title, subtitle, buttonCount, removeDelay) {
 		if(removeDelay > 0) {
 			setTimeout(function() {
 				HidePopup();
+				if(callback) callback();
 			}, removeDelay * 1000);
 		}
 	}

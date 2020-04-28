@@ -2,14 +2,14 @@ var video = document.getElementById('tracking_video');
 
 var useTracking = false;
 var videoMetaLoaded = false;
-function EnableTracking(enable) {
+function EnableTracking(enableVideo, enableTracking) {
 	if(video.srcObject && videoMetaLoaded) {
-		useTracking = enable;
-		video.srcObject.getTracks().forEach(t => t.enabled = enable);
-		if(enable) MainLoop();
+		useTracking = enableTracking;
+		video.srcObject.getTracks().forEach(t => t.enabled = enableVideo);
+		if(enableTracking) MainLoop();
 	} else {
 		setTimeout(function () {
-			EnableTracking(enable);
+			EnableTracking(enableVideo, enableTracking);
 		}, 200);
 	}
 }
@@ -91,7 +91,7 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 				nft_tracker_objects.push(nft_tracker_object);
 			});
 
-			EnableTracking(false);
+			EnableTracking(false, false);
 		});
 	});
 }

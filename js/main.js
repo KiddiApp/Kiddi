@@ -21,124 +21,186 @@ function Display(show, element) {
 
 let homepage_content = {
 	container: document.getElementById("home_view"),
-	Show() {
+	Show(callBack) {
 		Display(true, this.container);
+		if(callBack) callBack();
 	},
-	Hide() {
+	Hide(callBack) {
 		Display(false, this.container);
+		if(callBack) callBack();
 	}
 }
 let instructions_content = {
 	container: document.getElementById("instructions_view"),
-	Show() {
+	Show(callBack) {
 		Display(true, this.container);
+		if(callBack) callBack();
 	}, 
-	Hide() {
+	Hide(callBack) {
 		Display(false, this.container);
+		if(callBack) callBack();
 	}
 }
 let scan_content = {
 	container: document.getElementById("scan_view"),
-	Show() {
+	scanning: document.getElementById("scanning"),
+	Show(callBack) {
 		Display(true, this.container);
-		EnableTracking(true);
-		ShowPopup("Some information about the scanning action", "this is some long subtitle with relevant and interesting information this is just a great read which this never ends", 0, 5);
+		EnableTracking(true, false);
+		ShowPopup("Some information about the scanning action", "this is some long subtitle with relevant and interesting information this is just a great read which this never ends", 0, 5, function() {
+			setTimeout(function() {
+				scanning.classList.remove('hidden');
+				ShowPopup("We were not able to scan a page.", "Do you need help?", 2, 0, null);
+			}, 180000)
+		});
+		if(callBack) callBack();
 	}, 
-	Hide() {
+	Hide(callBack) {
+		scanning.classList.add('hidden');
 		Display(false, this.container);
+		if(callBack) callBack();
 	}
 }
 let video_content = {
 	container: document.getElementById("video_container"),
-	Show() {
+	Show(callBack) {
 		Display(true, this.container);
+		if(callBack) callBack();
 	}, 
-	Hide() {
+	Hide(callBack) {
 		Display(false, this.container);
+		if(callBack) callBack();
 	}
 }
 let painting_content = {
 	container: document.getElementById(""),
-	Show() {
+	Show(callBack) {
 		Display(true, this.container);
+		if(callBack) callBack();
 	}, 
-	Hide() {
+	Hide(callBack) {
 		Display(false, this.container);
+		if(callBack) callBack();
 	}
 }
 let cardgame_content = {
 	container: document.getElementById("threejs_canvas"),
-	Show() {
+	Show(callBack) {
 		Display(true, this.container);
+		if(callBack) callBack();
 	}, 
-	Hide() {
+	Hide(callBack) {
 		Display(false, this.container);
+		if(callBack) callBack();
 	}
 }
 let information_content = {
 	container: document.getElementById("information"),
-	Show() {
+	Show(callBack) {
 		Display(true, this.container);
+		if(callBack) callBack();
 	}, 
-	Hide() {
+	Hide(callBack) {
 		Display(false, this.container);
+		if(callBack) callBack();
 	}
 }
 let answers_content = {
 	container: document.getElementById("answers"),
-	Show() {
+	Show(callBack) {
 		Display(true, this.container);
+		if(callBack) callBack();
 	}, 
-	Hide() {
+	Hide(callBack) {
 		Display(false, this.container);
+		if(callBack) callBack();
+	}
+}
+
+let currentState = states.HomePage;
+let currentContent = homepage_content;
+
+function UpdateAppState(state) {
+	if(currentState != state) {
+		currentState = state;
+		currentContent.Hide(function() {
+			currentContent = StateToContent(state);
+			currentContent.Show();
+		});
 	}
 }
 
 let back_button = document.getElementById("back_button");
 back_button.addEventListener('click', () => {
-	if(currentState == states.HomePage) return;
-	else if(current)
-
 	switch (currentState) {
 		case states.HomePage:
-			break;
+			return;
 		case states.Scanning:
-			currentState = states.HomePage
+			UpdateAppState(states.HomePage);
 			break;
 		case states.Instructions:
-			currentState = states.HomePage
+			UpdateAppState(states.HomePage);
 			break;
 		case states.Video:
-			currentState = states.HomePage
+			UpdateAppState(states.HomePage);
 			break;
 		case states.CardGame:
-			currentState = states.HomePage
+			UpdateAppState(states.HomePage);
 			break;
 		case states.Information:
-			currentState = states.HomePage
+			UpdateAppState(states.HomePage);
 			break;
 		case states.Answers:
-			currentState = states.HomePage
+			UpdateAppState(states.HomePage);
 			break;
-		case states.PaintingCharacterSelection: //maybe move these to a sub-state 
-			currentState = states.HomePage
+		case states.PaintingCharacterSelection:
+			UpdateAppState(states.HomePage);
 			break;
 		case states.PaintingPainting:
-			currentState = states.PaintingCharacterSelection;
+			UpdateAppState(states.PaintingCharacterSelection);
 			break;
 		case states.Painting3dAnimation:
-			currentState = states.PaintingPainting;
+			UpdateAppState(states.PaintingPainting);
 			break;
 		default:
 			break;
 	}
 });
 
+function StateToContent(state) {
+	switch (state) {
+		case states.HomePage:
+			return homepage_content;
+		case states.Scanning:
+			return scan_content;
+		case states.Instructions:
+			return instructions_content;
+		case states.Video:
+			return video_content;
+		case states.CardGame:
+			return cardgame_content;
+		case states.Information:
+			return information_content;
+		case states.Answers:
+			return answers_content;
+		case states.PaintingCharacterSelection: 
+			return painting_content;
+		case states.PaintingPainting:
+			return null;
+		case states.Painting3dAnimation:
+			return null;
+	}
+}
+
 let scan_button = document.getElementById("scan_image");
+scan_button.addEventListener('click', function() {
+	UpdateAppState(states.Scanning);
+});
+
 let instructions_button = document.getElementById("help_needed");
+instructions_button.addEventListener('click', function() {
+	UpdateAppState(states.Information);
+});
 
-let currentState = states.HomePage;
-let currentContent = scan_content;
-let newContent = null;
 
-currentContent.Show();
+// UpdateAppState(states.HomePage);
