@@ -29,6 +29,22 @@ let nft_tracker_objects = [];
 
 function OnTriggerFound(e) {
 	console.log(e);
+	switch (e) {
+		case "page1":
+			scan_content.ShowFoundPage(1);
+			break;
+		case "page2":
+			scan_content.ShowFoundPage(2);
+			break;
+		case "page3":
+			scan_content.ShowFoundPage(3);
+			break;
+		case "page17":
+			scan_content.ShowFoundPage(17);
+			break;
+		default:
+			break;
+	}
 }
 
 var vw, vh;

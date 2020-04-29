@@ -44,25 +44,56 @@ let instructions_content = {
 let scan_content = {
 	container: document.getElementById("scan_view"),
 	scanning: document.getElementById("scanning"),
+	found_page: document.getElementById("found_page"),
+	scan_succes: document.getElementById("scan_succes"),
+	scan_failure_timeout: null,
 	Show(callBack) {
 		Display(true, this.container);
 		EnableTracking(true, false);
 		ShowPopup("Some information about the scanning action", "this is some long subtitle with relevant and interesting information this is just a great read which this never ends", 0, 5, function() {
-			setTimeout(function() {
-				scanning.classList.remove('hidden');
+			EnableTracking(true, true);
+			this.scanning.classList.remove('hidden');
+			scan_failure_timeout = setTimeout(function() {
+				EnableTracking(true, false);
+				this.scanning.classList.add('hidden');
 				ShowPopup("We were not able to scan a page.", "Do you need help?", 2, 0, null);
 			}, 180000)
 		});
 		if(callBack) callBack();
 	}, 
 	Hide(callBack) {
-		scanning.classList.add('hidden');
+		this.scanning.classList.add('hidden');
+		this.scan_succes.classList.add('hidden');
 		Display(false, this.container);
 		if(callBack) callBack();
+	},
+	ShowFoundPage(page_num) {
+		if(scan_failure_timeout) clearTimeout(scan_failure_timeout); 
+		EnableTracking(true, false);
+		this.scanning.classList.add('hidden');
+		this.found_page.innerHTML = page_num.toString();
+		this.scan_succes.classList.remove('hidden');
+		setTimeout(function() { //TODO: CHECK IF THIS IS DESIRED OR THAT USER CLICKS TO CONFIRM
+			switch (page_num) {
+				case 1:
+					UpdateAppState(states.Video);
+					break;
+				case 2:
+					UpdateAppState(states.CardGame);
+					break;
+				case 3:
+					UpdateAppState(states.PaintingCharacterSelection);
+					break;
+				case 17:
+					UpdateAppState(states.Information);
+					break;
+			}
+		}, 1000);
 	}
 }
 let video_content = {
 	container: document.getElementById("video_container"),
+	character_animation: document.getElementById("threejs_canvas"),
 	Show(callBack) {
 		Display(true, this.container);
 		if(callBack) callBack();
