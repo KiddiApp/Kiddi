@@ -96,6 +96,9 @@ let video_content = {
 	character_animation: document.getElementById("threejs_canvas"),
 	Show(callBack) {
 		Display(true, this.container);
+		this.character_animation.classList.remove('hidden');
+		updateThreejs = true;
+		ThreeUpdateLoop();
 		if(callBack) callBack();
 	}, 
 	Hide(callBack) {
@@ -233,5 +236,11 @@ instructions_button.addEventListener('click', function() {
 	UpdateAppState(states.Information);
 });
 
+
+mainScene = characterAnimationSceneObject;
+mainScene.init();
+// mainScene.startScene();
+updateThreejs = true;
+ThreeUpdateLoop();
 
 // UpdateAppState(states.HomePage);

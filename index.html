@@ -49,7 +49,7 @@
 			<h3 id="page_name" class="text_center">INSTRUCCIONES</h3>
 		</div>
 
-		<div class="view_container" id="home_view">
+		<div class="hidden view_container" id="home_view">
 			<div class="content_padding" id="grid_container">
 				<div id="grid_item_1">
 					<h1 class="text_center title_padding">Welcome to<br>KiddiApp</h1>
@@ -88,7 +88,7 @@
 			<!-- DO the youtube video stuff here -->
 		</div>
 
-		<div class="hidden view_container" id="threejs_canvas">
+		<div class="view_container" id="threejs_canvas">
 			<canvas id="canvas3d"></canvas>
 		</div>
 
@@ -150,9 +150,10 @@
 		<script src="js/initialize.js"></script>
 		<script src="js/plugins.js"></script>
 		<script src="js/vendor/three.min.js"></script>
-		<script src="js/vendor/three.module.js"></script>
-		<script src="js/vendor/GLTFLoader.js"></script>
-		<script src="js/threejs_setup.js"></script>
+		<script src="js/vendor/three.module.js" type="module"></script>
+		<script src="js/vendor/GLTFLoader.js" type="module"></script>
+		<script src="js/threejs_setup.js" type="module"></script>
+		<script src="js/characterAnimationSceneObject.js"></script>
 		<script src="build/artoolkit.min.js"></script>
 		<script src="js/nftObject.js"></script>
 		<script src="js/webcam_ar_tracking.js"></script>

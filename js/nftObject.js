@@ -4,8 +4,6 @@ let NFTObject = function (w, h, nft_tracker_url, trigger_found_callback) {
 
 	let param = new ARCameraParam('./Data/camera_para-iPhone 5 rear 640x480 1.0m.dat');
 	param.onload = function () {
-
-		console.log(w, h);
 		ar_object = new ARController(w, h, param);
 		ar_object.addEventListener('getNFTMarker', function() {
 			trigger_found_callback(tracker_name);
