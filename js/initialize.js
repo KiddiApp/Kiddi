@@ -1,3 +1,5 @@
+import { ShowPopup, HidePopup } from './modules/popup.js';
+
 let md = new MobileDetect(window.navigator.userAgent);
 
 let appinfo = {
@@ -18,6 +20,7 @@ let appinfo = {
 				if(window.innerWidth <= 1400) return { supported: true, orientationCorrect: true };
 				else return { supported: true, orientationCorrect: false };
 			}
+			else return { supported: false, orientationCorrect: false };
 		} else {
 			return { supported: false, orientationCorrect: null }
 		}
@@ -34,53 +37,7 @@ if(appinfo.isMobile) {
 	}
 }
 
-
 let problem_overlay = document.getElementById("problem_overlay");
-let popup_container = document.getElementById("popup");
-let popup_title = document.getElementById("popup_title");
-let popup_subtitle = document.getElementById("popup_subtitle");
-let popup_buttons_container = document.getElementById("popup_buttons_container");
-let popup_confirm_ok = document.getElementById("confirm_ok");
-let popup_confirm_yes_no = document.getElementById("yes_no_container");
-
-function ShowPopup(title, subtitle, buttonCount, removeDelay, callback) {
-	popup_title.innerHTML = title;
-	if(subtitle == null) {
-		popup_subtitle.classList.add("hidden");
-		popup_title.classList.remove("medium_popup_title");
-		popup_title.classList.add("large_popup_title");
-	} else {
-		popup_subtitle.classList.remove("hidden");
-		popup_subtitle.innerHTML = subtitle;
-		popup_title.classList.remove("large_popup_title");
-		popup_title.classList.add("medium_popup_title");
-	}
-
-	if(buttonCount > 0) {
-		popup_buttons_container.classList.remove("hidden");
-		if(buttonCount > 1) {
-			popup_confirm_yes_no.classList.remove("hidden");
-			popup_confirm_ok.classList.add("hidden");
-		} else {
-			popup_confirm_yes_no.classList.add("hidden");
-			popup_confirm_ok.classList.remove("hidden");
-		}
-	} else {
-		popup_buttons_container.classList.add("hidden");
-		if(removeDelay > 0) {
-			setTimeout(function() {
-				HidePopup();
-				if(callback) callback();
-			}, removeDelay * 1000);
-		}
-	}
-
-	popup_container.classList.remove("hidden");
-}
-
-function HidePopup() {
-	popup_container.classList.add("hidden");
-}
 
 function ShowFullscreenOverlay() {
 	problem_overlay.classList.remove("hidden");
@@ -103,6 +60,5 @@ function SetInitInformation(deviceInformation) {
 		ShowPopup("Sorry this browser doesn't support the Kiddi webapp", "Try opening it on a mobile device", 0);
 	}
 }
-
 
 SetInitInformation(appinfo.DeviceSupportedAndCorrectScreenSize());

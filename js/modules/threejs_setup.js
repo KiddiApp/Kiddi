@@ -1,4 +1,4 @@
-import { GLTFLoader } from './vendor/GLTFLoader.js';
+import { GLTFLoader } from '../vendor/GLTFLoader.js';
 
 
 var renderer, mainScene, updateThreejs = false;
@@ -23,7 +23,7 @@ function onWindowResize() {
 }
 
 var loader = new GLTFLoader();
-function LoadGLTFModel(url, callback) {
+export function LoadGLTFModel(url, callback) {
 	loader.load( url, function ( gltf ) {
 
 		var model = gltf.scene;
@@ -38,7 +38,7 @@ function LoadGLTFModel(url, callback) {
 }
 
 
-function ThreeUpdateLoop() {
+export function ThreeUpdateLoop() {
 	if(mainScene) mainScene.animate();
 	renderer.render( mainScene.scene, mainScene.camera );
 	if(updateThreejs) requestAnimationFrame(ThreeUpdateLoop);

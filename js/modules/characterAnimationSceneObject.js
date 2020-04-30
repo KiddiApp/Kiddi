@@ -1,13 +1,14 @@
-let characterAnimationSceneObject = {
+import { LoadGLTFModel } from './threejs_setup.js';
+
+const characterAnimationSceneObject = {
 	camera: new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 ),
 	scene: new THREE.Scene(),
-	sceneObjects: {
-		animatedModel: null,
-		modelAnimations: null,
-		animationMixer: null,
-		walkAnimation: null,
-		clock: new THREE.Clock()
-	},
+	
+	clock: new THREE.Clock(),
+	animatedModel: null,
+	animationMixer: null,
+	walkAnimation: null,
+
 	init: function() {
 		this.camera.position.set( 0, 0, 5 );
 		this.camera.lookAt( 0, 0, 0 );
@@ -37,26 +38,24 @@ let characterAnimationSceneObject = {
 
 		LoadGLTFModel('Data/Models/Soldier.glb', this.finalizeScene);
 	},
+
 	finalizeScene: function(model, animations) {
-		this.sceneObjects.modelAnimations = animations;
-		this.sceneObjects.animatedModel = model;
-		this.sceneObjects.animationMixer = new THREE.AnimationMixer( this.sceneObjects.animatedModel );
-		this.sceneObjects.walkAnimation = this.sceneObjects.animationMixer.clipAction(animations[3]);
-		this.sceneObjects.walkAnimation.loop = THREE.LoopOnce;
-		this.sceneObjects.walkAnimation.addEventListener('finished', function() {
+		console.log("model loaded");
+		this.animatedModel = model;
+		this.animationMixer = new THREE.AnimationMixer( this.animatedModel );
+		this.walkAnimation = this.animationMixer.clipAction(animations[3]);
+		this.walkAnimation.loop = THREE.LoopOnce;
+		this.walkAnimation.addEventListener('finished', function() {
 			console.log("ANIMTION FINISHED");
 		});
-		this.scene.add(this.sceneObjects.animatedModel);
-		this.sceneObjects.walkAnimation.play();	
-	},
-
-	startScene: function () {
-		return;
+		this.scene.add(this.animatedModel);
+		this.walkAnimation.play();	
 	},
 
 	animate: function() {
-		var mixerUpdateDelta = this.sceneObjects.clock.getDelta();
+		var mixerUpdateDelta = clock.getDelta();
 		if(mixer) mixer.update( mixerUpdateDelta );
 	}
-
 }
+
+export default characterAnimationSceneObject;
