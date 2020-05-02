@@ -13,10 +13,10 @@ let scan_content = {
 		EnableTracking(true, false);
 		ShowPopup("Some information about the scanning action", "this is some long subtitle with relevant and interesting information this is just a great read which this never ends", 0, 5, function() {
 			EnableTracking(true, true);
-			scan_content.scanning.classList.remove('hidden');
+			Display(true, scan_content.scanning);
 			scan_content.scan_failure_timeout = setTimeout(function() {
 				EnableTracking(true, false);
-				scan_content.scanning.classList.add('hidden');
+				Display(false, scan_content.scanning);
 				ShowPopup("We were not able to scan a page.", "Do you need help?", 2, 0, null);
 			}, 180000)
 		});
@@ -25,18 +25,18 @@ let scan_content = {
 	Hide(callBack) {
 		if(this.scan_failure_timeout) clearTimeout(this.scan_failure_timeout); 
 		HidePopup();
-		this.scanning.classList.add('hidden');
-		this.scan_succes.classList.add('hidden');
+		Display(false, this.scanning);
+		Display(false, this.scan_succes);
 		Display(false, this.container);
 		if(callBack) callBack();
 	},
 	ShowFoundPage(page_num) {
 		if(this.scan_failure_timeout) clearTimeout(this.scan_failure_timeout); 
 		EnableTracking(true, false);
-		this.scanning.classList.add('hidden');
+		Display(false, this.scanning);
 		this.found_page.innerHTML = page_num.toString();
-		this.scan_succes.classList.remove('hidden');
-		setTimeout(function() { //TODO: CHECK IF THIS IS DESIRED OR THAT USER CLICKS TO CONFIRM
+		Display(true, this.scan_succes);
+		setTimeout(function() { 			//TODO: CHECK IF THIS IS DESIRED OR THAT USER CLICKS TO CONFIRM
 			switch (page_num) {
 				case 1:
 					UpdateAppState(states.Video);

@@ -3,15 +3,19 @@ import { LoadGLTFModel } from './threejs_setup.js';
 const characterAnimationSceneObject = {
 	camera: new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 ),
 	scene: new THREE.Scene(),
+	animationComplete: null,
 	
 	clock: new THREE.Clock(),
 	animatedModel: null,
 	animationMixer: null,
 	walkAnimation: null,
+	modelLoaded: false,
+	playAnimation: true,
 
 	init: function() {
-		this.camera.position.set( 0, 0, 5 );
-		this.camera.lookAt( 0, 0, 0 );
+
+		this.camera.position.set( 0, 2, -5 );
+		this.camera.lookAt( 0, 1, 0 );
 
 		this.scene.background = new THREE.Color( 0xa0a0a0 );
 		this.scene.fog = new THREE.Fog( 0xa0a0a0, 10, 50 );
@@ -35,27 +39,41 @@ const characterAnimationSceneObject = {
 		mesh.rotation.x = - Math.PI / 2;
 		mesh.receiveShadow = true;
 		this.scene.add( mesh );
-
-		LoadGLTFModel('Data/Models/Soldier.glb', this.finalizeScene);
 	},
 
-	finalizeScene: function(model, animations) {
-		console.log("model loaded");
-		this.animatedModel = model;
-		this.animationMixer = new THREE.AnimationMixer( this.animatedModel );
-		this.walkAnimation = this.animationMixer.clipAction(animations[3]);
-		this.walkAnimation.loop = THREE.LoopOnce;
-		this.walkAnimation.addEventListener('finished', function() {
-			console.log("ANIMTION FINISHED");
+	loadResources: function() {
+		LoadGLTFModel('Data/Models/Soldier.glb', function (model, animations) {
+			var s = characterAnimationSceneObject;
+			s.animatedModel = model;
+			s.animationMixer = new THREE.AnimationMixer( s.animatedModel );
+			s.animationMixer.addEventListener( 'finished', function( e ) {
+				if(s.animationComplete) s.animationComplete();
+			});
+			s.walkAnimation = s.animationMixer.clipAction(animations[3]);
+			s.walkAnimation.loop = THREE.LoopOnce;
+			s.scene.add(s.animatedModel);
+
+			console.log("MODEL LOADED");
+			s.modelLoaded = true;
 		});
-		this.scene.add(this.animatedModel);
-		this.walkAnimation.play();	
+	},
+
+	play: function(callback) {
+		this.animationComplete = callback;
+		this.playAnimation = true;
 	},
 
 	animate: function() {
-		var mixerUpdateDelta = clock.getDelta();
-		if(mixer) mixer.update( mixerUpdateDelta );
+		if(this.modelLoaded && this.playAnimation) {
+			this.walkAnimation.play();	
+			this.playAnimation = false;
+		}
+		var mixerUpdateDelta = this.clock.getDelta();
+		if(this.animationMixer) this.animationMixer.update( mixerUpdateDelta );
 	}
 }
+
+characterAnimationSceneObject.loadResources();
+characterAnimationSceneObject.init();
 
 export default characterAnimationSceneObject;

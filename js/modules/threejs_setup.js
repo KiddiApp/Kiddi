@@ -1,29 +1,55 @@
 import { GLTFLoader } from '../vendor/GLTFLoader.js';
 
 
-var renderer, mainScene, updateThreejs = false;
-var canvas = document.getElementById("canvas3d");
+var renderer = null;
+var currentScene = null;
+let updateThreejs = false;
 
-renderer = new THREE.WebGLRenderer( { canvas, antialias: true } );
-renderer.setPixelRatio( window.devicePixelRatio );
-renderer.setSize( window.innerWidth, window.innerHeight );
-renderer.outputEncoding = THREE.sRGBEncoding;
-renderer.shadowMap.enabled = true;
-document.body.appendChild( renderer.domElement );
+Init3dContext();
 
-window.addEventListener( 'resize', onWindowResize, false );
+function Init3dContext() {
+	renderer = new THREE.WebGLRenderer( { antialias: true } );
+	renderer.setPixelRatio( window.devicePixelRatio );
+	renderer.setSize( window.innerWidth, window.innerHeight );
+	renderer.outputEncoding = THREE.sRGBEncoding;
+	renderer.shadowMap.enabled = true;
+	document.getElementById("threejs_canvas").appendChild( renderer.domElement );
+
+	window.addEventListener( 'resize', onWindowResize, false );
+}
+
 
 function onWindowResize() {
 
-	camera.aspect = window.innerWidth / window.innerHeight;
-	camera.updateProjectionMatrix();
+	if(!currentScene) return;
 
+	currentScene.camera.aspect = window.innerWidth / window.innerHeight;
+	currentScene.camera.updateProjectionMatrix();
 	renderer.setSize( window.innerWidth, window.innerHeight );
 
 }
 
+function StartScene(scene) {
+	currentScene = scene;
+	updateThreejs = true;
+	ThreeUpdateLoop();
+}
+
+function StopScene() {
+	updateThreejs = false;
+	currentScene = null;
+}
+
+function ThreeUpdateLoop() {
+	if(currentScene) {
+		currentScene.animate();
+		if(currentScene) renderer.render( currentScene.scene, currentScene.camera );
+	}
+	if(updateThreejs) requestAnimationFrame(ThreeUpdateLoop);
+}
+
 var loader = new GLTFLoader();
-export function LoadGLTFModel(url, callback) {
+function LoadGLTFModel(url, callback) {
 	loader.load( url, function ( gltf ) {
 
 		var model = gltf.scene;
@@ -37,9 +63,4 @@ export function LoadGLTFModel(url, callback) {
 	});	
 }
 
-
-export function ThreeUpdateLoop() {
-	if(mainScene) mainScene.animate();
-	renderer.render( mainScene.scene, mainScene.camera );
-	if(updateThreejs) requestAnimationFrame(ThreeUpdateLoop);
-}
+export { LoadGLTFModel, StartScene, StopScene };
