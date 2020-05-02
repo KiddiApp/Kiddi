@@ -1,6 +1,20 @@
+import GLTFLoader from '../vendor/GLTFLoader.js';
+
 const cardGameSceneObject = {
 	camera: new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 ),
 	scene: new THREE.Scene(),
+
+	basePath: 'Data/Models/Cards/',
+	cards: [
+		'Card1A',
+		'Card1B',
+		'Card2A',
+		'Card2B',
+		'Card3A',
+		'Card3B'
+	],
+	sceneCards: [],
+	resourcesLoaded: false,
 
 	init: function() {
 
@@ -37,7 +51,29 @@ const cardGameSceneObject = {
 	},
 
 	loadResources: function() {
-		return;
+		var loader = new THREE.GLTFLoader();
+		var setIdCounter = 0;
+		var loadCounter = 0;
+			
+		loader.load( this.basePath + cards[loadCounter], function ( gltf ) {
+
+			let sceneCard = {
+				name: cards[loadCounter],
+				model: gltf.scene,
+				setId: setIdCounter,
+			}
+			this.sceneCards.push(sceneCard);
+
+			if(loadCounter % 2 == 0 && loadCounter != 0) setIdCounter++;
+			
+			if(loadCounter == cards.length - 1) {
+				console.log("CARDS ARE LOADED");
+				resourcesLoaded = true;
+			}
+
+		}, undefined, function ( error ) {
+			console.error( error );	
+		});
 	},
 
 	animate: function() {
