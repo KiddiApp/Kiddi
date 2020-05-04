@@ -2,6 +2,15 @@ const paintSceneObject = {
 	canvas: document.getElementById("paint2d"),
 	context: this.canvas.getContext("2d"),
 
+	clickX: [],
+	clickY: [],
+	clickColor: [],
+	clickTool: [],
+	clickSize: [],
+	clickDrag: [],
+	paint: false,
+	curColor: colorPurple,
+
 	init: function() {
 		this.canvas.addEventListener("mousedown", this.press, false);
 		this.canvas.addEventListener("mousemove", this.drag, false);
@@ -23,13 +32,13 @@ const paintSceneObject = {
 		if (mouseX < drawingAreaX) { // Left of the drawing area
 			if (mouseX > mediumStartX) {
 				if (mouseY > mediumStartY && mouseY < mediumStartY + mediumImageHeight) {
-					curColor = colorPurple;
+					this.curColor = colorPurple;
 				} else if (mouseY > mediumStartY + mediumImageHeight && mouseY < mediumStartY + mediumImageHeight * 2) {
-					curColor = colorGreen;
+					this.curColor = colorGreen;
 				} else if (mouseY > mediumStartY + mediumImageHeight * 2 && mouseY < mediumStartY + mediumImageHeight * 3) {
-					curColor = colorYellow;
+					this.curColor = colorYellow;
 				} else if (mouseY > mediumStartY + mediumImageHeight * 3 && mouseY < mediumStartY + mediumImageHeight * 4) {
-					curColor = colorBrown;
+					this.curColor = colorBrown;
 				}
 			}
 		} else if (mouseX > drawingAreaX + drawingAreaWidth) { // Right of the drawing area
@@ -59,7 +68,7 @@ const paintSceneObject = {
 				}
 			}
 		}
-		paint = true;
+		this.paint = true;
 		this.addClick(mouseX, mouseY, false);
 		redraw();
 	},
@@ -69,7 +78,7 @@ const paintSceneObject = {
 		var mouseX = (e.changedTouches ? e.changedTouches[0].pageX : e.pageX) - this.offsetLeft;
 		var mouseY = (e.changedTouches ? e.changedTouches[0].pageY : e.pageY) - this.offsetTop;
 		
-		if (paint) {
+		if (this.paint) {
 			this.addClick(mouseX, mouseY, true);
 			redraw();
 		}
@@ -78,174 +87,45 @@ const paintSceneObject = {
 	},
 
 	release: function () {
-		paint = false;
+		this.paint = false;
 		redraw();
 	},
 
 	cancel: function () {
-		paint = false;
+		this.paint = false;
 	},
 	
 	addClick: function (x, y, dragging) {
 
-		clickX.push(x);
-		clickY.push(y);
-		clickTool.push(curTool);
-		clickColor.push(curColor);
-		clickSize.push(curSize);
-		clickDrag.push(dragging);
+		this.clickX.push(x);
+		this.clickY.push(y);
+		this.clickTool.push(curTool);
+		this.clickColor.push(this.curColor);
+		this.clickSize.push(curSize);
+		this.clickDrag.push(dragging);
+	},
+
+	clearCanvas: function () {
+		this.context.clearRect(0, 0, canvasWidth, canvasHeight);
 	},
 
 	redraw: function () {
-
-		var locX;
-		var locY;
 		var radius;
 		var i;
-		var selected;
-
-		// drawCrayon = function (x, y, color, selected) {
-
-		// 	context.beginPath();
-		// 	context.moveTo(x + 41, y + 11);
-		// 	context.lineTo(x + 41, y + 35);
-		// 	context.lineTo(x + 29, y + 35);
-		// 	context.lineTo(x + 29, y + 33);
-		// 	context.lineTo(x + 11, y + 27);
-		// 	context.lineTo(x + 11, y + 19);
-		// 	context.lineTo(x + 29, y + 13);
-		// 	context.lineTo(x + 29, y + 11);
-		// 	context.lineTo(x + 41, y + 11);
-		// 	context.closePath();
-		// 	context.fillStyle = color;
-		// 	context.fill();
-
-		// 	if (selected) {
-		// 		context.drawImage(crayonImage, x, y, mediumImageWidth, mediumImageHeight);
-		// 	} else {
-		// 		context.drawImage(crayonImage, 0, 0, 59, mediumImageHeight, x, y, 59, mediumImageHeight);
-		// 	}
-		// },
-
-		drawMarker = function (x, y, color, selected) {
-
-			context.beginPath();
-			context.moveTo(x + 10, y + 24);
-			context.lineTo(x + 10, y + 24);
-			context.lineTo(x + 22, y + 16);
-			context.lineTo(x + 22, y + 31);
-			context.closePath();
-			context.fillStyle = color;
-			context.fill();
-
-			if (selected) {
-				context.drawImage(markerImage, x, y, mediumImageWidth, mediumImageHeight);
-			} else {
-				context.drawImage(markerImage, 0, 0, 59, mediumImageHeight, x, y, 59, mediumImageHeight);
-			}
-		};
 
 		clearCanvas();
 
-		if (curTool === "crayon") {
-
-			// Draw the crayon tool background
-			context.drawImage(crayonBackgroundImage, 0, 0, canvasWidth, canvasHeight);
-
-			// Draw purple crayon
-			selected = (curColor === colorPurple);
-			locX = selected ? 18 : 52;
-			locY = 19;
-			drawCrayon(locX, locY, colorPurple, selected);
-
-			// Draw green crayon
-			selected = (curColor === colorGreen);
-			locX = selected ? 18 : 52;
-			locY += 46;
-			drawCrayon(locX, locY, colorGreen, selected);
-
-			// Draw yellow crayon
-			selected = (curColor === colorYellow);
-			locX = selected ? 18 : 52;
-			locY += 46;
-			drawCrayon(locX, locY, colorYellow, selected);
-
-			// Draw brown crayon
-			selected = (curColor === colorBrown);
-			locX = selected ? 18 : 52;
-			locY += 46;
-			drawCrayon(locX, locY, colorBrown, selected);
-
-		} else if (curTool === "marker") {
-
-			// Draw the marker tool background
-			context.drawImage(markerBackgroundImage, 0, 0, canvasWidth, canvasHeight);
-
-			// Draw purple marker
-			selected = (curColor === colorPurple);
-			locX = selected ? 18 : 52;
-			locY = 19;
-			drawMarker(locX, locY, colorPurple, selected);
-
-			// Draw green marker
-			selected = (curColor === colorGreen);
-			locX = selected ? 18 : 52;
-			locY += 46;
-			drawMarker(locX, locY, colorGreen, selected);
-
-			// Draw yellow marker
-			selected = (curColor === colorYellow);
-			locX = selected ? 18 : 52;
-			locY += 46;
-			drawMarker(locX, locY, colorYellow, selected);
-
-			// Draw brown marker
-			selected = (curColor === colorBrown);
-			locX = selected ? 18 : 52;
-			locY += 46;
-			drawMarker(locX, locY, colorBrown, selected);
-
-		} else if (curTool === "eraser") {
-
-			context.drawImage(eraserBackgroundImage, 0, 0, canvasWidth, canvasHeight);
-			context.drawImage(eraserImage, 18, 19, mediumImageWidth, mediumImageHeight);
-		}
-
-		// Draw line on ruler to indicate size
-		switch (curSize) {
-		case "small":
-			locX = 467;
-			break;
-		case "normal":
-			locX = 450;
-			break;
-		case "large":
-			locX = 428;
-			break;
-		case "huge":
-			locX = 399;
-			break;
-		default:
-			break;
-		}
-		locY = 189;
-		context.beginPath();
-		context.rect(locX, locY, 2, 12);
-		context.closePath();
-		context.fillStyle = '#333333';
-		context.fill();
-
 		// Keep the drawing in the drawing area
-		context.save();
-		context.beginPath();
-		context.rect(drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight);
-		context.clip();
+		this.context.save();
+		this.context.beginPath();
+		this.context.rect(drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight);
+		this.context.clip();
 
 		// For each point drawn
-		for (i = 0; i < clickX.length; i += 1) {
+		for (i = 0; i < this.clickX.length; i += 1) {
 
-			// Set the drawing radius
-			switch (clickSize[i]) {
+			// Set the drawing radius TODO: check if we want a size parameter. 
+			switch (this.clickSize[i]) {
 			case "small":
 				radius = 2;
 				break;
@@ -263,41 +143,29 @@ const paintSceneObject = {
 			}
 
 			// Set the drawing path
-			context.beginPath();
-			// If dragging then draw a line between the two points
-			if (clickDrag[i] && i) {
-				context.moveTo(clickX[i - 1], clickY[i - 1]);
+			this.context.beginPath();
+			if (this.clickDrag[i] && i) {
+				this.context.moveTo(this.clickX[i - 1], this.clickY[i - 1]);
 			} else {
-				// The x position is moved over one pixel so a circle even if not dragging
-				context.moveTo(clickX[i] - 1, clickY[i]);
+				this.context.moveTo(this.clickX[i] - 1, this.clickY[i]);
 			}
-			context.lineTo(clickX[i], clickY[i]);
+			this.context.lineTo(this.clickX[i], this.clickY[i]);
 			
 			// Set the drawing color
-			if (clickTool[i] === "eraser") {
-				//context.globalCompositeOperation = "destination-out"; // To erase instead of draw over with white
-				context.strokeStyle = 'white';
+			if(this.clickTool[i] === "eraser") {
+				this.context.strokeStyle = 'white';
 			} else {
-				//context.globalCompositeOperation = "source-over";	// To erase instead of draw over with white
-				context.strokeStyle = clickColor[i];
+				this.clickColor[i];
 			}
-			context.lineCap = "round";
-			context.lineJoin = "round";
-			context.lineWidth = radius;
-			context.stroke();
+			this.context.lineCap = "round";
+			this.context.lineJoin = "round";
+			this.context.lineWidth = radius;
+			this.context.stroke();
 		}
-		context.closePath();
-		//context.globalCompositeOperation = "source-over";// To erase instead of draw over with white
-		context.restore();
-
-		// Overlay a crayon texture (if the current tool is crayon)
-		if (curTool === "crayon") {
-			context.globalAlpha = 0.4; // No IE support
-			context.drawImage(crayonTextureImage, 0, 0, canvasWidth, canvasHeight);
-		}
-		context.globalAlpha = 1; // No IE support
+		this.context.closePath();
+		this.context.restore();
 
 		// Draw the outline image
-		context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight);
+		this.context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight);
 	},
 }
