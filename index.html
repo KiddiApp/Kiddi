@@ -96,18 +96,26 @@
 
 		<div class="hidden view_container" id="select_character">
 			<h1>!Elije personaje!</h1>
-			<div id="character">
+			<div class="character">
 				<img src="img/character1.png">
 				<h2>Lapi</h2>
-			</div>
-			<div id="character">
-				<img src="img/character2.png">
-				<h2>Goma</h2>
 			</div>
 		</div>
 
 		<div class="hidden view_container" id="paint_canvas">
 			<canvas id="paint2d"></canvas>
+			<div id="confirm_and_clear_buttons">
+				<div id="clear_painting" class="painting_btn"></div>
+				<div id="confirm_painting" class="painting_btn"></div>
+			</div>
+			<div id="color_selection_container">
+				<div class="color_option" data-color="#ff0000" style="background-color: #ff0000;"></div>
+				<div class="color_option" data-color="#00ff00" style="background-color: #00ff00;"></div>
+				<div class="color_option" data-color="#0000ff" style="background-color: #0000ff;"></div>
+				<div class="color_option" data-color="#ffff00" style="background-color: #ffff00;"></div>
+				<div class="color_option" data-color="#ff00ff" style="background-color: #ff00ff;"></div>
+				<div class="color_option" data-color="#ffffff" style="background-color: #fff;"></div>
+			</div>
 		</div>
 
 		<div class="hidden view_container" id="answers">

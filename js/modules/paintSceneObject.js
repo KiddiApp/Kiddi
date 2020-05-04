@@ -1,17 +1,44 @@
 const paintSceneObject = {
-	canvas: document.getElementById("paint2d"),
-	context: this.canvas.getContext("2d"),
 
+	canvas: document.getElementById("paint2d"),
+	context: null,
+	color_options: document.getElementsByClassName("color_option"),
+
+	bgImage: new Image(),
 	clickX: [],
 	clickY: [],
 	clickColor: [],
-	clickTool: [],
-	clickSize: [],
 	clickDrag: [],
 	paint: false,
-	curColor: colorPurple,
+	curColor: '#ff0000',
+	paintRadius: 10,
+
+	setbgimage: function(src) {
+		this.bgImage.src = src;
+		this.bgImage.onload = function() {
+			paintSceneObject.clearCanvas();
+			paintSceneObject.context.drawImage(paintSceneObject.bgImage, 0, 0, 300, 600);
+		}
+	},
+
+	setColor: function(col) {
+		this.curColor = col;
+	},
 
 	init: function() {
+
+		this.canvas.setAttribute('width', window.innerWidth);
+		this.canvas.setAttribute('height', window.innerHeight - 100);
+
+		this.context = this.canvas.getContext("2d");
+
+		for (let i = 0; i < this.color_options.length; i++) {
+			const option = this.color_options[i];
+			option.addEventListener('click', function() {
+				paintSceneObject.setColor(option.dataset.color);
+			}, false);
+		};
+
 		this.canvas.addEventListener("mousedown", this.press, false);
 		this.canvas.addEventListener("mousemove", this.drag, false);
 		this.canvas.addEventListener("mouseup", this.release);
@@ -24,123 +51,64 @@ const paintSceneObject = {
 	},
 
 	press: function (e) {
-		// Mouse down location
-		var sizeHotspotStartX;
-		var mouseX = (e.changedTouches ? e.changedTouches[0].pageX : e.pageX) - this.offsetLeft;
-		var mouseY = (e.changedTouches ? e.changedTouches[0].pageY : e.pageY) - this.offsetTop;
+		var mouseX = (e.changedTouches ? e.changedTouches[0].pageX : e.pageX);
+		var mouseY = (e.changedTouches ? e.changedTouches[0].pageY : e.pageY);
 
-		if (mouseX < drawingAreaX) { // Left of the drawing area
-			if (mouseX > mediumStartX) {
-				if (mouseY > mediumStartY && mouseY < mediumStartY + mediumImageHeight) {
-					this.curColor = colorPurple;
-				} else if (mouseY > mediumStartY + mediumImageHeight && mouseY < mediumStartY + mediumImageHeight * 2) {
-					this.curColor = colorGreen;
-				} else if (mouseY > mediumStartY + mediumImageHeight * 2 && mouseY < mediumStartY + mediumImageHeight * 3) {
-					this.curColor = colorYellow;
-				} else if (mouseY > mediumStartY + mediumImageHeight * 3 && mouseY < mediumStartY + mediumImageHeight * 4) {
-					this.curColor = colorBrown;
-				}
-			}
-		} else if (mouseX > drawingAreaX + drawingAreaWidth) { // Right of the drawing area
-
-			if (mouseY > toolHotspotStartY) {
-				if (mouseY > sizeHotspotStartY) {
-					sizeHotspotStartX = drawingAreaX + drawingAreaWidth;
-					if (mouseY < sizeHotspotStartY + sizeHotspotHeight && mouseX > sizeHotspotStartX) {
-						if (mouseX < sizeHotspotStartX + sizeHotspotWidthObject.huge) {
-							curSize = "huge";
-						} else if (mouseX < sizeHotspotStartX + sizeHotspotWidthObject.large + sizeHotspotWidthObject.huge) {
-							curSize = "large";
-						} else if (mouseX < sizeHotspotStartX + sizeHotspotWidthObject.normal + sizeHotspotWidthObject.large + sizeHotspotWidthObject.huge) {
-							curSize = "normal";
-						} else if (mouseX < sizeHotspotStartX + sizeHotspotWidthObject.small + sizeHotspotWidthObject.normal + sizeHotspotWidthObject.large + sizeHotspotWidthObject.huge) {
-							curSize = "small";
-						}
-					}
-				} else {
-					if (mouseY < toolHotspotStartY + toolHotspotHeight) {
-						curTool = "crayon";
-					} else if (mouseY < toolHotspotStartY + toolHotspotHeight * 2) {
-						curTool = "marker";
-					} else if (mouseY < toolHotspotStartY + toolHotspotHeight * 3) {
-						curTool = "eraser";
-					}
-				}
-			}
-		}
-		this.paint = true;
-		this.addClick(mouseX, mouseY, false);
-		redraw();
+		paintSceneObject.paint = true;
+		paintSceneObject.addClick(mouseX, mouseY, false);
+		paintSceneObject.redraw();
 	},
 
 	drag: function (e) {
 		
-		var mouseX = (e.changedTouches ? e.changedTouches[0].pageX : e.pageX) - this.offsetLeft;
-		var mouseY = (e.changedTouches ? e.changedTouches[0].pageY : e.pageY) - this.offsetTop;
-		
-		if (this.paint) {
-			this.addClick(mouseX, mouseY, true);
-			redraw();
+		var mouseX = (e.changedTouches ? e.changedTouches[0].pageX : e.pageX);
+		var mouseY = (e.changedTouches ? e.changedTouches[0].pageY : e.pageY);
+
+		if (paintSceneObject.paint) {
+			paintSceneObject.addClick(mouseX, mouseY, true);
+			paintSceneObject.redraw();
 		}
-		// Prevent the whole page from dragging if on mobile
+
 		e.preventDefault();
 	},
 
 	release: function () {
-		this.paint = false;
-		redraw();
+		paintSceneObject.paint = false;
+		paintSceneObject.redraw();
 	},
 
 	cancel: function () {
-		this.paint = false;
+		paintSceneObject.paint = false;
 	},
 	
 	addClick: function (x, y, dragging) {
 
 		this.clickX.push(x);
-		this.clickY.push(y);
-		this.clickTool.push(curTool);
+		this.clickY.push(y - this.canvas.offsetTop);
 		this.clickColor.push(this.curColor);
-		this.clickSize.push(curSize);
 		this.clickDrag.push(dragging);
 	},
 
 	clearCanvas: function () {
-		this.context.clearRect(0, 0, canvasWidth, canvasHeight);
+		this.clickX = [],
+		this.clickY = [],
+		this.clickColor = [],
+		this.clickDrag = [],
+		this.context.clearRect(0, 0, this.canvas.offsetWidth, this.canvas.offsetHeight);
+		this.context.drawImage(this.bgImage, 0, 0, 300, 600);
 	},
 
 	redraw: function () {
-		var radius;
-		var i;
-
-		clearCanvas();
+		// this.clearCanvas();
 
 		// Keep the drawing in the drawing area
 		this.context.save();
 		this.context.beginPath();
-		this.context.rect(drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight);
+		this.context.rect(0, 0, this.canvas.offsetWidth, this.canvas.offsetHeight);
 		this.context.clip();
 
 		// For each point drawn
-		for (i = 0; i < this.clickX.length; i += 1) {
-
-			// Set the drawing radius TODO: check if we want a size parameter. 
-			switch (this.clickSize[i]) {
-			case "small":
-				radius = 2;
-				break;
-			case "normal":
-				radius = 5;
-				break;
-			case "large":
-				radius = 10;
-				break;
-			case "huge":
-				radius = 20;
-				break;
-			default:
-				break;
-			}
+		for (var i = 0; i < this.clickX.length; i += 1) {
 
 			// Set the drawing path
 			this.context.beginPath();
@@ -151,21 +119,20 @@ const paintSceneObject = {
 			}
 			this.context.lineTo(this.clickX[i], this.clickY[i]);
 			
-			// Set the drawing color
-			if(this.clickTool[i] === "eraser") {
-				this.context.strokeStyle = 'white';
-			} else {
-				this.clickColor[i];
-			}
+			this.context.strokeStyle = this.clickColor[i];
 			this.context.lineCap = "round";
 			this.context.lineJoin = "round";
-			this.context.lineWidth = radius;
+			this.context.lineWidth = this.paintRadius;
 			this.context.stroke();
+			this.context.closePath();
 		}
 		this.context.closePath();
 		this.context.restore();
 
-		// Draw the outline image
-		this.context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight);
+		this.context.drawImage(this.bgImage, 0, 0, 300, 600);
 	},
 }
+
+paintSceneObject.init();
+
+export default paintSceneObject;

@@ -6,6 +6,7 @@ import video_content from './contentPages/videopage.js';
 import cardgame_content from './contentPages/cardgamepage.js';
 import information_content from './contentPages/informationpage.js';
 import answers_content from './contentPages/answerspage.js';
+import characterselection_content from './contentPages/characterselectionpage.js';
 import painting_content from './contentPages/paintingpage.js';
 
 let currentContent = homepage_content;
@@ -42,9 +43,9 @@ function StateToContent(state) {
 		case states.Answers:
 			return answers_content;
 		case states.PaintingCharacterSelection: 
-			return painting_content;
+			return characterselection_content;
 		case states.PaintingPainting:
-			return null;
+			return painting_content;
 		case states.Painting3dAnimation:
 			return null;
 	}
