@@ -1,4 +1,4 @@
-import GLTFLoader from '../vendor/GLTFLoader.js';
+import { GLTFLoader } from '../vendor/GLTFLoader.js';
 
 const cardGameSceneObject = {
 	camera: new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 ),
@@ -51,29 +51,29 @@ const cardGameSceneObject = {
 	},
 
 	loadResources: function() {
-		var loader = new THREE.GLTFLoader();
-		var setIdCounter = 0;
-		var loadCounter = 0;
+		// var loader = new THREE.GLTFLoader();
+		// var setIdCounter = 0;
+		// var loadCounter = 0;
 			
-		loader.load( this.basePath + cards[loadCounter], function ( gltf ) {
+		// loader.load( this.basePath + cards[loadCounter], function ( gltf ) {
 
-			let sceneCard = {
-				name: cards[loadCounter],
-				model: gltf.scene,
-				setId: setIdCounter,
-			}
-			this.sceneCards.push(sceneCard);
+		// 	let sceneCard = {
+		// 		name: cards[loadCounter],
+		// 		model: gltf.scene,
+		// 		setId: setIdCounter,
+		// 	}
+		// 	this.sceneCards.push(sceneCard);
 
-			if(loadCounter % 2 == 0 && loadCounter != 0) setIdCounter++;
+		// 	if(loadCounter % 2 == 0 && loadCounter != 0) setIdCounter++;
 			
-			if(loadCounter == cards.length - 1) {
-				console.log("CARDS ARE LOADED");
-				resourcesLoaded = true;
-			}
+		// 	if(loadCounter == cards.length - 1) {
+		// 		console.log("CARDS ARE LOADED");
+		// 		resourcesLoaded = true;
+		// 	}
 
-		}, undefined, function ( error ) {
-			console.error( error );	
-		});
+		// }, undefined, function ( error ) {
+		// 	console.error( error );	
+		// });
 	},
 
 	animate: function() {
