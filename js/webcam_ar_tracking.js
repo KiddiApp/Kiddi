@@ -1,8 +1,10 @@
+import scan_content from './modules/contentPages/scanpage.js';
+
 var video = document.getElementById('tracking_video');
 
 var useTracking = false;
 var videoMetaLoaded = false;
-function EnableTracking(enableVideo, enableTracking) {
+export default function EnableTracking(enableVideo, enableTracking) {
 	if(video.srcObject && videoMetaLoaded) {
 		useTracking = enableTracking;
 		video.srcObject.getTracks().forEach(t => t.enabled = enableVideo);

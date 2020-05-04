@@ -1,6 +1,8 @@
 import { UpdateAppState } from '../updateAppState.js';
 import Display from '../helperFunctions.js';
 import { ShowPopup, HidePopup } from '../popup.js';
+import EnableTracking from '../../webcam_ar_tracking.js';
+import states from '../appStates.js';
 
 let scan_content = {
 	container: document.getElementById("scan_view"),
