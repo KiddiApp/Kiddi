@@ -8,23 +8,11 @@ back_button.addEventListener('click', () => {
 		case states.HomePage:
 			return;
 		case states.Scanning:
-			UpdateAppState(states.HomePage);
-			break;
 		case states.Instructions:
-			UpdateAppState(states.HomePage);
-			break;
 		case states.Video:
-			UpdateAppState(states.HomePage);
-			break;
 		case states.CardGame:
-			UpdateAppState(states.HomePage);
-			break;
 		case states.Information:
-			UpdateAppState(states.HomePage);
-			break;
 		case states.Answers:
-			UpdateAppState(states.HomePage);
-			break;
 		case states.PaintingCharacterSelection:
 			UpdateAppState(states.HomePage);
 			break;
@@ -41,7 +29,7 @@ back_button.addEventListener('click', () => {
 
 let scan_button = document.getElementById("scan_image");
 scan_button.addEventListener('click', function() {
-	UpdateAppState(states.CardGame);
+	UpdateAppState(states.Scanning);
 });
 
 let instructions_button = document.getElementById("help_needed");
