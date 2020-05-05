@@ -1,7 +1,6 @@
 import states from './modules/appStates.js';
 import { UpdateAppState, GetCurrentState } from './modules/updateAppState.js';
 
-
 let back_button = document.getElementById("back_button");
 back_button.addEventListener('click', () => {
 	console.log(GetCurrentState());
@@ -42,7 +41,7 @@ back_button.addEventListener('click', () => {
 
 let scan_button = document.getElementById("scan_image");
 scan_button.addEventListener('click', function() {
-	UpdateAppState(states.PaintingCharacterSelection);
+	UpdateAppState(states.CardGame);
 });
 
 let instructions_button = document.getElementById("help_needed");
