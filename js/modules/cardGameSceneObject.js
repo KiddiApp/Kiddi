@@ -64,12 +64,12 @@ const cardGameSceneObject = {
 
 			obj.geometry.computeBoundingBox();
 			var b = obj.geometry.boundingBox.max;
-			cardGameSceneObject.cardRatioPortrait = (b.max.x * 2) / (b.max.y * 4);
-			cardGameSceneObject.cardSizeOriginal = new THREE.Vector2(b.max.x * 2, b.max.y * 2);
+			cardGameSceneObject.cardRatioPortrait = (b.x * 2) / (b.z * 4);
+			cardGameSceneObject.cardSizeOriginal = new THREE.Vector2(b.x * 2, b.z * 2);
 
 			for (let i = 0; i < cardGameSceneObject.cards.length; i++) {
 				var card = new THREE.Mesh(obj.geometry, obj.material);
-				cardGameSceneObject.sceneCards.push(card);
+				cardGameSceneObject.sceneCards.push(card);	
 				cardGameSceneObject.scene.add(card);
 			}
 
@@ -82,17 +82,31 @@ const cardGameSceneObject = {
 	},
 
 	positionCards: function() {
-		console.log(this.raycastPoint(0, 0));
-		console.log(this.raycastPoint(window.innerWidth, window.innerHeight));
+		var tableDimensions = this.raycastPoint(1, -1).multiplyScalar(2);
+		var topleft = this.raycastPoint(-1, 1);
+		var gridcellSize = new THREE.Vector2(tableDimensions.x / 2,  tableDimensions.y / 4);
+		var cardScale = gridcellSize.y / this.cardSizeOriginal.y;
+
+		var moveIndexX = 0, moveIndexY = 0;
+		for (let i = 0; i < this.sceneCards.length; i++) {
+			const card = this.sceneCards[i];
+			card.scale.set(cardScale, cardScale, cardScale);
+
+			moveIndexX = (i != 0 && (i - 1) % 2 == 0) ? 1 : 0;
+			if(i != 0 && i % 2 == 0){
+				moveIndexY++;
+			} 
+
+			card.position.x = topleft.x + gridcellSize.x / 2 + gridcellSize.x * moveIndexX;
+			card.position.y = 0;
+			card.position.z = topleft.y + gridcellSize.y / 2 + gridcellSize.y * moveIndexY;
+		}
 	},
 
 	raycastPoint: function(x, y) {
-		var normal = new THREE.Vector2();
-		normal.x = ( x / window.innerWidth ) * 2 - 1;
-		normal.y = - ( y / window.innerHeight ) * 2 + 1;
-		this.raycaster.setFromCamera( normal, this.camera );
-		var intersects = this.raycaster.intersectObjects( this.scene.children ); 
-		return intersects;
+		this.camera.updateMatrixWorld();
+		var p = new THREE.Vector3( x, y, 0 ).unproject( this.camera );
+		return new THREE.Vector2(p.x, p.z).multiplyScalar(100);
 	}
 }
 
