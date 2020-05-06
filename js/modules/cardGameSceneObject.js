@@ -33,6 +33,11 @@ const cardGameSceneObject = {
 	cardSizeOriginal: null,
 	canvasRatio: window.innerWidth / window.innerHeight,
 
+	cardsToCheck: [],
+	matchedCards: [],
+	callCardsMatched: false,
+	flippedCard: null,
+
 	init: function() {
 
 		this.camera.position.set( 0, 200, 0 );
@@ -81,8 +86,52 @@ const cardGameSceneObject = {
 		});
 	},
 
+	interaction: function() {
+		var ref = cardGameSceneObject;
+		var mouse = new THREE.Vector2();
+		mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+		mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+
+		ref.raycaster.setFromCamera( mouse, ref.camera );
+		var intersects = ref.raycaster.intersectObjects( ref.sceneCards );
+		ref.flipCard(intersects[0].object, ref.checkIfMatch);
+	},
+
+	flipCard: function(card, callback) {
+		card.rotation.x += Math.PI;
+		this.flippedCard = card;
+		if(callback) callback();
+	},
+
+	checkIfMatch: function() {
+		var ref = cardGameSceneObject;
+		ref.cardsToCheck.push(ref.flippedCard);
+		ref.flippedCard = null;
+		if(ref.cardsToCheck.length >= 2) {
+			if(ref.cardsToCheck[0].MatchGroupId == ref.cardsToCheck[1].MatchGroupId) {
+				console.log("WE HAVE A MATCH");
+				ref.matchedCards = ref.matchedCards.concat(ref.cardsToCheck);
+				// TODO: change this to other behaviour if requested
+				if(ref.matchedCards.length >= ref.sceneCards.length) {
+					ref.matchedCards.forEach(card => {
+						ref.flipCard(card, null);
+					});	
+					ref.sceneCards = ref.shuffleArray(ref.sceneCards);
+					ref.positionCards();
+				}
+			} else {
+				console.log("NO MATCH");
+				ref.cardsToCheck.forEach(card => {
+					ref.flipCard(card, null);
+				});
+			}
+
+			ref.cardsToCheck = [];
+			ref.flippedCard = null;
+		}
+	},
+
 	animate: function() {
-		
 	},
 
 	positionCards: function() {
