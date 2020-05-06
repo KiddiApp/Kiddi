@@ -4,40 +4,26 @@ const cardGameSceneObject = {
 	camera: new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 ),
 	scene: new THREE.Scene(),
 
+	cardPadding: 5,
+	textureLoader: new THREE.TextureLoader(),
 	basePath: 'Data/Models/Cards/',
 	cards: [
 		{
-			texuture: 'Card1A',
+			texture: 'card',
 			set: 0
 		},
 		{
-			texture: 'Card1B',
-			set: 0
-		},
-		{
-			texture: 'Card2A',
+			texture: 'card',
 			set: 1
 		},
 		{
-			texture: 'Card2B',
-			set: 1
-		},
-		{
-			texture: 'Card3A',
+			texture: 'card',
 			set: 2
 		},
 		{
-			texture: 'Card3B',
-			set: 2
-		},
-		{
-			texture: 'Card4A',
+			texture: 'card',
 			set: 3
 		},
-		{
-			texture: 'Card4B',
-			set: 3
-		}
 	],
 	sceneCards: [],
 	resourcesLoaded: false,
@@ -53,22 +39,10 @@ const cardGameSceneObject = {
 		this.camera.lookAt( 0, 0, 0 );
 
 		this.scene.background = new THREE.Color( 0xa0a0a0 );
-		// this.scene.fog = new THREE.Fog( 0xa0a0a0, 10, 50 );
 
 		var hemiLight = new THREE.HemisphereLight( 0xffffff, 0x444444 );
 		hemiLight.position.set( 0, 300, 0 );
 		this.scene.add( hemiLight );
-
-		var dirLight = new THREE.DirectionalLight( 0xffffff );
-		dirLight.position.set( - 300, 100, - 10 );
-		dirLight.castShadow = true;
-		dirLight.shadow.camera.top = 2;
-		dirLight.shadow.camera.bottom = - 2;
-		dirLight.shadow.camera.left = - 2;
-		dirLight.shadow.camera.right = 2;
-		dirLight.shadow.camera.near = 0.1;
-		dirLight.shadow.camera.far = 40;
-		// this.scene.add( dirLight );
 
 		var mesh = new THREE.Mesh( new THREE.PlaneBufferGeometry( 1000, 1000, 100, 100 ), new THREE.MeshPhongMaterial( { color: 0xff9999, depthWrite: false } ) );
 		mesh.rotation.x = - Math.PI / 2;
@@ -78,9 +52,15 @@ const cardGameSceneObject = {
 	},
 
 	loadResources: function() {
+		var ref = cardGameSceneObject;
 		var loader = new FBXLoader();
 	
-		loader.load('./Data/Models/ModelAndTextures/kiddi-card.fbx', function ( fbx ) {
+		ref.textureLoader.load(ref.basePath + 'card-bg.png', function(tex) {
+			ref.materials.back.tex = new THREE.MeshPhongMaterial({ map: tex });
+			ref.materials.back.loaded = true;
+		});
+		
+		loader.load('./Data/Models/Cards/kiddi-card.fbx', function ( fbx ) {
 
 			let obj = fbx.children[0];
 			obj.geometry.rotateZ(Math.PI / 2);
@@ -88,19 +68,16 @@ const cardGameSceneObject = {
 
 			obj.geometry.computeBoundingBox();
 			var b = obj.geometry.boundingBox.max;
-			cardGameSceneObject.cardRatioPortrait = (b.x * 2) / (b.z * 4);
-			cardGameSceneObject.cardSizeOriginal = new THREE.Vector2(b.x * 2, b.z * 2);
+			ref.cardRatioPortrait = (b.x * 2) / (b.z * 4);
+			ref.cardSizeOriginal = new THREE.Vector2(b.x * 2, b.z * 2);
 
-			cardGameSceneObject.cards = cardGameSceneObject.shuffleArray(cardGameSceneObject.cards);
-			console.log(cardGameSceneObject.cards);
-
-			for (let i = 0; i < cardGameSceneObject.cards.length; i++) {
-				var card = new THREE.Mesh(obj.geometry, obj.material);
-				cardGameSceneObject.sceneCards.push(card);	
-				cardGameSceneObject.scene.add(card);
+			for (let i = 0; i < ref.cards.length; i++) {
+				ref.loadTexture(i, function() {
+					ref.addLoadedTexturedCards(obj, ref.cards[i].set);
+				});	
 			}
 
-			cardGameSceneObject.positionCards();
+			ref.positionCards();
 		});
 	},
 
@@ -112,7 +89,7 @@ const cardGameSceneObject = {
 		var tableDimensions = this.raycastPoint(1, -1).multiplyScalar(2);
 		var topleft = this.raycastPoint(-1, 1);
 		var gridcellSize = new THREE.Vector2(tableDimensions.x / 2,  tableDimensions.y / 4);
-		var cardScale = gridcellSize.y / this.cardSizeOriginal.y;
+		var cardScale = (gridcellSize.y - this.cardPadding) / this.cardSizeOriginal.y;
 
 		var moveIndexX = 0, moveIndexY = 0;
 		for (let i = 0; i < this.sceneCards.length; i++) {
@@ -134,6 +111,49 @@ const cardGameSceneObject = {
 		this.camera.updateMatrixWorld();
 		var p = new THREE.Vector3( x, y, 0 ).unproject( this.camera );
 		return new THREE.Vector2(p.x, p.z).multiplyScalar(100);
+	},
+
+	materials: {
+		front: {
+			tex: null,
+			loaded: false
+		},
+		back: {
+			tex: null,
+			loaded: false
+		}
+	},
+
+	addLoadedTexturedCards: function(obj, id) {
+		for (let i = 0; i < 2; i++) {
+			var card = new THREE.Mesh(obj.geometry, obj.material);
+			card.material[0] = this.materials.back.tex;
+			card.material[1] = this.materials.front.tex;
+			card.MatchGroupId = id;
+			this.sceneCards.push(card);	
+			this.scene.add(card);	
+		}
+
+		if(this.sceneCards.length >= this.cards.length * 2) {
+			console.log("ALL CARDS HAVE BEEN LOADED AND ADDED");
+			this.sceneCards = this.shuffleArray(this.sceneCards);
+			this.positionCards();
+		}
+	},
+
+	addFrontTexture: function(tex, callback) {
+		var mats = this.materials;
+		mats.front.tex = new THREE.MeshPhongMaterial({ map: tex });
+		if(mats.back.loaded) {
+			callback();
+		}
+	},
+
+	loadTexture: function(index, callback) {
+		var path = this.basePath + this.cards[index].texture;
+		this.textureLoader.load(path + '-pattern.png', function(tex) {
+			cardGameSceneObject.addFrontTexture(tex, callback);
+		});
 	},
 
 	shuffleArray: function(a) {

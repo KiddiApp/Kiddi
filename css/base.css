@@ -25,9 +25,11 @@
 
 #top_bar {
 	z-index: 1;
+	position: fixed;
+	top: 0;
+	left: 0;
 	width: 100%;
 	height: 55px;
-	background-color: #daecf7;
 }
 
 #back_button {
@@ -86,6 +88,12 @@
 
 #information_text {
 	padding-top: 25px;
+}
+
+#threejs_canvas {
+	position: fixed;
+	top: 0;
+	left: 0;
 }
 
 .character img {
