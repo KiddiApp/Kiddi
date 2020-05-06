@@ -6,14 +6,38 @@ const cardGameSceneObject = {
 
 	basePath: 'Data/Models/Cards/',
 	cards: [
-		'Card1A',
-		'Card1B',
-		'Card2A',
-		'Card2B',
-		'Card3A',
-		'Card3B',
-		'Card4A',
-		'Card4B'
+		{
+			texuture: 'Card1A',
+			set: 0
+		},
+		{
+			texture: 'Card1B',
+			set: 0
+		},
+		{
+			texture: 'Card2A',
+			set: 1
+		},
+		{
+			texture: 'Card2B',
+			set: 1
+		},
+		{
+			texture: 'Card3A',
+			set: 2
+		},
+		{
+			texture: 'Card3B',
+			set: 2
+		},
+		{
+			texture: 'Card4A',
+			set: 3
+		},
+		{
+			texture: 'Card4B',
+			set: 3
+		}
 	],
 	sceneCards: [],
 	resourcesLoaded: false,
@@ -67,6 +91,9 @@ const cardGameSceneObject = {
 			cardGameSceneObject.cardRatioPortrait = (b.x * 2) / (b.z * 4);
 			cardGameSceneObject.cardSizeOriginal = new THREE.Vector2(b.x * 2, b.z * 2);
 
+			cardGameSceneObject.cards = cardGameSceneObject.shuffleArray(cardGameSceneObject.cards);
+			console.log(cardGameSceneObject.cards);
+
 			for (let i = 0; i < cardGameSceneObject.cards.length; i++) {
 				var card = new THREE.Mesh(obj.geometry, obj.material);
 				cardGameSceneObject.sceneCards.push(card);	
@@ -107,6 +134,17 @@ const cardGameSceneObject = {
 		this.camera.updateMatrixWorld();
 		var p = new THREE.Vector3( x, y, 0 ).unproject( this.camera );
 		return new THREE.Vector2(p.x, p.z).multiplyScalar(100);
+	},
+
+	shuffleArray: function(a) {
+		var j, x, i;
+		for (i = a.length - 1; i > 0; i--) {
+			j = Math.floor(Math.random() * (i + 1));
+			x = a[i];
+			a[i] = a[j];
+			a[j] = x;
+		}
+		return a;
 	}
 }
 

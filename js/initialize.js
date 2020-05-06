@@ -57,7 +57,10 @@ function SetInitInformation(deviceInformation) {
 			ShowPopup("Please view this website in Portrait mode", "Rotate your device", 0);
 		}
 	} else {
-		ShowPopup("Sorry this browser doesn't support the Kiddi webapp", "Try opening it on a mobile device", 0);
+		ShowPopup(
+			"Sorry this browser doesn't support the Kiddi webapp. Canvas: " + Modernizr.canvas + " WEBGL: " + Modernizr.webgl +
+			" Usermedia: " + Modernizr.getusermedia + " Datachannel: " + Modernizr.datachannel + " PEER: " + Modernizr.peerconnection,
+			"Try opening it on a mobile device", 0);
 	}
 }
 
