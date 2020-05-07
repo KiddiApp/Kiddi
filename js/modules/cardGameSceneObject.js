@@ -1,4 +1,5 @@
 import { FBXLoader } from '../vendor/FBXLoader.js';
+import { loadingManager } from './contentLoader.js';
 
 const cardGameSceneObject = {
 	camera: new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 ),
@@ -187,6 +188,7 @@ const cardGameSceneObject = {
 			console.log("ALL CARDS HAVE BEEN LOADED AND ADDED");
 			this.sceneCards = this.shuffleArray(this.sceneCards);
 			this.positionCards();
+			loadingManager.objectHasBeenLoaded();
 		}
 	},
 

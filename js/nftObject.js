@@ -1,3 +1,5 @@
+import { loadingManager } from './modules/contentLoader.js';
+
 let NFTObject = function (w, h, nft_tracker_url, trigger_found_callback) {
 	let ar_object = null;
 	let tracker_name = nft_tracker_url.match('([^\/]*)$')[0];
@@ -9,6 +11,7 @@ let NFTObject = function (w, h, nft_tracker_url, trigger_found_callback) {
 			trigger_found_callback(tracker_name);
 		});
 		ar_object.loadNFTMarker(nft_tracker_url, function (markerId) {
+			loadingManager.objectHasBeenLoaded();
 			ar_object.trackNFTMarkerId(markerId, 2);
 		});
 	}
@@ -21,3 +24,5 @@ let NFTObject = function (w, h, nft_tracker_url, trigger_found_callback) {
 		}
 	}
 }
+
+export { NFTObject };

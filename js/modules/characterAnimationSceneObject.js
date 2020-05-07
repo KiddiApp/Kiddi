@@ -1,4 +1,5 @@
 import { LoadGLTFModel } from './threejs_setup.js';
+import { loadingManager } from './contentLoader.js';
 
 const characterAnimationSceneObject = {
 	camera: new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 ),
@@ -55,6 +56,7 @@ const characterAnimationSceneObject = {
 
 			console.log("MODEL LOADED");
 			s.modelLoaded = true;
+			loadingManager.objectHasBeenLoaded();
 		});
 	},
 

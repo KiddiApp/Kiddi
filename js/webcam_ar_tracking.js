@@ -1,4 +1,5 @@
 import scan_content from './modules/contentPages/scanpage.js';
+import { NFTObject } from './nftObject.js';
 
 var video = document.getElementById('tracking_video');
 
