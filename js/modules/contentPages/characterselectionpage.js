@@ -1,6 +1,7 @@
 import Display from '../helperFunctions.js';
-import paintingpage from './paintingpage.js';
 import paintSceneObject from '../paintSceneObject.js';
+import { UpdateAppState } from '../updateAppState.js';
+import states from '../appStates.js';
 
 let characterselection_content = {
 	container: document.getElementById("select_character"),
@@ -10,7 +11,7 @@ let characterselection_content = {
 			const character = this.characters[i];
 			character.addEventListener('click', function() {
 				paintSceneObject.setbgimage(character.getElementsByTagName('img')[0].src);
-				characterselection_content.Hide(paintingpage.Show());
+				UpdateAppState(states.PaintingPainting);
 			});
 		};
 	},

@@ -13,6 +13,7 @@ let currentContent = homepage_content;
 let currentState = states.HomePage;
 
 function UpdateAppState(state) {
+	console.log("SETTING NEW STATE " + state);
 	if(currentState != state) {
 		currentState = state;
 		currentContent.Hide(function() {

@@ -34,6 +34,7 @@ let video_content = {
 	Hide(callBack) {
 		this.StopVideo();
 		StopScene();
+		Display(false, this.character_animation);
 		Display(false, this.container);
 		if(callBack) callBack();
 	}

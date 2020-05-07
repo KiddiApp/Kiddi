@@ -28,7 +28,7 @@ const paintSceneObject = {
 	init: function() {
 
 		this.canvas.setAttribute('width', window.innerWidth);
-		this.canvas.setAttribute('height', window.innerHeight - 100);
+		this.canvas.setAttribute('height', window.innerHeight - 50);
 
 		this.context = this.canvas.getContext("2d");
 
@@ -84,7 +84,7 @@ const paintSceneObject = {
 	addClick: function (x, y, dragging) {
 
 		this.clickX.push(x);
-		this.clickY.push(y - this.canvas.offsetTop);
+		this.clickY.push(y);
 		this.clickColor.push(this.curColor);
 		this.clickDrag.push(dragging);
 	},
