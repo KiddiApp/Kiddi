@@ -1,5 +1,6 @@
 import Display from '../helperFunctions.js';
 import paintSceneObject from '../paintSceneObject.js';
+import paintedCharacterAnimation from '../playPaintedCharacterAnimationSceneObject.js';
 import { UpdateAppState } from '../updateAppState.js';
 import states from '../appStates.js';
 
@@ -11,6 +12,7 @@ let characterselection_content = {
 			const character = this.characters[i];
 			character.addEventListener('click', function() {
 				paintSceneObject.setbgimage(character.getElementsByTagName('img')[0].src);
+				paintedCharacterAnimation.setActiveCharacter(character.dataset.character);
 				UpdateAppState(states.PaintingPainting);
 			});
 		};

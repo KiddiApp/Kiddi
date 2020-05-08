@@ -44,7 +44,7 @@ const paintedCharacterAnimation = {
 	},
 
 	loadResources: function() {
-		var ref = characterAnimationSceneObject;
+		var ref = paintedCharacterAnimation;
 		var loader = new FBXLoader();
 
 		this.character_files.forEach(character_file => {
@@ -63,9 +63,9 @@ const paintedCharacterAnimation = {
 						this.animationMixer = new THREE.AnimationMixer( this.character );
 						this.animation = this.animationMixer.clipAction(this.character.animations[0])
 						this.animationMixer.addEventListener( 'loop', function( e ) {
-							this.animation.paused = true;
+							character_option.animation.paused = true;
 							if(ref.animationLoopCompleteCallback) ref.animationLoopCompleteCallback();
-							this.animationLoopCompleteCallback = null;
+							character_option.animationLoopCompleteCallback = null;
 						});
 						this.animation.paused = true;
 						this.animation.play();
@@ -94,14 +94,32 @@ const paintedCharacterAnimation = {
 		});
 	},
 
-	setActiveCharacterAndPlay: function(name) {
-		for (let i = 0; i < this.character_files.length; i++) {
-			const element = this.character_files[i];
-			if(element.name === element) {
+	setActiveCharacter: function(name) {
+		for (let i = 0; i < this.characters.length; i++) {
+			const element = this.characters[i];
+			if(element.name === name) {
 				this.active_character = element;
-				this.active_character.showAndPlay();
 			}
 		}
+	},
+
+	setActiveCharacterTexture: function(canvas) {
+		this.active_character.character.children.forEach(child => {
+			if ( child.isSkinnedMesh ) {
+				child.material = new THREE.MeshPhongMaterial( { 
+					skinning: true,
+					map: new THREE.CanvasTexture(canvas) 
+				} );
+			}
+		});
+	},
+
+	playActiveCharacterAnimation: function() {
+		this.active_character.showAndPlay();
+	},
+
+	stopAndResetCharacterAnimation: function() {
+		this.active_character.stopAndHide();
 	},
 
 	animate: function() {

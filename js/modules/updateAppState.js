@@ -8,6 +8,7 @@ import information_content from './contentPages/informationpage.js';
 import answers_content from './contentPages/answerspage.js';
 import characterselection_content from './contentPages/characterselectionpage.js';
 import painting_content from './contentPages/paintingpage.js';
+import paintedCharacterAnimation_content from './contentPages/paintedCharacterAnimationPage.js';
 
 let currentContent = homepage_content;
 let currentState = states.HomePage;
@@ -47,7 +48,7 @@ function StateToContent(state) {
 		case states.PaintingPainting:
 			return painting_content;
 		case states.Painting3dAnimation:
-			return null;
+			return paintedCharacterAnimation_content;
 	}
 }
 

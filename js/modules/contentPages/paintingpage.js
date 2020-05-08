@@ -1,5 +1,7 @@
 import Display from '../helperFunctions.js';
 import paintSceneObject from '../paintSceneObject.js';
+import { UpdateAppState } from '../updateAppState.js';
+import states from '../appStates.js';
 
 let painting_content = {
 	container: document.getElementById("paint_canvas"),
@@ -7,7 +9,7 @@ let painting_content = {
 	clear: document.getElementById("clear_painting"),
 	Init() {
 		this.confirm.addEventListener('click', function() {
-			return; //TODO: do the animation stuff here. 
+			UpdateAppState(states.Painting3dAnimation);
 		});
 		this.clear.addEventListener('click', function() {
 			paintSceneObject.clearCanvas();
