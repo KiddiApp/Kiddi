@@ -28,7 +28,7 @@ back_button.addEventListener('click', () => {
 
 let scan_button = document.getElementById("scan_image");
 scan_button.addEventListener('click', function() {
-	UpdateAppState(states.PaintingCharacterSelection);
+	UpdateAppState(states.Scanning);
 });
 
 let instructions_button = document.getElementById("help_needed");
