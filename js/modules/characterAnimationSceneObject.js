@@ -1,17 +1,14 @@
-import { LoadGLTFModel } from './threejs_setup.js';
+import { FBXLoader } from '../vendor/FBXLoader.js';
 import { loadingManager } from './contentLoader.js';
 
 const characterAnimationSceneObject = {
 	camera: new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 ),
 	scene: new THREE.Scene(),
-	animationComplete: null,
 	
 	clock: new THREE.Clock(),
-	animatedModel: null,
 	animationMixer: null,
-	walkAnimation: null,
-	modelLoaded: false,
-	playAnimation: true,
+	animation: null,
+	animationLoopCompleteCallback: null,
 
 	init: function() {
 
@@ -42,40 +39,47 @@ const characterAnimationSceneObject = {
 		this.scene.add( mesh );
 	},
 
-	loadResources: function() {
-		LoadGLTFModel('Data/Models/Soldier.glb', function (model, animations) {
-			var s = characterAnimationSceneObject;
-			s.animatedModel = model;
-			s.animationMixer = new THREE.AnimationMixer( s.animatedModel );
-			s.animationMixer.addEventListener( 'finished', function( e ) {
-				if(s.animationComplete) s.animationComplete();
-			});
-			s.walkAnimation = s.animationMixer.clipAction(animations[3]);
-			s.walkAnimation.loop = THREE.LoopOnce;
-			s.scene.add(s.animatedModel);
+	loadResource: function() {
+		var ref = characterAnimationSceneObject;
+		var loader = new FBXLoader();
 
-			console.log("MODEL LOADED");
-			s.modelLoaded = true;
+		loader.load('./Data/Models/Animations/Jumping.fbx', function ( fbx ) {
+			fbx.rotation.y = Math.PI;
+			fbx.scale.set(0.01, 0.01, 0.01);
+			ref.animationMixer = new THREE.AnimationMixer( fbx );
+			ref.animationMixer.addEventListener( 'loop', function( e ) {
+				ref.animation.paused = true;
+				if(ref.animationLoopCompleteCallback) ref.animationLoopCompleteCallback();
+				ref.animationLoopCompleteCallback = null;
+			});
+			ref.animation = ref.animationMixer.clipAction(fbx.animations[0]);
+			
+			ref.scene.add(fbx);
+			ref.animation.paused = true;
+			ref.animation.play();
+
 			loadingManager.objectHasBeenLoaded();
 		});
 	},
 
 	play: function(callback) {
-		this.animationComplete = callback;
-		this.playAnimation = true;
+		this.animation.paused = false;
+		this.animationLoopCompleteCallback = callback;
+	},
+
+	stop: function() {
+		this.animation.stop();
+		this.animation.play();
+		this.animation.paused = true;
 	},
 
 	animate: function() {
-		if(this.modelLoaded && this.playAnimation) {
-			this.walkAnimation.play();	
-			this.playAnimation = false;
-		}
 		var mixerUpdateDelta = this.clock.getDelta();
 		if(this.animationMixer) this.animationMixer.update( mixerUpdateDelta );
 	}
 }
 
-characterAnimationSceneObject.loadResources();
+characterAnimationSceneObject.loadResource();
 characterAnimationSceneObject.init();
 
 export default characterAnimationSceneObject;

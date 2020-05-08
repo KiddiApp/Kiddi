@@ -60,30 +60,30 @@ const cardGameSceneObject = {
 	loadResources: function() {
 		var ref = cardGameSceneObject;
 		var loader = new FBXLoader();
-	
+
 		ref.textureLoader.load(ref.basePath + 'card-bg.png', function(tex) {
 			ref.materials.back.tex = new THREE.MeshPhongMaterial({ map: tex });
 			ref.materials.back.loaded = true;
-		});
-		
-		loader.load('./Data/Models/Cards/kiddi-card.fbx', function ( fbx ) {
 
-			let obj = fbx.children[0];
-			obj.geometry.rotateZ(Math.PI / 2);
-			obj.geometry.rotateX(Math.PI / 2);
-
-			obj.geometry.computeBoundingBox();
-			var b = obj.geometry.boundingBox.max;
-			ref.cardRatioPortrait = (b.x * 2) / (b.z * 4);
-			ref.cardSizeOriginal = new THREE.Vector2(b.x * 2, b.z * 2);
-
-			for (let i = 0; i < ref.cards.length; i++) {
-				ref.loadTexture(i, function() {
-					ref.addLoadedTexturedCards(obj, ref.cards[i].set);
-				});	
-			}
-
-			ref.positionCards();
+			loader.load('./Data/Models/Cards/kiddi-card.fbx', function ( fbx ) {
+	
+				let obj = fbx.children[0];
+				obj.geometry.rotateZ(Math.PI / 2);
+				obj.geometry.rotateX(Math.PI / 2);
+	
+				obj.geometry.computeBoundingBox();
+				var b = obj.geometry.boundingBox.max;
+				ref.cardRatioPortrait = (b.x * 2) / (b.z * 4);
+				ref.cardSizeOriginal = new THREE.Vector2(b.x * 2, b.z * 2);
+	
+				for (let i = 0; i < ref.cards.length; i++) {
+					ref.loadTexture(i, function() {
+						ref.addLoadedTexturedCards(obj, ref.cards[i].set);
+					});	
+				}
+	
+				ref.positionCards();
+			});
 		});
 	},
 

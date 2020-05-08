@@ -7,16 +7,17 @@ let video_content = {
 	character_animation: document.getElementById("threejs_canvas"),
 	video_element: document.getElementById("video_element"),
 	video_source: document.getElementById("video_source"),
+	scene: characterAnimationSceneObject,
+
 	Show(callBack) {
 		Display(true, this.character_animation);
-		var scene = characterAnimationSceneObject;
-		scene.play(function () {
+		StartScene(this.scene);
+		this.scene.play(function () {
 			StopScene();
 			Display(false, video_content.character_animation);
 			video_content.SetAndPlayVideoSource();
 			Display(true, video_content.container);
 		});
-		StartScene(scene);
 
 		if(callBack) callBack();
 	}, 
@@ -33,6 +34,7 @@ let video_content = {
 
 	Hide(callBack) {
 		this.StopVideo();
+		this.scene.stop();
 		StopScene();
 		Display(false, this.character_animation);
 		Display(false, this.container);

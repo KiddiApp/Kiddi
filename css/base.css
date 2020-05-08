@@ -6,14 +6,20 @@
 	text-align: left;
 }
 
-#problem_overlay {
+.cover_fullscreen {
 	position: fixed;
 	width: 100%;
 	height: 100%;
 	background-color: #fff;
-	z-index: 3;
 }
 
+#problem_overlay {
+	z-index: 4;
+}
+
+#loading_overlay {
+	z-index: 3;
+}
 
 
 

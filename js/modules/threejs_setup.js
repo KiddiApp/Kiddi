@@ -1,6 +1,3 @@
-import { GLTFLoader } from '../vendor/GLTFLoader.js';
-
-
 var renderer = null;
 var currentScene = null;
 let updateThreejs = false;
@@ -48,19 +45,4 @@ function ThreeUpdateLoop() {
 	if(updateThreejs) requestAnimationFrame(ThreeUpdateLoop);
 }
 
-var loader = new GLTFLoader();
-function LoadGLTFModel(url, callback) {
-	loader.load( url, function ( gltf ) {
-
-		var model = gltf.scene;
-	
-		model.traverse( function ( object ) {
-			if ( object.isMesh ) object.castShadow = true;
-		} );
-
-		var animations = gltf.animations;
-		callback(model, animations);
-	});	
-}
-
-export { LoadGLTFModel, StartScene, StopScene };
+export { StartScene, StopScene };
