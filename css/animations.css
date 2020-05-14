@@ -1,0 +1,24 @@
+.wiggle {
+	animation: wiggle 3s infinite;
+}
+
+.bounce_up {
+	animation: bounce-up 3s infinite;
+}
+
+@keyframes wiggle {
+	0% { transform: rotate(0deg); } 
+	3% { transform: rotate(-2deg); }
+	4% { transform: rotate(2deg); }
+	5% { transform: rotate(0deg); }
+	100% { transform: rotate(0deg); } 
+}
+
+@keyframes bounce-up {
+	0% { transform: translate(0, 0px); }
+	3% { transform: translate(0, -20px); }
+	5% { transform: translate(0, 0); }
+	7% { transform: translate(0, -10px); }
+	8% { transform: translate(0, 0); }
+	100% { transform: translate(0, 0); }
+}

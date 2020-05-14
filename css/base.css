@@ -108,8 +108,14 @@
 	left: 0;
 }
 
-.character img {
+.character {
+	float: left;
 	width: 50%;
+	text-align: center;
+}
+
+.character img {
+	width: 100%;
 }
 
 #color_selection_container {
