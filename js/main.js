@@ -28,10 +28,38 @@ back_button.addEventListener('click', () => {
 
 let scan_button = document.getElementById("scan_image");
 scan_button.addEventListener('click', function() {
-	UpdateAppState(states.Video);
+	UpdateAppState(states.Scanning);
 });
 
 let instructions_button = document.getElementById("help_needed");
 instructions_button.addEventListener('click', function() {
 	UpdateAppState(states.Information);
 });
+
+// TODO: REMOVE LATER ONLY FOR DEV
+
+let dev_buttons = document.getElementsByClassName("dev_button");
+for (let i = 0; i < dev_buttons.length; i++) {
+	const element = dev_buttons[i];
+	element.addEventListener('click', function() {
+		element.id
+		switch (element.id) {
+			case "dev_to_paint":
+				UpdateAppState(states.PaintingCharacterSelection);
+				break;
+			case "dev_to_video":
+				UpdateAppState(states.Video);
+				break;
+			case "dev_to_card":
+				UpdateAppState(states.CardGame);
+				break;
+			case "dev_to_information":
+				UpdateAppState(states.Information);
+				break;
+			case "dev_to_answers":
+				UpdateAppState(states.Answers);
+				break;
+		}
+	});
+	
+}

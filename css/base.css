@@ -151,3 +151,17 @@
 	width: 50px;
 	height: 50px;
 }
+
+
+/* TODO: remove after dev */
+
+.dev_button {
+	padding: 5px;
+	color: red;
+}
+
+#dev_buttons {
+	position: fixed;
+	left: 0;
+	top: 50px;
+}
