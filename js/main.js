@@ -33,7 +33,7 @@ scan_button.addEventListener('click', function() {
 
 let instructions_button = document.getElementById("help_needed");
 instructions_button.addEventListener('click', function() {
-	UpdateAppState(states.Information);
+	UpdateAppState(states.Instructions);
 });
 
 // TODO: REMOVE LATER ONLY FOR DEV

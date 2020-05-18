@@ -10,10 +10,15 @@ import characterselection_content from './contentPages/characterselectionpage.js
 import painting_content from './contentPages/paintingpage.js';
 import paintedCharacterAnimation_content from './contentPages/paintedCharacterAnimationPage.js';
 
+let backbtn = document.getElementById("back_button_container");
+
 let currentContent = homepage_content;
 let currentState = states.HomePage;
 
 function UpdateAppState(state) {
+	if(state != states.HomePage) backbtn.classList.remove("hidden");
+	else backbtn.classList.add("hidden");
+
 	if(currentState != state) {
 		currentState = state;
 		currentContent.Hide(function() {

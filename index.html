@@ -17,8 +17,6 @@
 		<link rel="stylesheet" href="css/boilerplate.css">
 		<link rel="stylesheet" href="css/animations.css">
 		<link rel="stylesheet" href="css/base.css">
-		<link rel="stylesheet" href="css/content/mobile.css">
-		<link rel="stylesheet" href="css/content/tablet.css">
 		<link rel="stylesheet" href="css/popup/popup_base.css">
 		<link rel="stylesheet" href="css/popup/popup_mobile.css">
 		<link rel="stylesheet" href="css/popup/popup_tablet.css">
@@ -45,33 +43,34 @@
 			</div>
 		</div>
 
-		<div id="top_bar">
-			<img src="img/back_button.png" id="back_button">
-			<h3 id="page_name" class="text_center">INSTRUCCIONES</h3>
+		<div id="back_button_container" class="hidden">
+			<img id="back_button" src="Data/Frontend/Images/back-button.png">
 		</div>
 
 		<div class="view_container" id="home_view">
-			<div class="content_padding" id="grid_container">
-				<div id="grid_item_1">
-					<h1 class="text_center title_padding">Welcome to<br>KiddiApp</h1>
-					<p class="text_center">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis, repellat? Adipisci quibusdam dolore modi veniam temporibus odio cupiditate animi officia neque enim in laborum.</p>
+			<div id="home_page_grid_container">
+				<img id="grid_item_1" src="Data/Frontend/Images/Kiddi-logo.png">
+				<div id="grid_item_2" class="text_center">
+					<h1>Bienvenido<br>a KiddiApp</h1>
+					<h3>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium nostrum accusamus, unde excepturi placeat sapiente explicabo rerum iusto? Mollitia commodi vitae veniam quasi.</h3>
 				</div>
-				<div id="grid_item_2"></div>
-
 				<div id="grid_item_3">
 					<div id="scan_image" class="wiggle">
-						<img src="img/camera_icon.png">
-						<h2>ESCANEAR PAGINA</h2>
+						<img id="scan_background" src="Data/Frontend/Images/Scan-button-background.png">
+						<div id="scan_image_content">
+							<img src="Data/Frontend/Images/camera-icon.png">
+							<h2>ESCANEAR PÁGINA</h2>
+						</div>
 					</div>
-					<p id="help_needed">¿Necesitas ayuda?</p>
+					<h3 id="help_needed">¿Necesitas ayuda?</h3>
 				</div>
 			</div>
 		</div>
 
 		<div class="hidden view_container" id="instructions_view">
 			<div class="content_padding">
-				<h1 class="text_left">Escanea tu libro de Kiddi y desbloquea los contenidos!</h1>
-				<p class="text_left" id="information_text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis, repellat? Adipisci quibusdam dolore modi veniam temporibus odio cupiditate animi officia neque enim in laborum. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis, repellat? Adipisci quibusdam dolore modi veniam temporibus odio cupiditate animi officia neque enim in laborum.</p>
+				<h1 class="text_center">Escanea tu libro de Kiddi y desbloquea los contenidos!</h1>
+				<p class="text_center" id="information_text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis, repellat? Adipisci quibusdam dolore modi veniam temporibus odio cupiditate animi officia neque enim in laborum. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis, repellat? Adipisci quibusdam dolore modi veniam temporibus odio cupiditate animi officia neque enim in laborum.</p>
 			</div>
 		</div>
 
