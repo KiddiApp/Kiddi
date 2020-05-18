@@ -10,19 +10,19 @@ const cardGameSceneObject = {
 	basePath: 'Data/Models/Cards/',
 	cards: [
 		{
-			texture: 'card',
+			texture: 'card-pattern-a',
 			set: 0
 		},
 		{
-			texture: 'card',
+			texture: 'card-pattern-b',
 			set: 1
 		},
 		{
-			texture: 'card',
+			texture: 'card-pattern-c',
 			set: 2
 		},
 		{
-			texture: 'card',
+			texture: 'card-pattern-d',
 			set: 3
 		},
 	],
@@ -202,7 +202,7 @@ const cardGameSceneObject = {
 
 	loadTexture: function(index, callback) {
 		var path = this.basePath + this.cards[index].texture;
-		this.textureLoader.load(path + '-pattern.png', function(tex) {
+		this.textureLoader.load(path + '.png', function(tex) {
 			cardGameSceneObject.addFrontTexture(tex, callback);
 		});
 	},
