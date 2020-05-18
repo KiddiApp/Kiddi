@@ -75,15 +75,15 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 		facingMode: {"ideal": "environment"},
 		audio: false,
 		video: {
-			width: { ideal: 480 },
-			height: { ideal: 640 },
-		},
+			width: window.innerWidth,
+			height: window.innerHeight,
+		}
 	};
 
 	navigator.mediaDevices.getUserMedia({video: hint}).then(function (stream) {
 		video.srcObject = stream;
 		video.play();
-	
+
 		video.addEventListener("loadedmetadata", function() {
 			
 			videoMetaLoaded = true;
@@ -92,11 +92,14 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 			vw = video.videoWidth;
 			vh = video.videoHeight;
 
+			console.log(vw, vh);
+
 			pscale = 320 / Math.max(vw, vh / 3 * 4);
 			w = vw * pscale;
 			h = vh * pscale;
 			pw = Math.max(w, h / 3 * 4);
 			ph = Math.max(h, w / 4 * 3);
+
 			ox = (pw - w) / 2;
 			oy = (ph - h) / 2;
 			canvas_process.style.clientWidth = pw + "px";

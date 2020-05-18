@@ -4,7 +4,8 @@ let NFTObject = function (w, h, nft_tracker_url, trigger_found_callback) {
 	let ar_object = null;
 	let tracker_name = nft_tracker_url.match('([^\/]*)$')[0];
 
-	let param = new ARCameraParam('./Data/camera_para-iPhone 5 rear 640x480 1.0m.dat');
+	// ./Data/camera_para-iPhone 5 rear 640x480 1.0m.dat
+	let param = new ARCameraParam('./Data/camera_para.dat');
 	param.onload = function () {
 		ar_object = new ARController(w, h, param);
 		ar_object.addEventListener('getNFTMarker', function() {

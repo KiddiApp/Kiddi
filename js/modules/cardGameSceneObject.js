@@ -77,8 +77,8 @@ const cardGameSceneObject = {
 				ref.cardSizeOriginal = new THREE.Vector2(b.x * 2, b.z * 2);
 	
 				for (let i = 0; i < ref.cards.length; i++) {
-					ref.loadTexture(i, function() {
-						ref.addLoadedTexturedCards(obj, ref.cards[i].set);
+					ref.loadTexture(i, function(tex) {
+						ref.addLoadedTexturedCards(obj, ref.cards[i].set, tex);
 					});	
 				}
 	
@@ -110,7 +110,6 @@ const cardGameSceneObject = {
 		ref.flippedCard = null;
 		if(ref.cardsToCheck.length >= 2) {
 			if(ref.cardsToCheck[0].MatchGroupId == ref.cardsToCheck[1].MatchGroupId) {
-				console.log("WE HAVE A MATCH");
 				ref.matchedCards = ref.matchedCards.concat(ref.cardsToCheck);
 				// TODO: change this to other behaviour if requested
 				if(ref.matchedCards.length >= ref.sceneCards.length) {
@@ -121,7 +120,6 @@ const cardGameSceneObject = {
 					ref.positionCards();
 				}
 			} else {
-				console.log("NO MATCH");
 				ref.cardsToCheck.forEach(card => {
 					ref.flipCard(card, null);
 				});
@@ -174,18 +172,18 @@ const cardGameSceneObject = {
 		}
 	},
 
-	addLoadedTexturedCards: function(obj, id) {
+	addLoadedTexturedCards: function(obj, id, tex) {
 		for (let i = 0; i < 2; i++) {
-			var card = new THREE.Mesh(obj.geometry, obj.material);
+			var matsClone = obj.material.slice();
+			var card = new THREE.Mesh(obj.geometry, matsClone);
 			card.material[0] = this.materials.back.tex;
-			card.material[1] = this.materials.front.tex;
+			card.material[1] = tex;
 			card.MatchGroupId = id;
 			this.sceneCards.push(card);	
-			this.scene.add(card);	
+			this.scene.add(card);
 		}
 
 		if(this.sceneCards.length >= this.cards.length * 2) {
-			console.log("ALL CARDS HAVE BEEN LOADED AND ADDED");
 			this.sceneCards = this.shuffleArray(this.sceneCards);
 			this.positionCards();
 			loadingManager.objectHasBeenLoaded();
@@ -194,15 +192,15 @@ const cardGameSceneObject = {
 
 	addFrontTexture: function(tex, callback) {
 		var mats = this.materials;
-		mats.front.tex = new THREE.MeshPhongMaterial({ map: tex });
 		if(mats.back.loaded) {
-			callback();
+			callback(new THREE.MeshPhongMaterial({ map: tex }));
 		}
 	},
 
 	loadTexture: function(index, callback) {
 		var path = this.basePath + this.cards[index].texture;
 		this.textureLoader.load(path + '.png', function(tex) {
+			tex.DEBUG_URL = path;
 			cardGameSceneObject.addFrontTexture(tex, callback);
 		});
 	},
