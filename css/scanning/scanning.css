@@ -1,6 +1,26 @@
 #tracking_video {
 	width: 100%;
 	height: 100%;
+	/* background-color: #000; */
+}
+
+#scanning {
+	position: absolute;
+	left: 10%;
+	bottom: 5%;
+	width: 80%;
+}
+
+#scan_succes {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 40%;
+}
+
+#scan_succes img {
+	width: 100%;
 }
 
 /* TODO: remove after dev */

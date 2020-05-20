@@ -1,50 +1,71 @@
-let popup_container = document.getElementById("popup");
-let popup_title = document.getElementById("popup_title");
-let popup_subtitle = document.getElementById("popup_subtitle");
-let popup_buttons_container = document.getElementById("popup_buttons_container");
-let popup_confirm_ok = document.getElementById("confirm_ok");
+import Display from './helperFunctions.js';
+import states from './appStates.js';
+import { UpdateAppState } from './updateAppState.js';
+
+let popup_container_large = document.getElementById("popup_large");
+let popup_container_small = document.getElementById("popup_small");
+let popup_large_title = document.getElementById("information_title");
+let popup_large_information = document.getElementById("information_text");
+let popup_confirm_ok_large = document.getElementById("confirm_button_large");
+let popup_confirm_ok_small = document.getElementById("confirm_button_small");
 let popup_confirm_yes_no = document.getElementById("yes_no_container");
 
 let popup_delay = null;
+let popup_callback = null;
 
-function ShowPopup(title, subtitle, buttonCount, removeDelay, callback) {
-	popup_title.innerHTML = title;
-	if(subtitle == null) {
-		popup_subtitle.classList.add("hidden");
-		popup_title.classList.remove("medium_popup_title");
-		popup_title.classList.add("large_popup_title");
-	} else {
-		popup_subtitle.classList.remove("hidden");
-		popup_subtitle.innerHTML = subtitle;
-		popup_title.classList.remove("large_popup_title");
-		popup_title.classList.add("medium_popup_title");
-	}
+popup_confirm_ok_large.addEventListener('click', function() {
+	if(popup_callback) popup_callback();
+	HidePopup();
+});
 
-	if(buttonCount > 0) {
-		popup_buttons_container.classList.remove("hidden");
-		if(buttonCount > 1) {
-			popup_confirm_yes_no.classList.remove("hidden");
-			popup_confirm_ok.classList.add("hidden");
+popup_confirm_ok_small.addEventListener('click', function() {
+	if(popup_callback) popup_callback();
+	HidePopup();
+});
+
+document.getElementById("confirm_yes").addEventListener('click', function() {
+	HidePopup();
+	UpdateAppState(states.Instructions);
+});
+
+document.getElementById("confirm_no").addEventListener('click', function() {
+	HidePopup();
+});
+
+function ShowPopup(popup_type, title, information, buttonCount, buttonClickCallback) {
+	if(popup_type == 1) {
+		if(title == null) {
+			Display(false, popup_large_title);
 		} else {
-			popup_confirm_yes_no.classList.add("hidden");
-			popup_confirm_ok.classList.remove("hidden");
+			Display(true, popup_large_title);
+			popup_large_title.innerHTML = title;
 		}
+
+		if(buttonCount > 1) {
+			Display(false, popup_confirm_ok_large);
+			Display(true, popup_confirm_yes_no);
+		} else {
+			Display(false, popup_confirm_yes_no);
+			Display(true, popup_confirm_ok_large);
+		}
+		popup_large_information.innerHTML = information;
+		Display(true, popup_container_large);
 	} else {
-		popup_buttons_container.classList.add("hidden");
-		if(removeDelay > 0) {
-			popup_delay = setTimeout(function() {
-				HidePopup();
-				if(callback) callback();
-			}, removeDelay * 1000);
+		if(title == null) {
+
+		} else {
+
 		}
+		Display(true, popup_container_small);
 	}
 
-	popup_container.classList.remove("hidden");
+	if(buttonClickCallback) popup_callback = buttonClickCallback;
 }
 
 function HidePopup() {
 	if(popup_delay) clearTimeout(popup_delay);
-	popup_container.classList.add("hidden");
+	Display(false, popup_container_large);
+	Display(false, popup_container_small);
 }
 
 export { ShowPopup, HidePopup };
