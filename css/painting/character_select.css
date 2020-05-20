@@ -1,0 +1,35 @@
+#select_character {
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+
+#select_character h2 {
+	padding-bottom: 30px;
+}
+
+#characters {
+	width: 100%;
+}
+
+.character {
+	float: left;
+	width: 50%;
+	text-align: center;
+}
+
+.character img {
+	width: 100%;
+}
+
+.character h2 {
+	-webkit-text-stroke: 1px #000;
+	padding-top: 15px;
+	color: lightcoral;
+}
+
+.character:first-child h2{
+	color: khaki;
+}
