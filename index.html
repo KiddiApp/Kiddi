@@ -27,19 +27,34 @@
 	<body>
 		<div class="cover_fullscreen" id="problem_overlay"></div>
 
-		<div class="cover_fullscreen" id="loading_overlay">Loading</div>
+		<div class="cover_fullscreen hidden" id="loading_overlay">Loading</div>
 
-		<div class="hidden" id="popup">
-			<div id="popup_text_container">
-				<h2 class="text_center" id="popup_title">POPUP TITLE</h2>
-				<p class="hidden text_center" id="popup_subtitle">popup extra information</p>
-			</div>
-			<div class="hidden" id="popup_buttons_container">
+		<div class="popup hidden" id="popup_large">
+			<img class="popup_bg" src="Data/Frontend/Images/popup-background-large.png">
+			<div class="popup_information_container">
+				<h2 class="" id="information_title">!Enfoca el libre<br>con la camara!</h2>
+				<p id="information_text">Some fancy great el popop insta notifications Some fancy great el popop insta notifications Some fancy great</p>
+				<img class="" src="Data/Frontend/Images/confirm-popup-button-background.png">
 				<div class="hidden" id="yes_no_container">
-					<button id="confirm_yes"></button>
-					<button id="confirm_no"></button>	
+					<img id="confirm_yes" src="Data/Frontend/Images/yes-popup-button-background.png">
+					<img id="confirm_no" src="Data/Frontend/Images/no-popup-button-background.png">
 				</div>
-				<button class="hidden" id="confirm_ok"></button>
+			</div>
+		</div>
+
+		<div class="view_container" id="clouds_container">
+			<img src="Data/Frontend/Images/cloud-top-left.png" id="top_left_cloud" class="cloud">
+			<img src="Data/Frontend/Images/cloud-top-right.png" id="top_right_cloud" class="cloud">
+			<img src="Data/Frontend/Images/cloud-mid-left.png" id="mid_left_cloud" class="cloud">
+			<img src="Data/Frontend/Images/cloud-mid-right.png" id="mid_right_cloud" class="cloud">
+			<img src="Data/Frontend/Images/cloud-mid-bottom.png" id="mid_bottom_cloud" class="cloud hidden">
+		</div>
+
+		<div class="popup hidden" id="popup_small">
+			<img class="popup_bg" src="Data/Frontend/Images/popup-background-small.png">
+			<div class="popup_information_container">
+				<h3 id="information_text">Some fancy great el popop insta notifications</h3>
+				<img src="Data/Frontend/Images/confirm-popup-button-background.png">
 			</div>
 		</div>
 
@@ -68,10 +83,11 @@
 		</div>
 
 		<div class="hidden view_container" id="instructions_view">
-			<div class="content_padding">
-				<h1 class="text_center">Escanea tu libro de Kiddi y desbloquea los contenidos!</h1>
-				<p class="text_center" id="information_text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis, repellat? Adipisci quibusdam dolore modi veniam temporibus odio cupiditate animi officia neque enim in laborum. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis, repellat? Adipisci quibusdam dolore modi veniam temporibus odio cupiditate animi officia neque enim in laborum.</p>
+			<div id="instructions_text_container">
+				<h2 class="text_center">Escanea tu libro de Kiddi y desbloquea los contenidos!</h2>
+				<p class="text_center" id="information_text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis, repellat? Adipisci quibusdam dolore modi veniam temporibus odio cupiditate animi officia neque enim in laborum. Lorem ipsum<br><br>Adipisci quibusdam dolore modi veniam temporibus odio cupiditate animi officia neque enim in laborum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci ullam aspernatur cumque reiciendis excepturi deleniti omnis veritatis magni suscipit placeat<br><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas dicta sit saepe. Odio accusamus id consequuntur minima, e.</p>
 			</div>
+			<img id="information_plant" src="Data/Frontend/Images/instructions-plant-bottom.png">
 		</div>
 
 		<div class="hidden view_container" id="scan_view">
@@ -101,33 +117,34 @@
 		</div>
 
 		<div class="hidden view_container" id="threejs_canvas">
-		</div>
+		</div>  
 
 		<div class="hidden view_container" id="select_character">
-			<h1>!Elije personaje!</h1>
-			<div class="character" data-character="Baseball_Umpire">
-				<img src="img/character1.png">
-				<h2>Lapi</h2>
-			</div>
-			<div class="character" data-character="Goalkeeper_Catch">
-				<img src="img/character1.png">
-				<h2>Lapi</h2>
+			<h2>Elige a<br>un personaje</h2>
+			<div id="characters">
+				<div class="character" data-character="LapiAnimacion01">
+					<img src="Data/Frontend/Images/Lapi-character-fix.png">
+					<h2>Lapi</h2>
+				</div>
+				<div class="character" data-character="GombaAnimacion01">
+					<img src="Data/Frontend/Images/Gomba-character-fix.png">
+					<h2>Lapi</h2>
+				</div>
 			</div>
 		</div>
 
 		<div class="hidden view_container" id="paint_canvas">
 			<canvas id="paint2d"></canvas>
 			<div id="confirm_and_clear_buttons">
-				<div id="clear_painting" class="painting_btn"></div>
-				<div id="confirm_painting" class="painting_btn"></div>
+				<img src="Data/Frontend/Images/cancel-button-painting-background.png" id="clear_painting" class="painting_btn">
+				<img src="Data/Frontend/Images/confirm-popup-button-background.png" id="confirm_painting" class="painting_btn">
 			</div>
 			<div id="color_selection_container">
-				<div class="color_option bounce_up" data-color="#ff0000" style="background-color: #ff0000;"></div>
-				<div class="color_option bounce_up" data-color="#00ff00" style="background-color: #00ff00;"></div>
-				<div class="color_option bounce_up" data-color="#0000ff" style="background-color: #0000ff;"></div>
-				<div class="color_option bounce_up" data-color="#ffff00" style="background-color: #ffff00;"></div>
-				<div class="color_option bounce_up" data-color="#ff00ff" style="background-color: #ff00ff;"></div>
-				<div class="color_option bounce_up" data-color="#ffffff" style="background-color: #fff;"></div>
+				<img src="Data/Frontend/Images/select-color-button-yellow.png" class="color_option" data-color="#ff0000">
+				<img src="Data/Frontend/Images/select-color-button-blue.png" class="color_option" data-color="#00ff00">
+				<img src="Data/Frontend/Images/select-color-button-purple.png" class="color_option" data-color="#0000ff">
+				<img src="Data/Frontend/Images/select-color-button-red.png" class="color_option" data-color="#ffff00">
+				<img src="Data/Frontend/Images/select-color-button-green.png" class="color_option" data-color="#ff00ff">
 			</div>
 		</div>
 

@@ -3,6 +3,7 @@ import paintSceneObject from '../paintSceneObject.js';
 import paintedCharacterAnimation from '../playPaintedCharacterAnimationSceneObject.js';
 import { UpdateAppState } from '../updateAppState.js';
 import states from '../appStates.js';
+import { clouds, clouds_manager } from '../clouds_manager.js';
 
 let characterselection_content = {
 	container: document.getElementById("select_character"),
@@ -19,10 +20,13 @@ let characterselection_content = {
 	},
 	Show: function(callBack) {
 		Display(true, this.container);
+		clouds_manager.hideClouds(clouds.mid_right);
+		clouds_manager.showClouds(clouds.bottom_center);
 		if(callBack) callBack();
 	}, 
 	Hide: function(callBack) {
 		Display(false, this.container);
+		clouds_manager.hideClouds(clouds.bottom_center);
 		if(callBack) callBack();
 	}
 }

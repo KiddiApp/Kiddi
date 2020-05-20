@@ -1,10 +1,45 @@
-#popup {
+.popup {
 	position: fixed;
 	top: 50%;
 	left: 50%;
+	width: 65%;
+	
 	transform: translate(-50%, -50%);
-	height: auto;
-	background-color: #fff;
-	color: #000;
 	z-index: 4;
+}
+
+.popup_bg {
+	width: 100%;
+}
+
+.popup_information_container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 76%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.popup_information_container h3, h2, p {
+	box-sizing: border-box;
+	align-self: center;
+	text-align: center;
+}
+
+.popup_information_container img {
+	width: 70px;
+	align-self: center;
+	padding-top: 20px;
+}
+
+#yes_no_container {
+	align-self: center;
+	padding-top: 20px;
+}
+
+#yes_no_container img {
+	padding: 0 10px;
 }

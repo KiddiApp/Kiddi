@@ -19,14 +19,14 @@ let scan_content = {
 			scan_content.scan_failure_timeout = setTimeout(function() {
 				EnableTracking(true, false);
 				Display(false, scan_content.scanning);
-				ShowPopup("We were not able to scan a page.", "Do you need help?", 2, 0, null);
+				// ShowPopup("We were not able to scan a page.", "Do you need help?", 2, 0, null);
 			}, 180000)
 		});
 		if(callBack) callBack();
 	}, 
 	Hide(callBack) {
 		if(this.scan_failure_timeout) clearTimeout(this.scan_failure_timeout); 
-		HidePopup();
+		// HidePopup();
 		Display(false, this.scanning);
 		Display(false, this.scan_succes);
 		Display(false, this.container);
