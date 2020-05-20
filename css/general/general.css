@@ -14,7 +14,7 @@
 }
 
 body {
-	background-image: url(../Data/Frontend/Images/clouds-main-background.png);
+	background-image: url(../../Data/Frontend/Images/clouds-main-background.png);
 	background-size: cover;
 	background-repeat: no-repeat;
 }
