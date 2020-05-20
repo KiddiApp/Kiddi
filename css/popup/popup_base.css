@@ -23,7 +23,9 @@
 	align-items: flex-start;
 }
 
-.popup_information_container h3, h2, p {
+.popup_information_container h3, 
+.popup_information_container h2, 
+.popup_information_container p {
 	box-sizing: border-box;
 	align-self: center;
 	text-align: center;

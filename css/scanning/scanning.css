@@ -17,10 +17,19 @@
 	top: 50%;
 	transform: translate(-50%, -50%);
 	width: 40%;
+	display: flex;
 }
 
 #scan_succes img {
 	width: 100%;
+}
+
+#scan_succes h2 {
+	width: 100%;
+	position: absolute;
+	align-self: center;
+	text-align: center;
+	color: skyblue;
 }
 
 /* TODO: remove after dev */
