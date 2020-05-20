@@ -1,0 +1,41 @@
+.cloud {
+	position: absolute;
+}
+
+#top_right_cloud {
+	width: 13%;
+	right: 0;
+	top: 10%;
+}
+
+#top_left_cloud {
+	width: 18%;
+	left: 5%;
+	top: 10%;
+}
+
+#mid_left_cloud {
+	width: 10%;
+	left: 0;
+	top: 30%;
+}
+
+#mid_right_cloud {
+	width: 17%;
+	top: 50%;
+	right: 0;
+}
+
+#mid_bottom_cloud {
+	width: 33%;
+	bottom: 7%;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+#bottom_center_cloud {
+	width: 25%;
+	bottom: 5%;
+	left: 50%;
+	transform: translate(-50%, 0);
+}

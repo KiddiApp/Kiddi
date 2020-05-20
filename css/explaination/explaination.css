@@ -1,0 +1,40 @@
+#information_plant {
+	position: absolute;
+	bottom: 0;
+	height: 10%;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+#instructions_text_container {
+	position: absolute;
+	bottom: 12%;
+	left: 17%;
+	right: 17%;
+}
+
+.star {
+	position: absolute;
+	width: 25px;
+}
+
+#left_star {
+	top: 0;
+	left: -40px;
+}
+
+#mid_star {
+	width: 12px;
+	top: -40px;
+	left: 20%;
+}
+
+#right_star {
+	right: -40px;
+	top: -10px;
+}
+
+#instructions_text_container h2 {
+	padding-bottom: 35px;
+	line-height: 25px;
+}
