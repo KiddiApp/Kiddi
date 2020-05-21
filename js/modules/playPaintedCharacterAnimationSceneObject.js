@@ -6,8 +6,8 @@ const paintedCharacterAnimation = {
 	scene: new THREE.Scene(),
 	
 	character_files: [
-		"Baseball_Umpire",
-		"Goalkeeper_Catch"
+		"LapiAnimacion01",
+		"GombaAnimacion01"
 	],
 	characters: [],
 	active_character: null,
@@ -51,7 +51,7 @@ const paintedCharacterAnimation = {
 			loader.load('./Data/Models/Animations/'+character_file+'.fbx', function ( fbx ) {
 
 				fbx.rotation.y = Math.PI;
-				fbx.scale.set(0.01, 0.01, 0.01);
+				fbx.scale.set(0.1, 0.1, 0.1);
 
 				const character_option = {
 					name: character_file,

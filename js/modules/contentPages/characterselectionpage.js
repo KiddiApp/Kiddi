@@ -12,7 +12,7 @@ let characterselection_content = {
 		for (let i = 0; i < this.characters.length; i++) {
 			const character = this.characters[i];
 			character.addEventListener('click', function() {
-				paintSceneObject.setbgimage(character.getElementsByTagName('img')[0].src);
+				paintSceneObject.setbgimage(character.getElementsByTagName('img')[0].dataset.texture);
 				paintedCharacterAnimation.setActiveCharacter(character.dataset.character);
 				UpdateAppState(states.PaintingPainting);
 			});

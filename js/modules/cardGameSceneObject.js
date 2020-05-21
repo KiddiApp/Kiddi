@@ -65,7 +65,7 @@ const cardGameSceneObject = {
 			ref.materials.back.tex = new THREE.MeshPhongMaterial({ map: tex });
 			ref.materials.back.loaded = true;
 
-			loader.load('./Data/Models/Cards/kiddi-card.fbx', function ( fbx ) {
+			loader.load('./Data/Models/Cards/kiddi-card.FBX', function ( fbx ) {
 	
 				let obj = fbx.children[0];
 				obj.geometry.rotateZ(Math.PI / 2);

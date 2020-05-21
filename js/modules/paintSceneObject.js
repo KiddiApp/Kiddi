@@ -17,7 +17,7 @@ const paintSceneObject = {
 		this.bgImage.src = src;
 		this.bgImage.onload = function() {
 			paintSceneObject.clearCanvas();
-			paintSceneObject.context.drawImage(paintSceneObject.bgImage, 0, 0, 300, 600);
+			paintSceneObject.context.drawImage(paintSceneObject.bgImage, 0, 0, window.innerWidth, window.innerWidth);
 		}
 	},
 
@@ -95,7 +95,7 @@ const paintSceneObject = {
 		this.clickColor = [],
 		this.clickDrag = [],
 		this.context.clearRect(0, 0, this.canvas.offsetWidth, this.canvas.offsetHeight);
-		this.context.drawImage(this.bgImage, 0, 0, 300, 600);
+		this.context.drawImage(this.bgImage, 0, 0, window.innerWidth, window.innerWidth);
 	},
 
 	redraw: function () {
@@ -129,7 +129,7 @@ const paintSceneObject = {
 		this.context.closePath();
 		this.context.restore();
 
-		this.context.drawImage(this.bgImage, 0, 0, 300, 600);
+		this.context.drawImage(this.bgImage, 0, 0, window.innerWidth, window.innerWidth);
 	},
 }
 
