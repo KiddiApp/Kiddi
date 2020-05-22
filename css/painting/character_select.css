@@ -7,6 +7,9 @@
 }
 
 #select_character h2 {
+	font-family: lilita_oneregular;
+	font-size: 30px;
+	line-height: 32px;
 	padding-bottom: 30px;
 }
 
@@ -25,11 +28,13 @@
 }
 
 .character h2 {
-	-webkit-text-stroke: 1px #000;
-	padding-top: 15px;
-	color: lightcoral;
+	font-family: lilita_oneregular;
+	font-size: 34px;
+	-webkit-text-stroke: .5px #000;
+	padding-top: 20px;
+	color: #f68062;
 }
 
 .character:first-child h2{
-	color: khaki;
+	color: #f9df93;
 }

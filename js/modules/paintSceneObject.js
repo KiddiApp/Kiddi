@@ -10,7 +10,7 @@ const paintSceneObject = {
 	clickColor: [],
 	clickDrag: [],
 	paint: false,
-	curColor: '#ff0000',
+	curColor: '#ffffff',
 	paintRadius: 10,
 
 	setbgimage: function(src) {
@@ -26,9 +26,6 @@ const paintSceneObject = {
 	},
 
 	init: function() {
-
-		this.canvas.setAttribute('width', window.innerWidth);
-		this.canvas.setAttribute('height', window.innerHeight - 50);
 
 		this.context = this.canvas.getContext("2d");
 
@@ -51,8 +48,13 @@ const paintSceneObject = {
 	},
 
 	press: function (e) {
+		var rect = paintSceneObject.canvas.getBoundingClientRect();
+
 		var mouseX = (e.changedTouches ? e.changedTouches[0].pageX : e.pageX);
 		var mouseY = (e.changedTouches ? e.changedTouches[0].pageY : e.pageY);
+
+		mouseX -= rect.left;
+		mouseY -= rect.top;
 
 		paintSceneObject.paint = true;
 		paintSceneObject.addClick(mouseX, mouseY, false);
@@ -60,9 +62,13 @@ const paintSceneObject = {
 	},
 
 	drag: function (e) {
-		
+		var rect = paintSceneObject.canvas.getBoundingClientRect();
+
 		var mouseX = (e.changedTouches ? e.changedTouches[0].pageX : e.pageX);
 		var mouseY = (e.changedTouches ? e.changedTouches[0].pageY : e.pageY);
+
+		mouseX -= rect.left;
+		mouseY -= rect.top;
 
 		if (paintSceneObject.paint) {
 			paintSceneObject.addClick(mouseX, mouseY, true);
@@ -129,7 +135,7 @@ const paintSceneObject = {
 		this.context.closePath();
 		this.context.restore();
 
-		this.context.drawImage(this.bgImage, 0, 0, window.innerWidth, window.innerWidth);
+		// this.context.drawImage(this.bgImage, 0, 0, window.innerWidth, window.innerWidth);
 	},
 }
 

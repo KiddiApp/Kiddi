@@ -6,7 +6,7 @@ let appinfo = {
 	isMobile: (md.mobile() == null) ? false : true,
 	isTablet: (md.tablet() == null) ? false : true,
 	hasRequiredCanvasFeatures: (Modernizr.canvas && Modernizr.webgl) ? true : false,
-	hasUserMediaAndWebRTC: (Modernizr.getusermedia && Modernizr.datachannel && Modernizr.peerconnection) ? true : false,
+	hasUserMediaAndWebRTC: (Modernizr.getusermedia && Modernizr.peerconnection) ? true : false, //&& Modernizr.datachannel
 	DeviceFeaturesSupported() {
 		return (this.hasRequiredCanvasFeatures, this.hasUserMediaAndWebRTC) ? true : false;
 	},

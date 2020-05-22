@@ -4,6 +4,10 @@
 	left: 0;
 }
 
+#paint2d {
+	position: absolute;
+}
+
 #color_selection_container {
 	position: absolute;
 	bottom: 5.5%;

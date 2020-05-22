@@ -4,6 +4,7 @@ import paintedCharacterAnimation from '../playPaintedCharacterAnimationSceneObje
 import { UpdateAppState } from '../updateAppState.js';
 import states from '../appStates.js';
 import { clouds, clouds_manager } from '../clouds_manager.js';
+import painting_content from './paintingpage.js';
 
 let characterselection_content = {
 	container: document.getElementById("select_character"),
@@ -12,6 +13,7 @@ let characterselection_content = {
 		for (let i = 0; i < this.characters.length; i++) {
 			const character = this.characters[i];
 			character.addEventListener('click', function() {
+				painting_content.SetcanvasSize((character.dataset.character == "GombaAnimacion01") ? true : false );
 				paintSceneObject.setbgimage(character.getElementsByTagName('img')[0].dataset.texture);
 				paintedCharacterAnimation.setActiveCharacter(character.dataset.character);
 				UpdateAppState(states.PaintingPainting);

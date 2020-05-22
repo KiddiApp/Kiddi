@@ -5,6 +5,7 @@ import states from '../appStates.js';
 
 let painting_content = {
 	container: document.getElementById("paint_canvas"),
+	canvas: document.getElementById("paint2d"),
 	confirm: document.getElementById("confirm_painting"),
 	clear: document.getElementById("clear_painting"),
 	Init() {
@@ -15,6 +16,18 @@ let painting_content = {
 			paintSceneObject.clearCanvas();
 		});
 	},
+
+	SetcanvasSize: function(gomba) {
+		if(gomba) {
+			this.canvas.setAttribute('width', window.innerWidth);
+			this.canvas.setAttribute('height', window.innerWidth);
+			this.canvas.style.top = ((window.innerHeight - window.innerWidth) / 2) + "px";
+		} else {
+
+		}
+		
+	},
+
 	Show(callBack) {
 		Display(true, this.container);
 		if(callBack) callBack();

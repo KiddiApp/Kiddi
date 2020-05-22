@@ -40,6 +40,7 @@ body {
 }
 
 .view_container {
+	overflow: hidden;
 	position: fixed;
 	top: 0;
 	left: 0;
