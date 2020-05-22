@@ -1,14 +1,14 @@
 #information_plant {
 	position: absolute;
 	bottom: 0;
-	height: 10%;
+	height: 8%;
 	left: 50%;
 	transform: translate(-50%, 0);
 }
 
 #instructions_text_container {
 	position: absolute;
-	bottom: 12%;
+	bottom: 10%;
 	left: 17%;
 	right: 17%;
 }
@@ -35,6 +35,15 @@
 }
 
 #instructions_text_container h2 {
+	-webkit-text-stroke: .5px #000;
+	font-family: lilita_oneregular;
+	font-size: 32px;
+	color: #fb7573;
+	line-height: 32px;
 	padding-bottom: 35px;
-	line-height: 25px;
+}
+
+#instructions_text_container p {
+	font-family: senregular;
+	font-size: 15px;
 }

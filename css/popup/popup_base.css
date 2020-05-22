@@ -2,7 +2,7 @@
 	position: fixed;
 	top: 50%;
 	left: 50%;
-	width: 65%;
+	width: 70%;
 	
 	transform: translate(-50%, -50%);
 	z-index: 4;
@@ -29,6 +29,20 @@
 	box-sizing: border-box;
 	align-self: center;
 	text-align: center;
+}
+
+#information_title {
+	-webkit-text-stroke: .5px #000;
+	font-size: 26px;
+	line-height: 26px;
+	color: #f283ff;
+	font-family: lilita_oneregular;
+	padding: 15px 10px 10px 10px;
+}
+
+#large_information_text {
+	font-family: senregular;
+	font-size: 15px;
 }
 
 .popup_information_container img {

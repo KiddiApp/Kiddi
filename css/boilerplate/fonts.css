@@ -1,4 +1,39 @@
 @font-face {
-	font-family: Lilita;
-	src: url("../Data/Frontend/Fonts/LilitaOne.ttf") format("ttf");
+    font-family: 'lilita_oneregular';
+    src: url('../../Data/Frontend/Fonts/lilitaone-webfont.woff2') format('woff2'),
+		 url('../../Data/Frontend/Fonts/lilitaone-webfont.woff') format('woff'),
+		 url('../../Data/Frontend/Fonts/LilitaOne.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'senbold';
+    src: url('../../Data/Frontend/Fonts/senbold-webfont.woff2') format('woff2'),
+		 url('../../Data/Frontend/Fonts/senbold-webfont.woff') format('woff'),
+		 url('../../Data/Frontend/Fonts/SenBold.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'senextrabold';
+    src: url('../../Data/Frontend/Fonts/senextrabold-webfont.woff2') format('woff2'),
+		 url('../../Data/Frontend/Fonts/senextrabold-webfont.woff') format('woff'),
+		 url('../../Data/Frontend/Fonts/SenExtraBold.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'senregular';
+    src: url('../../Data/Frontend/Fonts/senregular-webfont.woff2') format('woff2'),
+		 url('../../Data/Frontend/Fonts/senregular-webfont.woff') format('woff'),
+		 url('../../Data/Frontend/Fonts/SenRegular.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+
 }
