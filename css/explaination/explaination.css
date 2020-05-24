@@ -7,10 +7,10 @@
 }
 
 #instructions_text_container {
-	position: absolute;
-	bottom: 10%;
-	left: 17%;
-	right: 17%;
+	position: relative;
+	width: 66%;
+	margin: 30% 17% 0 17%;
+	padding-bottom: 20%;
 }
 
 .star {

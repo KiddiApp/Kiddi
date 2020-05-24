@@ -75,8 +75,8 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 		facingMode: {"ideal": "environment"},
 		audio: false,
 		video: {
-			width: window.innerWidth,
-			height: window.innerHeight,
+			width: { ideal: window.innerWidth * 2 },
+			height: { ideal:  window.innerHeight * 2 },
 		}
 	};
 
@@ -91,8 +91,6 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 			var pscale;
 			vw = video.videoWidth;
 			vh = video.videoHeight;
-
-			console.log(vw, vh);
 
 			pscale = 320 / Math.max(vw, vh / 3 * 4);
 			w = vw * pscale;

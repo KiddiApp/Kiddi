@@ -21,11 +21,13 @@ let painting_content = {
 		if(gomba) {
 			this.canvas.setAttribute('width', window.innerWidth);
 			this.canvas.setAttribute('height', window.innerWidth);
-			this.canvas.style.top = ((window.innerHeight - window.innerWidth) / 2) + "px";
 		} else {
-
+			var scaled = window.innerWidth * 1.2549019608;
+			this.canvas.setAttribute('width', scaled);
+			this.canvas.setAttribute('height', scaled);
 		}
-		
+
+		paintSceneObject.setRect();
 	},
 
 	Show(callBack) {

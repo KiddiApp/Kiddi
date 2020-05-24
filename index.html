@@ -3,9 +3,9 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>Kiddi</title>
-		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>Kiddi</title>
 
 		<link rel="manifest" href="site.webmanifest">
 		<link rel="apple-touch-icon" href="icon.png">
@@ -50,7 +50,7 @@
 			<img class="popup_bg" src="Data/Frontend/Images/popup-background-large.png">
 			<div class="popup_information_container">
 				<h2 class="" id="information_title">!Enfoca el libre<br>con la camara!</h2>
-				<p id="large_information_text">Some fancy great el popop insta notifications Some fancy great el popop insta notifications Some fancy great</p>
+				<p id="large_information_text"></p>
 				<img class="" id="confirm_button_large" src="Data/Frontend/Images/confirm-popup-button-background.png">
 				<div class="hidden" id="yes_no_container">
 					<img id="confirm_yes" src="Data/Frontend/Images/yes-popup-button-background.png">
@@ -106,12 +106,12 @@
 				<img src="Data/Frontend/Images/star.png" class="star" id="right_star">
 				<h2 class="text_center">Escanea tu libro de Kiddi y desbloquea los contenidos!</h2>
 				<p class="text_center" id="information_text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis, repellat? Adipisci quibusdam dolore modi veniam temporibus odio cupiditate animi officia neque enim in laborum. Lorem ipsum<br><br>Adipisci quibusdam dolore modi veniam temporibus odio cupiditate animi officia neque enim in laborum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci ullam aspernatur cumque reiciendis.<br><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas dicta sit saepe. Odio accusamus id consequuntur minima, e.</p>
+				<img id="information_plant" src="Data/Frontend/Images/instructions-plant-bottom.png">
 			</div>
-			<img id="information_plant" src="Data/Frontend/Images/instructions-plant-bottom.png">
 		</div>
 
 		<div class="hidden view_container" id="scan_view">
-			<video id="tracking_video"></video>
+			<video id="tracking_video" autoplay muted playsinline></video>
 			<img class="hidden" id="scanning" src="Data/Frontend/Images/scanning-information.png">
 
 			<div class="hidden" id="scan_succes">
@@ -130,7 +130,6 @@
 		</div>
 
 		<div class="hidden view_container" id="video_container">
-			<!-- TODO: change to use styling from css not inline -->
 			<video controls id="video_element" style="width: 100%; height: 100%;"> 
 				<source src="" type="video/mp4" id="video_source">
 			</video>
@@ -154,17 +153,21 @@
 		</div>
 
 		<div class="hidden view_container" id="paint_canvas">
-			<canvas id="paint2d"></canvas>
+			<div id="canvas_mask">
+				<canvas id="paint2d"></canvas>
+			</div>
 			<div id="confirm_and_clear_buttons">
 				<img src="Data/Frontend/Images/cancel-button-painting-background.png" id="clear_painting" class="painting_btn">
 				<img src="Data/Frontend/Images/confirm-popup-button-background.png" id="confirm_painting" class="painting_btn">
 			</div>
 			<div id="color_selection_container">
-				<img src="Data/Frontend/Images/select-color-button-yellow.png" class="color_option" data-color="#f9d46c">
-				<img src="Data/Frontend/Images/select-color-button-blue.png" class="color_option" data-color="#6a90f9">
-				<img src="Data/Frontend/Images/select-color-button-purple.png" class="color_option" data-color="#9770f9">
-				<img src="Data/Frontend/Images/select-color-button-red.png" class="color_option" data-color="#f74387">
-				<img src="Data/Frontend/Images/select-color-button-green.png" class="color_option" data-color="#b3f73f">
+				<div id="color_selection_center">
+					<img src="Data/Frontend/Images/select-color-button-yellow.png" class="color_option" data-color="#f9d46c">
+					<img src="Data/Frontend/Images/select-color-button-blue.png" class="color_option" data-color="#6a90f9">
+					<img src="Data/Frontend/Images/select-color-button-purple.png" class="color_option" data-color="#9770f9">
+					<img src="Data/Frontend/Images/select-color-button-red.png" class="color_option" data-color="#f74387">
+					<img src="Data/Frontend/Images/select-color-button-green.png" class="color_option" data-color="#b3f73f">
+				</div>
 			</div>
 		</div>
 
@@ -194,8 +197,8 @@
 						<img class="card_frog" src="Data/Frontend/Images/textbox-bottom-corner-frog.png">
 					</div>
 				</div>
+				<img id="answer_cactus" src="Data/Frontend/Images/answers-cactus-decoration.png">
 			</div>
-			<img id="answer_cactus" src="Data/Frontend/Images/answers-cactus-decoration.png">
 		</div>
 
 		<div class="hidden view_container text_page" id="information">
@@ -222,9 +225,9 @@
 						<img class="card_frog" src="Data/Frontend/Images/textbox-bottom-corner-frog.png">
 					</div>
 				</div>
+				<img id="info_butterfly" src="Data/Frontend/Images/information-butterfly-decoration.png">
+				<img id="info_forrest" src="Data/Frontend/Images/information-forrest-decoration.png">
 			</div>
-			<img id="info_butterfly" src="Data/Frontend/Images/information-butterfly-decoration.png">
-			<img id="info_forrest" src="Data/Frontend/Images/information-forrest-decoration.png">
 		</div>
 
 

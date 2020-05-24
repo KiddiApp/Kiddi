@@ -1,25 +1,38 @@
-#paint_canvas {
-	position: fixed;
-	top: 0;
+#canvas_mask {
+	position: absolute;
 	left: 0;
+	top: 50%;
+	width: 100%;
+	transform: translate(0, -50%);
+	overflow: hidden;
+}
+
+#canvas_mask:before{
+	content: "";
+	display: block;
+	padding-top: 100%;
 }
 
 #paint2d {
 	position: absolute;
+	left: 0;
+	bottom: 0;
 }
 
 #color_selection_container {
 	position: absolute;
 	bottom: 5.5%;
 	width: 100%;
-	display: flex;
-	align-content: center;
-	justify-content: center;
+}
+
+#color_selection_center {
+	margin-left: calc( 12% + 15px);
+	width: 76%;
 }
 
 .color_option {
 	margin-left: -10px;
-	width: 15.3%;
+	width: 20%;
 	border-radius: 50%;
 }
 

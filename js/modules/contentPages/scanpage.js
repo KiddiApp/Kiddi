@@ -3,6 +3,7 @@ import Display from '../helperFunctions.js';
 import { ShowPopup, HidePopup } from '../popup.js';
 import EnableTracking from '../../webcam_ar_tracking.js';
 import states from '../appStates.js';
+import {clouds, clouds_manager } from '../clouds_manager.js';
 
 let scan_content = {
 	container: document.getElementById("scan_view"),
@@ -13,6 +14,7 @@ let scan_content = {
 	Show(callBack) {
 		Display(true, this.container);
 		EnableTracking(true, false);
+		clouds_manager.hideClouds(clouds.top_left, clouds.top_right, clouds.mid_left, clouds.mid_right, clouds.bottom_center);
 		ShowPopup(1, "!Enfoca el libro con la cámara!", "Some smart sub explaining you what to do and how to react on the results you get.", 1, function() {
 			EnableTracking(true, true);
 			Display(true, scan_content.scanning);
@@ -30,9 +32,10 @@ let scan_content = {
 		Display(false, this.scanning);
 		Display(false, this.scan_succes);
 		Display(false, this.container);
+		EnableTracking(false, false);
 		if(callBack) callBack();
 	},
-	ShowFoundPage(page_num) {
+	ShowFoundPage(page_num, optionalData) {
 		if(this.scan_failure_timeout) clearTimeout(this.scan_failure_timeout); 
 		EnableTracking(true, false);
 		Display(false, this.scanning);

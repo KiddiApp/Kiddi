@@ -10,21 +10,25 @@ const cardGameSceneObject = {
 	basePath: 'Data/Models/Cards/',
 	cards: [
 		{
-			texture: 'card-pattern-a',
+			texture: 'cloud_card',
 			set: 0
 		},
 		{
-			texture: 'card-pattern-b',
+			texture: 'feather_card',
 			set: 1
 		},
 		{
-			texture: 'card-pattern-c',
+			texture: 'pencil_card',
 			set: 2
 		},
 		{
-			texture: 'card-pattern-d',
+			texture: 'ruler_card',
 			set: 3
 		},
+		{
+			texture: 'sol_card',
+			set: 4
+		}
 	],
 	sceneCards: [],
 	resourcesLoaded: false,

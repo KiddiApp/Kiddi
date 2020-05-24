@@ -5,10 +5,11 @@ let md = new MobileDetect(window.navigator.userAgent);
 let appinfo = {
 	isMobile: (md.mobile() == null) ? false : true,
 	isTablet: (md.tablet() == null) ? false : true,
+	hasRequiredCssCapabilities: (Modernizr.cssgrid) ? true : false,
 	hasRequiredCanvasFeatures: (Modernizr.canvas && Modernizr.webgl) ? true : false,
 	hasUserMediaAndWebRTC: (Modernizr.getusermedia && Modernizr.peerconnection) ? true : false, //&& Modernizr.datachannel
 	DeviceFeaturesSupported() {
-		return (this.hasRequiredCanvasFeatures, this.hasUserMediaAndWebRTC) ? true : false;
+		return (this.hasRequiredCssCapabilities && this.hasRequiredCanvasFeatures && this.hasUserMediaAndWebRTC) ? true : false;
 	},
 	DeviceSupportedAndCorrectScreenSize() {
 		if(this.DeviceFeaturesSupported()) {
@@ -48,19 +49,20 @@ function HideFullscreenOverlay() {
 }
 
 function SetInitInformation(deviceInformation) {
+
 	if(deviceInformation.supported) {
 		if(deviceInformation.orientationCorrect) {
 			HideFullscreenOverlay();
 			HidePopup();
 		} else {
 			ShowFullscreenOverlay();
-			ShowPopup("Please view this website in Portrait mode", "Rotate your device", 0);
+			ShowPopup(1, "Sorry your browser doesn't support our App.", "If you are viewing this app on a mobile device in landscape mode please rotate your device to portait mode.", 0, null);
 		}
 	} else {
-		ShowPopup(
-			"Sorry this browser doesn't support the Kiddi webapp. Canvas: " + Modernizr.canvas + " WEBGL: " + Modernizr.webgl +
-			" Usermedia: " + Modernizr.getusermedia + " Datachannel: " + Modernizr.datachannel + " PEER: " + Modernizr.peerconnection,
-			"Try opening it on a mobile device", 0);
+		ShowFullscreenOverlay();
+		ShowPopup(1, 
+			"Sorry your browser doesn't support our App.", "canvas: " + Modernizr.canvas + " WEBGL: " + Modernizr.webgl +
+			" Usermedia: " + Modernizr.getusermedia + " GRID: " + Modernizr.cssgrid + " PEER: " + Modernizr.peerconnection, 0, null);
 	}
 }
 

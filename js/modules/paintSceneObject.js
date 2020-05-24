@@ -2,6 +2,7 @@ const paintSceneObject = {
 
 	canvas: document.getElementById("paint2d"),
 	context: null,
+	rect: null,
 	color_options: document.getElementsByClassName("color_option"),
 
 	bgImage: new Image(),
@@ -17,8 +18,12 @@ const paintSceneObject = {
 		this.bgImage.src = src;
 		this.bgImage.onload = function() {
 			paintSceneObject.clearCanvas();
-			paintSceneObject.context.drawImage(paintSceneObject.bgImage, 0, 0, window.innerWidth, window.innerWidth);
+			paintSceneObject.context.drawImage(paintSceneObject.bgImage, 0, 0, paintSceneObject.canvas.offsetWidth, paintSceneObject.canvas.offsetWidth);
 		}
+	},
+
+	setRect: function() {
+		this.rect = paintSceneObject.canvas.getBoundingClientRect();
 	},
 
 	setColor: function(col) {
@@ -48,13 +53,14 @@ const paintSceneObject = {
 	},
 
 	press: function (e) {
-		var rect = paintSceneObject.canvas.getBoundingClientRect();
+
+		paintSceneObject.rect = paintSceneObject.canvas.getBoundingClientRect();
 
 		var mouseX = (e.changedTouches ? e.changedTouches[0].pageX : e.pageX);
 		var mouseY = (e.changedTouches ? e.changedTouches[0].pageY : e.pageY);
 
-		mouseX -= rect.left;
-		mouseY -= rect.top;
+		mouseX -= paintSceneObject.rect.left;
+		mouseY -= paintSceneObject.rect.top;
 
 		paintSceneObject.paint = true;
 		paintSceneObject.addClick(mouseX, mouseY, false);
@@ -62,13 +68,14 @@ const paintSceneObject = {
 	},
 
 	drag: function (e) {
-		var rect = paintSceneObject.canvas.getBoundingClientRect();
+
+		paintSceneObject.rect = paintSceneObject.canvas.getBoundingClientRect();
 
 		var mouseX = (e.changedTouches ? e.changedTouches[0].pageX : e.pageX);
 		var mouseY = (e.changedTouches ? e.changedTouches[0].pageY : e.pageY);
 
-		mouseX -= rect.left;
-		mouseY -= rect.top;
+		mouseX -= paintSceneObject.rect.left;
+		mouseY -= paintSceneObject.rect.top;
 
 		if (paintSceneObject.paint) {
 			paintSceneObject.addClick(mouseX, mouseY, true);
@@ -101,7 +108,7 @@ const paintSceneObject = {
 		this.clickColor = [],
 		this.clickDrag = [],
 		this.context.clearRect(0, 0, this.canvas.offsetWidth, this.canvas.offsetHeight);
-		this.context.drawImage(this.bgImage, 0, 0, window.innerWidth, window.innerWidth);
+		this.context.drawImage(this.bgImage, 0, 0, this.canvas.offsetWidth, this.canvas.offsetWidth);
 	},
 
 	redraw: function () {

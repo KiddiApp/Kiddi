@@ -4,13 +4,10 @@
 
 .cards_and_title {
 	position: absolute;
-	bottom: 15%;
 	width: 80%;
 	top: 15%;
 	left: 10%;
-	display: grid;
-	grid-template-columns: [main] 100%;
-	grid-template-rows: [row1] auto [row2] 1fr;
+	padding-bottom: 150px;
 }
 
 .cards_and_title h3 {
@@ -65,20 +62,20 @@
 }
 
 #info_forrest {
-	right: 2%;
+	right: -5%;
 	bottom: 0;
-	height: 13%;
+	height: 130px;
 }
 
 #info_butterfly {
-	left: 8%;
-	height: 6%;
-	bottom: 3%;
+	left: 0;
+	height: 50px;
+	bottom: 30px;
 }
 
 #answer_cactus {
 	left: 50%;
-	height: 13%;
+	height: 150px;
 	bottom: 0;
 	transform: translate(-50%, 0);
 }

@@ -5,7 +5,7 @@ import { UpdateAppState } from './updateAppState.js';
 let popup_container_large = document.getElementById("popup_large");
 let popup_container_small = document.getElementById("popup_small");
 let popup_large_title = document.getElementById("information_title");
-let popup_large_information = document.getElementById("information_text");
+let popup_large_information = document.getElementById("large_information_text");
 let popup_confirm_ok_large = document.getElementById("confirm_button_large");
 let popup_confirm_ok_small = document.getElementById("confirm_button_small");
 let popup_confirm_yes_no = document.getElementById("yes_no_container");

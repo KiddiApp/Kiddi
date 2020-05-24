@@ -1,5 +1,5 @@
 import Display from '../helperFunctions.js';
-import { StartScene, StopScene } from '../threejs_setup.js';
+// import { StartScene, StopScene } from '../threejs_setup.js';
 import characterAnimationSceneObject from '../characterAnimationSceneObject.js';
 
 let video_content = {
@@ -10,19 +10,19 @@ let video_content = {
 	scene: characterAnimationSceneObject,
 
 	Show(callBack) {
-		Display(true, this.character_animation);
-		StartScene(this.scene);
-		this.scene.play(function () {
-			StopScene();
-			Display(false, video_content.character_animation);
-			video_content.SetAndPlayVideoSource();
-			Display(true, video_content.container);
-		});
+		Display(true, this.container);
+		// Display(true, this.character_animation);
+		// StartScene(this.scene);
+		// this.scene.play(function () {
+			// StopScene();
+			// Display(false, video_content.character_animation);
+			
+		// });
 
 		if(callBack) callBack();
 	}, 
 	SetAndPlayVideoSource(source) { //TODO: change to use source
-		this.video_source.setAttribute('src', 'Data/Videos/example1.mp4');
+		this.video_source.setAttribute('src', 'Data/Videos/' + source + '.mp4'); //'example1.mp4'
 		this.video_element.load();
 		this.video_element.play();
 
@@ -34,12 +34,19 @@ let video_content = {
 
 	Hide(callBack) {
 		this.StopVideo();
-		this.scene.stop();
-		StopScene();
-		Display(false, this.character_animation);
+		// this.scene.stop();
+		// StopScene();
+		// Display(false, this.character_animation);
 		Display(false, this.container);
 		if(callBack) callBack();
 	}
 }
 
-export default video_content;
+let videos = {
+	color: 'vid_color',
+	rio: 'vid_rio',
+	vid5: 'vid_5',
+	vid7: 'vid_7'
+}
+
+export { video_content, videos };
