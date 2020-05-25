@@ -42,6 +42,7 @@ const cardGameSceneObject = {
 	matchedCards: [],
 	callCardsMatched: false,
 	flippedCard: null,
+	isFlipping: false,
 
 	init: function() {
 
@@ -86,6 +87,7 @@ const cardGameSceneObject = {
 	},
 
 	interaction: function() {
+		if(this.isFlipping) return;
 		var ref = cardGameSceneObject;
 		var mouse = new THREE.Vector2();
 		mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
@@ -97,9 +99,16 @@ const cardGameSceneObject = {
 	},
 
 	flipCard: function(card, callback) {
-		card.rotation.x += Math.PI;
-		this.flippedCard = card;
-		if(callback) callback();
+		this.isFlipping = true;
+		new TWEEN.Tween(card.rotation)
+			.to( new THREE.Vector3(card.rotation.x + Math.PI, card.rotation.y, card.rotation.z), 400)
+			.easing(TWEEN.Easing.Cubic.InOut)
+			.start()
+			.onComplete(function() {
+				cardGameSceneObject.flippedCard = card;
+				cardGameSceneObject.isFlipping = false;
+				if(callback) callback();
+			});
 	},
 
 	checkIfMatch: function() {
@@ -129,7 +138,9 @@ const cardGameSceneObject = {
 		}
 	},
 
-	animate: function() { },
+	animate: function(time) { 
+		TWEEN.update(time);
+	},
 
 	calculateGrid: function() {
 		var canvas_dimensions = this.raycastPoint(1, -1).multiplyScalar(2);
