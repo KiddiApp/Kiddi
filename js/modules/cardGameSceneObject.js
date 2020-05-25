@@ -67,6 +67,7 @@ const cardGameSceneObject = {
 	
 				let obj = fbx.children[0];
 				obj.geometry.rotateX(Math.PI / 2);
+				obj.geometry.rotateY(Math.PI);
 	
 				obj.geometry.computeBoundingBox();
 				var b = obj.geometry.boundingBox.max;
@@ -93,7 +94,12 @@ const cardGameSceneObject = {
 
 		ref.raycaster.setFromCamera( mouse, ref.camera );
 		var intersects = ref.raycaster.intersectObjects( ref.sceneCards );
-		ref.flipCard(intersects[0].object, ref.checkIfMatch);
+		var cardData = intersects[0].object.userData;
+		// console.log(cardData.Matched);
+		if(!cardData.Matched && !cardData.isInPlay) {
+			cardData.isInPlay = true;
+			ref.flipCard(intersects[0].object, ref.checkIfMatch);
+		}
 	},
 
 	flipCard: function(card, callback) {
@@ -114,12 +120,18 @@ const cardGameSceneObject = {
 		ref.cardsToCheck.push(ref.flippedCard);
 		ref.flippedCard = null;
 		if(ref.cardsToCheck.length >= 2) {
-			if(ref.cardsToCheck[0].MatchGroupId == ref.cardsToCheck[1].MatchGroupId) {
+			var cardA = ref.cardsToCheck[0].userData;
+			var cardB = ref.cardsToCheck[1].userData;
+			if(cardA.MatchGroupId == cardB.MatchGroupId && !cardA.Matched && !cardB.Matched) {
+				cardA.Matched = true;
+				cardB.Matched = true;
 				ref.matchedCards = ref.matchedCards.concat(ref.cardsToCheck);
 				if(ref.matchedCards.length >= ref.sceneCards.length) {
 					ShowPopup(2, true, "!Genial,<br> lo lograste!", 1, function() {
 						ref.matchedCards.forEach(card => {
 							ref.flipCard(card, null);
+							card.userData.Matched = false;
+							card.userData.isInPlay = false;
 						});	
 						ref.sceneCards = ref.shuffleArray(ref.sceneCards);
 						ref.positionCards();
@@ -131,6 +143,8 @@ const cardGameSceneObject = {
 				});
 			}
 
+			cardA.isInPlay = false;
+			cardB.isInPlay = false;
 			ref.cardsToCheck = [];
 			ref.flippedCard = null;
 		}
@@ -205,7 +219,9 @@ const cardGameSceneObject = {
 			var card = new THREE.Mesh(obj.geometry, matsClone);
 			card.material[0] = this.materials.back.tex;
 			card.material[1] = tex;
-			card.MatchGroupId = id;
+			card.userData.MatchGroupId = id;
+			card.userData.Matched = false;
+			card.userData.isInPlay = false;
 			this.sceneCards.push(card);	
 			this.scene.add(card);
 		}
