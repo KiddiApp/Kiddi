@@ -1,6 +1,7 @@
 import Display from '../helperFunctions.js';
 import { StartScene, StopScene } from '../threejs_setup.js';
 import cardGameSceneObject from '../cardGameSceneObject.js';
+import { ShowPopup, HidePopup } from '../popup.js';
 
 let cardgame_content = {
 	container: document.getElementById("threejs_canvas"),
@@ -9,6 +10,7 @@ let cardgame_content = {
 	Show(callBack) {
 		this.DisplayDecos(true);
 		Display(true, this.container);
+		ShowPopup(2, true, "!Busca<br>las parejas!");
 		this.scene = cardGameSceneObject;
 		this.container.getElementsByTagName('canvas')[0].addEventListener('click', this.scene.interaction);
 		StartScene(this.scene);
@@ -19,6 +21,7 @@ let cardgame_content = {
 		this.container.getElementsByTagName('canvas')[0].removeEventListener('click', this.scene.interaction);
 		this.scene = null;
 		StopScene();
+		HidePopup();
 		Display(false, this.container);
 		if(callBack) callBack();
 	},

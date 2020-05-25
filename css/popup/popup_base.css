@@ -40,6 +40,18 @@
 	padding: 15px 10px 10px 10px;
 }
 
+.bold_title {
+	font-family: lilita_oneregular;
+	font-size: 26px;
+	line-height: 26px;
+}
+
+.regular_title {
+	font-family: senregular;
+	font-size: 26px;
+	line-height: 22px;
+}
+
 #large_information_text {
 	font-family: senregular;
 	font-size: 15px;

@@ -2,6 +2,7 @@ import Display from '../helperFunctions.js';
 import paintSceneObject from '../paintSceneObject.js';
 import { UpdateAppState } from '../updateAppState.js';
 import states from '../appStates.js';
+import { ShowPopup, HidePopup } from '../popup.js';
 
 let painting_content = {
 	container: document.getElementById("paint_canvas"),
@@ -32,10 +33,12 @@ let painting_content = {
 
 	Show(callBack) {
 		Display(true, this.container);
+		ShowPopup(2, null, "!Pinta con el dedo por encima!");
 		if(callBack) callBack();
 	}, 
 	Hide(callBack) {
 		Display(false, this.container);
+		HidePopup();
 		if(callBack) callBack();
 	}
 }

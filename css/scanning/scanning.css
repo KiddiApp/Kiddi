@@ -25,11 +25,15 @@
 }
 
 #scan_succes h2 {
+	font-family: lilita_oneregular;
+	font-size: 26px;
+	line-height: 26px;
+	-webkit-text-stroke: .5px #000;
 	width: 100%;
 	position: absolute;
 	align-self: center;
 	text-align: center;
-	color: skyblue;
+	color: #73cfff;
 }
 
 /* TODO: remove after dev */

@@ -5,6 +5,8 @@ import { UpdateAppState } from './updateAppState.js';
 let popup_container_large = document.getElementById("popup_large");
 let popup_container_small = document.getElementById("popup_small");
 let popup_large_title = document.getElementById("information_title");
+let popup_small_title = document.getElementById("small_information_text");
+let popup_confirm_small = document.getElementById("confirm_button_small");
 let popup_large_information = document.getElementById("large_information_text");
 let popup_confirm_ok_large = document.getElementById("confirm_button_large");
 let popup_confirm_ok_small = document.getElementById("confirm_button_small");
@@ -44,18 +46,24 @@ function ShowPopup(popup_type, title, information, buttonCount, buttonClickCallb
 		if(buttonCount > 1) {
 			Display(false, popup_confirm_ok_large);
 			Display(true, popup_confirm_yes_no);
-		} else {
+		} else if(buttonCount == 1) {
 			Display(false, popup_confirm_yes_no);
 			Display(true, popup_confirm_ok_large);
+		} else {
+			Display(false, popup_confirm_yes_no);
+			Display(false, popup_confirm_ok_large);
 		}
 		popup_large_information.innerHTML = information;
 		Display(true, popup_container_large);
 	} else {
 		if(title == null) {
-
+			popup_small_title.classList.remove("bold_title");
+			popup_small_title.classList.add("regular_title");
 		} else {
-
+			popup_small_title.classList.remove("regular_title");
+			popup_small_title.classList.add("bold_title");
 		}
+		popup_small_title.innerHTML = information;
 		Display(true, popup_container_small);
 	}
 

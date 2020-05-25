@@ -1,5 +1,6 @@
 import { FBXLoader } from '../vendor/FBXLoader.js';
 import { loadingManager } from './contentLoader.js';
+import { ShowPopup } from './popup.js';
 
 const cardGameSceneObject = {
 	camera: new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 ),
@@ -108,13 +109,14 @@ const cardGameSceneObject = {
 		if(ref.cardsToCheck.length >= 2) {
 			if(ref.cardsToCheck[0].MatchGroupId == ref.cardsToCheck[1].MatchGroupId) {
 				ref.matchedCards = ref.matchedCards.concat(ref.cardsToCheck);
-				// TODO: change this to other behaviour if requested
 				if(ref.matchedCards.length >= ref.sceneCards.length) {
-					ref.matchedCards.forEach(card => {
-						ref.flipCard(card, null);
-					});	
-					ref.sceneCards = ref.shuffleArray(ref.sceneCards);
-					ref.positionCards();
+					ShowPopup(2, true, "!Genial,<br> lo lograste!", 1, function() {
+						ref.matchedCards.forEach(card => {
+							ref.flipCard(card, null);
+						});	
+						ref.sceneCards = ref.shuffleArray(ref.sceneCards);
+						ref.positionCards();
+					});
 				}
 			} else {
 				ref.cardsToCheck.forEach(card => {
