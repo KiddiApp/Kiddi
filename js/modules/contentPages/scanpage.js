@@ -20,6 +20,7 @@ let scan_content = {
 			EnableTracking(true, true);
 			Display(true, scan_content.scanning);
 			scan_content.scan_failure_timeout = setTimeout(function() {
+				clearTimeout(scan_content.scan_failure_timeout);
 				EnableTracking(true, false);
 				Display(false, scan_content.scanning);
 				ShowPopup(1, null, "We were not able to scan a page. Do you need help?", 2, null);
