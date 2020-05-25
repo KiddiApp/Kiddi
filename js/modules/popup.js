@@ -16,11 +16,13 @@ let popup_callback = null;
 
 popup_confirm_ok_large.addEventListener('click', function() {
 	if(popup_callback) popup_callback();
+	popup_callback = null;
 	HidePopup();
 });
 
 popup_confirm_ok_small.addEventListener('click', function() {
 	if(popup_callback) popup_callback();
+	popup_callback = null;
 	HidePopup();
 });
 

@@ -32,7 +32,7 @@ let nft_objects = [
 let nft_tracker_objects = [];
 
 function OnTriggerFound(e) {
-	console.log(e);
+	// console.log(e);
 	switch (e) {
 		case "page1":
 			scan_content.ShowFoundPage(1, videos.rio);
@@ -68,6 +68,7 @@ function MainLoop() {
 		}
 	});
 
+	// console.log("AR IS TRACKING");
 	if(useTracking)	requestAnimationFrame(MainLoop);
 }
 
