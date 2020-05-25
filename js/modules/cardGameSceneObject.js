@@ -49,8 +49,6 @@ const cardGameSceneObject = {
 		this.camera.position.set( 0, 200, 0 );
 		this.camera.lookAt( 0, 0, 0 );
 
-		this.scene.background = new THREE.Color( 0xffffff );
-
 		var hemiLight = new THREE.HemisphereLight( 0xffffff, 0x444444 );
 		hemiLight.position.set( 0, 300, 0 );
 		this.scene.add( hemiLight );
@@ -180,11 +178,7 @@ const cardGameSceneObject = {
 			card.position.x = placement.gridOrigin.x + placement.cardSize.x / 2 + placement.cardSize.x * moveIndexX;
 			card.position.x += (moveIndexX == 1) ? placement.gridPadding : 0;
 			card.position.y = 0;
-			card.position.z = placement.gridOrigin.y + placement.cardSize.y / 2 + placement.cardSize.y * moveIndexY;
-			// TODO: ERROR PLACEMENT IS NOT CORRECT (values are but actual placement not...)
-			// console.log("pos: " + card.position.z);
-			card.position.z += (moveIndexY > 0) ? placement.gridPadding : 0;
-			// console.log("pos + pad: " + card.position.z);
+			card.position.z = placement.gridOrigin.y + placement.cardSize.y / 2 + (placement.cardSize.y + placement.gridPadding) * moveIndexY;
 		}
 	},
 

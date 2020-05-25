@@ -11,7 +11,6 @@ let scan_content = {
 	scanning: document.getElementById("scanning"),
 	found_page: document.getElementById("found_page_text"),
 	scan_succes: document.getElementById("scan_succes"),
-	scan_failure_timeout: null,
 	Show(callBack) {
 		Display(true, this.container);
 		EnableTracking(true, false);
@@ -19,17 +18,19 @@ let scan_content = {
 		ShowPopup(1, "!Enfoca el libro con la cámara!", "Some smart sub explaining you what to do and how to react on the results you get.", 1, function() {
 			EnableTracking(true, true);
 			Display(true, scan_content.scanning);
-			scan_content.scan_failure_timeout = setTimeout(function() {
-				clearTimeout(scan_content.scan_failure_timeout);
+			scanfailtimeout = setTimeout(function() {
+				clearTimeout(scanfailtimeout);
 				EnableTracking(true, false);
 				Display(false, scan_content.scanning);
 				ShowPopup(1, null, "We were not able to scan a page. Do you need help?", 2, null);
-			}, 180000)
+			}, scanfailpopupdelay)
 		});
 		if(callBack) callBack();
 	}, 
 	Hide(callBack) {
-		if(this.scan_failure_timeout) clearTimeout(this.scan_failure_timeout); 
+		if(scanfailtimeout) {
+			clearTimeout(scanfailtimeout); 
+		}
 		HidePopup();
 		Display(false, this.scanning);
 		Display(false, this.scan_succes);
@@ -38,7 +39,7 @@ let scan_content = {
 		if(callBack) callBack();
 	},
 	ShowFoundPage(page_num, optionalData) {
-		if(this.scan_failure_timeout) clearTimeout(this.scan_failure_timeout); 
+		if(scanfailtimeout) clearTimeout(scanfailtimeout); 
 		EnableTracking(true, false);
 		Display(false, this.scanning);
 		this.found_page.innerHTML = ("Página " + page_num.toString());
@@ -63,4 +64,4 @@ let scan_content = {
 	}
 }
 
-export default scan_content;
+export { scan_content };

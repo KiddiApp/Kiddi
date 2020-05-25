@@ -6,7 +6,6 @@ let popup_container_large = document.getElementById("popup_large");
 let popup_container_small = document.getElementById("popup_small");
 let popup_large_title = document.getElementById("information_title");
 let popup_small_title = document.getElementById("small_information_text");
-let popup_confirm_small = document.getElementById("confirm_button_small");
 let popup_large_information = document.getElementById("large_information_text");
 let popup_confirm_ok_large = document.getElementById("confirm_button_large");
 let popup_confirm_ok_small = document.getElementById("confirm_button_small");
@@ -32,6 +31,10 @@ document.getElementById("confirm_yes").addEventListener('click', function() {
 
 document.getElementById("confirm_no").addEventListener('click', function() {
 	HidePopup();
+	clearTimeout(scanfailtimeout);
+	scanfailtimeout = setTimeout(function() {
+		ShowPopup(1, null, "We were not able to scan a page. Do you need help?", 2, null);
+	}, scanfailpopupdelay);
 });
 
 function ShowPopup(popup_type, title, information, buttonCount, buttonClickCallback) {

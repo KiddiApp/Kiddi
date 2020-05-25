@@ -14,6 +14,7 @@ let characterselection_content = {
 			const character = this.characters[i];
 			character.addEventListener('click', function() {
 				painting_content.SetcanvasSize((character.dataset.character == "GombaAnimacion01") ? true : false );
+				paintSceneObject.clearCanvas();
 				paintSceneObject.setbgimage(character.getElementsByTagName('img')[0].dataset.texture);
 				paintedCharacterAnimation.setActiveCharacter(character.dataset.character);
 				UpdateAppState(states.PaintingPainting);

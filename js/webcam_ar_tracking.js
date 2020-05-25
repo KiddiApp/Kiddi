@@ -1,4 +1,4 @@
-import scan_content from './modules/contentPages/scanpage.js';
+import { scan_content } from './modules/contentPages/scanpage.js';
 import { NFTObject } from './nftObject.js';
 import { videos } from './modules/contentPages/videopage.js';
 

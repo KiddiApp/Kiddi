@@ -19,17 +19,9 @@ const paintedCharacterAnimation = {
 		this.camera.position.set( 0, 2, -5 );
 		this.camera.lookAt( 0, 1, 0 );
 
-		this.scene.background = new THREE.Color( 0xcfedff );
-		this.scene.fog = new THREE.Fog( 0xcfedff, 10, 50 );
-
 		var hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff );
-		hemiLight.position.set( 0, 20, 0 );
+		hemiLight.position.set( 0, 40, 0 );
 		this.scene.add( hemiLight );
-
-		var mesh = new THREE.Mesh( new THREE.PlaneBufferGeometry( 100, 100 ), new THREE.MeshPhongMaterial( { color: 0xffffff, depthWrite: false } ) );
-		mesh.rotation.x = - Math.PI / 2;
-		mesh.receiveShadow = true;
-		this.scene.add( mesh );
 	},
 
 	loadResources: function() {

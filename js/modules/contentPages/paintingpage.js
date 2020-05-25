@@ -6,11 +6,13 @@ import { ShowPopup, HidePopup } from '../popup.js';
 
 let painting_content = {
 	container: document.getElementById("paint_canvas"),
+	canvasmask: document.querySelector("#canvas_mask"),
 	canvas: document.getElementById("paint2d"),
 	confirm: document.getElementById("confirm_painting"),
 	clear: document.getElementById("clear_painting"),
 	Init() {
 		this.confirm.addEventListener('click', function() {
+			paintSceneObject.prepareTexture();
 			UpdateAppState(states.Painting3dAnimation);
 		});
 		this.clear.addEventListener('click', function() {
@@ -22,10 +24,12 @@ let painting_content = {
 		if(gomba) {
 			this.canvas.setAttribute('width', window.innerWidth);
 			this.canvas.setAttribute('height', window.innerWidth);
+			this.canvasmask.style.height = window.innerWidth + 'px';
 		} else {
 			var scaled = window.innerWidth * 1.2549019608;
 			this.canvas.setAttribute('width', scaled);
 			this.canvas.setAttribute('height', scaled);
+			this.canvasmask.style.height = (window.innerWidth * 0.74) + 'px';
 		}
 
 		paintSceneObject.setRect();
@@ -33,6 +37,9 @@ let painting_content = {
 
 	Show(callBack) {
 		Display(true, this.container);
+		paintSceneObject.clearAnimationBg();
+		paintSceneObject.setbgimage();
+		paintSceneObject.redraw();
 		ShowPopup(2, null, "!Pinta con el dedo por encima!");
 		if(callBack) callBack();
 	}, 

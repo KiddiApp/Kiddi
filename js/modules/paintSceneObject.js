@@ -11,14 +11,21 @@ const paintSceneObject = {
 	clickColor: [],
 	clickDrag: [],
 	paint: false,
-	curColor: '#ffffff',
+	curColor: '#9770f9',
 	paintRadius: 10,
 
+	clearAnimationBg: function() {
+		this.context.clearRect(0, 0, this.canvas.offsetWidth, this.canvas.offsetHeight);
+	},
+
 	setbgimage: function(src) {
-		this.bgImage.src = src;
-		this.bgImage.onload = function() {
-			paintSceneObject.clearCanvas();
-			paintSceneObject.context.drawImage(paintSceneObject.bgImage, 0, 0, paintSceneObject.canvas.offsetWidth, paintSceneObject.canvas.offsetWidth);
+		if(src != null) {
+			this.bgImage.src = src;
+			this.bgImage.onload = function() {
+				paintSceneObject.context.drawImage(paintSceneObject.bgImage, 0, 0, paintSceneObject.canvas.offsetWidth, paintSceneObject.canvas.offsetWidth);
+			}
+		} else {
+			this.context.drawImage(this.bgImage, 0, 0, this.canvas.offsetWidth, this.canvas.offsetWidth);
 		}
 	},
 
@@ -30,6 +37,13 @@ const paintSceneObject = {
 		this.curColor = col;
 	},
 
+	removeActiveColor: function() {
+		for (let i = 0; i < this.color_options.length; i++) {
+			const option = this.color_options[i];
+			option.classList.remove("active_color");
+		}
+	},
+
 	init: function() {
 
 		this.context = this.canvas.getContext("2d");
@@ -38,6 +52,8 @@ const paintSceneObject = {
 			const option = this.color_options[i];
 			option.addEventListener('click', function() {
 				paintSceneObject.setColor(option.dataset.color);
+				paintSceneObject.removeActiveColor();
+				option.classList.add("active_color");
 			}, false);
 		};
 
@@ -111,14 +127,17 @@ const paintSceneObject = {
 		this.context.drawImage(this.bgImage, 0, 0, this.canvas.offsetWidth, this.canvas.offsetWidth);
 	},
 
-	redraw: function () {
-		// this.clearCanvas();
-
-		// Keep the drawing in the drawing area
-		this.context.save();
+	prepareTexture: function() {
 		this.context.beginPath();
-		this.context.rect(0, 0, this.canvas.offsetWidth, this.canvas.offsetHeight);
-		this.context.clip();
+		this.context.fillStyle = '#fff';
+		this.context.fillRect(0,0, this.canvas.offsetWidth, this.canvas.offsetHeight);
+		this.context.closePath();
+		this.context.drawImage(this.bgImage, 0, 0, this.canvas.offsetWidth, this.canvas.offsetWidth);
+		this.setbgimage();
+		this.redraw();
+	},
+
+	redraw: function () {
 
 		// For each point drawn
 		for (var i = 0; i < this.clickX.length; i += 1) {
@@ -139,10 +158,6 @@ const paintSceneObject = {
 			this.context.stroke();
 			this.context.closePath();
 		}
-		this.context.closePath();
-		this.context.restore();
-
-		// this.context.drawImage(this.bgImage, 0, 0, window.innerWidth, window.innerWidth);
 	},
 }
 

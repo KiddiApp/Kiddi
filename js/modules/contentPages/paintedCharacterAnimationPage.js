@@ -1,14 +1,16 @@
 import Display from '../helperFunctions.js';
 import paintedCharacterAnimation from '../playPaintedCharacterAnimationSceneObject.js';
 import { StartScene, StopScene } from '../threejs_setup.js';
+import paintSceneObject from '../paintSceneObject.js';
 
 let paintedCharacterAnimation_content = {
 	container: document.getElementById("threejs_canvas"),
-	paintedTexutre: document.getElementById("paint2d").getContext('2d').canvas,
 	Show(callBack) {
+		paintedCharacterAnimation.setActiveCharacterTexture(
+			document.getElementById("paint2d").getContext('2d').canvas
+		);
 		Display(true, this.container);
 		StartScene(paintedCharacterAnimation);
-		paintedCharacterAnimation.setActiveCharacterTexture(this.paintedTexutre);
 		paintedCharacterAnimation.playActiveCharacterAnimation(); 
 		if(callBack) callBack();
 	}, 
