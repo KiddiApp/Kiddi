@@ -1,0 +1,16 @@
+.card_game_deco {
+	position: absolute;
+	z-index: 2;
+}
+
+#card_game_butterfly {
+	right: 10%;
+	height: 7%;
+	top: 5%;
+}
+
+#card_game_mushroom {
+	bottom: 0;
+	left: 2%;
+	height: 10%;
+}

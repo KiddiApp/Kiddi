@@ -1,5 +1,6 @@
 import states from './modules/appStates.js';
 import { UpdateAppState, GetCurrentState } from './modules/updateAppState.js';
+import { video_content, videos } from './modules/contentPages/videopage.js';
 
 let back_button = document.getElementById("back_button");
 back_button.addEventListener('click', () => {
@@ -49,6 +50,7 @@ for (let i = 0; i < dev_buttons.length; i++) {
 				break;
 			case "dev_to_video":
 				UpdateAppState(states.Video);
+				video_content.SetAndPlayVideoSource(videos.rio);
 				break;
 			case "dev_to_card":
 				UpdateAppState(states.CardGame);

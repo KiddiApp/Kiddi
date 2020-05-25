@@ -8,7 +8,6 @@ let paintedCharacterAnimation_content = {
 	Show(callBack) {
 		Display(true, this.container);
 		StartScene(paintedCharacterAnimation);
-		// BELOW TWO LINES POINT TO ERROR IN paintedcharacterAnimation
 		paintedCharacterAnimation.setActiveCharacterTexture(this.paintedTexutre);
 		paintedCharacterAnimation.playActiveCharacterAnimation(); 
 		if(callBack) callBack();

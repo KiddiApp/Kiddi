@@ -34,16 +34,16 @@ function OnTriggerFound(e) {
 	console.log(e);
 	switch (e) {
 		case "page1":
-			scan_content.ShowFoundPage(1);
+			scan_content.ShowFoundPage(1, videos.rio);
 			break;
 		case "page2":
-			scan_content.ShowFoundPage(2);
+			scan_content.ShowFoundPage(2, null);
 			break;
 		case "page3":
-			scan_content.ShowFoundPage(3);
+			scan_content.ShowFoundPage(3, null);
 			break;
 		case "page17":
-			scan_content.ShowFoundPage(17);
+			scan_content.ShowFoundPage(17, null);
 			break;
 		default:
 			break;

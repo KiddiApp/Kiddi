@@ -34,11 +34,18 @@
 }
 
 .text_card h4 {
+	font-family: senregular;
 	font-size: 12px;
 }
 
 .text_card h2 {
+	font-family: lilita_oneregular;
 	padding-bottom: 15px;
+}
+
+.text_card p {
+	font-family: senregular;
+	font-size: 15px;
 }
 
 .answers_card {

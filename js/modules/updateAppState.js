@@ -2,7 +2,7 @@ import states from './appStates.js';
 import homepage_content from './contentPages/homepage.js';
 import scan_content from './contentPages/scanpage.js';
 import instructions_content from './contentPages/instructionspage.js';
-import video_content from './contentPages/videopage.js';
+import { video_content } from './contentPages/videopage.js';
 import cardgame_content from './contentPages/cardgamepage.js';
 import information_content from './contentPages/informationpage.js';
 import answers_content from './contentPages/answerspage.js';

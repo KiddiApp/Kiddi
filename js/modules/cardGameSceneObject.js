@@ -33,8 +33,7 @@ const cardGameSceneObject = {
 	sceneCards: [],
 	resourcesLoaded: false,
 	raycaster: new THREE.Raycaster(),
-	cardRatioPortrait: null,
-	cardRatioLandscape: null,
+	cardaspectratio: null,
 	cardSizeOriginal: null,
 	canvasRatio: window.innerWidth / window.innerHeight,
 
@@ -48,17 +47,12 @@ const cardGameSceneObject = {
 		this.camera.position.set( 0, 200, 0 );
 		this.camera.lookAt( 0, 0, 0 );
 
-		this.scene.background = new THREE.Color( 0xa0a0a0 );
+		this.scene.background = new THREE.Color( 0xffffff );
 
 		var hemiLight = new THREE.HemisphereLight( 0xffffff, 0x444444 );
 		hemiLight.position.set( 0, 300, 0 );
 		this.scene.add( hemiLight );
 
-		var mesh = new THREE.Mesh( new THREE.PlaneBufferGeometry( 1000, 1000, 100, 100 ), new THREE.MeshPhongMaterial( { color: 0xff9999, depthWrite: false } ) );
-		mesh.rotation.x = - Math.PI / 2;
-		mesh.position.y = -0.5;
-		mesh.receiveShadow = true;
-		this.scene.add( mesh );
 	},
 
 	loadResources: function() {
@@ -72,12 +66,11 @@ const cardGameSceneObject = {
 			loader.load('./Data/Models/Cards/kiddi-card.FBX', function ( fbx ) {
 	
 				let obj = fbx.children[0];
-				obj.geometry.rotateZ(Math.PI / 2);
 				obj.geometry.rotateX(Math.PI / 2);
 	
 				obj.geometry.computeBoundingBox();
 				var b = obj.geometry.boundingBox.max;
-				ref.cardRatioPortrait = (b.x * 2) / (b.z * 4);
+				ref.cardaspectratio = b.x / b.z;
 				ref.cardSizeOriginal = new THREE.Vector2(b.x * 2, b.z * 2);
 	
 				for (let i = 0; i < ref.cards.length; i++) {
@@ -134,28 +127,51 @@ const cardGameSceneObject = {
 		}
 	},
 
-	animate: function() {
+	animate: function() { },
+
+	calculateGrid: function() {
+		var canvas_dimensions = this.raycastPoint(1, -1).multiplyScalar(2);
+		var offset_top = canvas_dimensions.y * 0.1843297101;
+		var offset_bottom = canvas_dimensions.y * 0.1363224638;
+		var grid_height = canvas_dimensions.y - offset_top - offset_bottom;
+		var grid_padding = canvas_dimensions.x * 0.04025764895;
+		var card_height = (grid_height - grid_padding * 4) / 5;
+		var card_width = card_height * this.cardaspectratio;
+		var grid_width = card_width * 2 + grid_padding;
+		var offset_left = (canvas_dimensions.x - grid_width) / 2
+		var tl = this.raycastPoint(-1, 1);
+		var grid_origin = new THREE.Vector2(tl.x + offset_left, tl.y + offset_top);
+
+		return { 
+			cardScale: card_height / this.cardSizeOriginal.y,
+			cardSize: new THREE.Vector2(card_width, card_height),
+			gridPadding: grid_padding,
+			gridOrigin: grid_origin
+		}
 	},
 
 	positionCards: function() {
-		var tableDimensions = this.raycastPoint(1, -1).multiplyScalar(2);
-		var topleft = this.raycastPoint(-1, 1);
-		var gridcellSize = new THREE.Vector2(tableDimensions.x / 2,  tableDimensions.y / 4);
-		var cardScale = (gridcellSize.y - this.cardPadding) / this.cardSizeOriginal.y;
+
+		var placement = this.calculateGrid();
 
 		var moveIndexX = 0, moveIndexY = 0;
 		for (let i = 0; i < this.sceneCards.length; i++) {
 			const card = this.sceneCards[i];
-			card.scale.set(cardScale, cardScale, cardScale);
+			card.scale.set(placement.cardScale, placement.cardScale, placement.cardScale);
 
 			moveIndexX = (i != 0 && (i - 1) % 2 == 0) ? 1 : 0;
 			if(i != 0 && i % 2 == 0){
 				moveIndexY++;
 			} 
 
-			card.position.x = topleft.x + gridcellSize.x / 2 + gridcellSize.x * moveIndexX;
+			card.position.x = placement.gridOrigin.x + placement.cardSize.x / 2 + placement.cardSize.x * moveIndexX;
+			card.position.x += (moveIndexX == 1) ? placement.gridPadding : 0;
 			card.position.y = 0;
-			card.position.z = topleft.y + gridcellSize.y / 2 + gridcellSize.y * moveIndexY;
+			card.position.z = placement.gridOrigin.y + placement.cardSize.y / 2 + placement.cardSize.y * moveIndexY;
+			// TODO: ERROR PLACEMENT IS NOT CORRECT (values are but actual placement not...)
+			// console.log("pos: " + card.position.z);
+			card.position.z += (moveIndexY > 0) ? placement.gridPadding : 0;
+			// console.log("pos + pad: " + card.position.z);
 		}
 	},
 

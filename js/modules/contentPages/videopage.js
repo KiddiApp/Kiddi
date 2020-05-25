@@ -21,8 +21,8 @@ let video_content = {
 
 		if(callBack) callBack();
 	}, 
-	SetAndPlayVideoSource(source) { //TODO: change to use source
-		this.video_source.setAttribute('src', 'Data/Videos/' + source + '.mp4'); //'example1.mp4'
+	SetAndPlayVideoSource(source) { 
+		this.video_source.setAttribute('src', 'Data/Videos/' + source + '.mp4');
 		this.video_element.load();
 		this.video_element.play();
 

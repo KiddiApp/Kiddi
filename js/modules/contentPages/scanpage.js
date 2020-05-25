@@ -4,6 +4,7 @@ import { ShowPopup, HidePopup } from '../popup.js';
 import EnableTracking from '../../webcam_ar_tracking.js';
 import states from '../appStates.js';
 import {clouds, clouds_manager } from '../clouds_manager.js';
+import { video_content } from './videopage.js';
 
 let scan_content = {
 	container: document.getElementById("scan_view"),
@@ -45,6 +46,7 @@ let scan_content = {
 			switch (page_num) {
 				case 1:
 					UpdateAppState(states.Video);
+					if(optionalData != null) video_content.SetAndPlayVideoSource(optionalData);
 					break;
 				case 2:
 					UpdateAppState(states.CardGame);
