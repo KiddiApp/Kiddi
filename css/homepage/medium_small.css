@@ -1,0 +1,20 @@
+@media (max-height: 800px) {
+	#grid_item_1 {
+		width: 75%;
+		margin-left: 12.5%;
+	}
+	
+	#grid_item_1 img{
+		width: 100%;
+	}
+
+	#grid_item_2 h1 {
+		line-height: 30px;
+		font-size: 36px;
+		padding: 15px 0 10px 0;
+	}
+
+	#scan_image {
+		margin: 15px 0 5px 0;
+	}
+}

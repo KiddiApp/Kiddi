@@ -1,0 +1,36 @@
+@media (max-height: 600px) {
+	#grid_item_1 {
+		width: 50%;
+		margin-left: 25%;
+	}
+	
+	#grid_item_1 img{
+		width: 100%;
+	}
+
+	#grid_item_2 h1 {
+		line-height: 25px;
+		font-size: 30px;
+		padding: 15px 0 10px 0;
+	}
+	
+	#grid_item_2 h3 {
+		font-family: senregular;
+		padding: 10px 0 0 0;
+		font-size: 14px;
+	}
+
+	#scan_image {
+		margin: 20px 0 5px 0;
+	}
+
+	#scan_image_content h2 {
+		font-size: 18px;
+		padding: 0 0 0 5px;
+	}
+
+	#help_needed {
+		padding-top: 5px;
+		font-size: 14px;
+	}
+}
