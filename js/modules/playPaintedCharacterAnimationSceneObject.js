@@ -1,6 +1,5 @@
 import { FBXLoader } from '../vendor/FBXLoader.js';
 import { loadingManager } from './contentLoader.js';
-import paintedCharacterAnimation_content from './contentPages/paintedCharacterAnimationPage.js';
 
 const paintedCharacterAnimation = {
 	camera: new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 ),
@@ -32,7 +31,13 @@ const paintedCharacterAnimation = {
 			loader.load('./Data/Models/Animations/'+character_file+'.fbx', function ( fbx ) {
 
 				fbx.rotation.y = Math.PI;
-				fbx.scale.set(0.1, 0.1, 0.1);
+				if(character_file == "LapiAnimacion01") {
+					fbx.scale.set(0.15, 0.15, 0.15);
+					fbx.position.setY(-1);
+				} else {
+					fbx.scale.set(0.22, 0.22, 0.22);
+					fbx.position.setY(-1);
+				}
 
 				const character_option = {
 					name: character_file,
