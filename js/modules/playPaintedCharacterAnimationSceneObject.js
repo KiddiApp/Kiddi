@@ -1,5 +1,6 @@
 import { FBXLoader } from '../vendor/FBXLoader.js';
 import { loadingManager } from './contentLoader.js';
+import paintedCharacterAnimation_content from './contentPages/paintedCharacterAnimationPage.js';
 
 const paintedCharacterAnimation = {
 	camera: new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 ),
@@ -12,7 +13,6 @@ const paintedCharacterAnimation = {
 	characters: [],
 	active_character: null,
 	clock: new THREE.Clock(),
-	animationLoopCompleteCallback: null,
 
 	init: function() {
 
@@ -45,8 +45,9 @@ const paintedCharacterAnimation = {
 						this.animation = this.animationMixer.clipAction(this.character.animations[0])
 						this.animationMixer.addEventListener( 'loop', function( e ) {
 							character_option.animation.paused = true;
-							if(ref.animationLoopCompleteCallback) ref.animationLoopCompleteCallback();
-							character_option.animationLoopCompleteCallback = null;
+							animationtimeout = setTimeout(function() {
+								ref.playActiveCharacterAnimation();
+							}, 1000);
 						});
 						this.animation.paused = true;
 						this.animation.play();
@@ -59,6 +60,7 @@ const paintedCharacterAnimation = {
 					},
 
 					stopAndHide: function() {
+						clearTimeout(animationtimeout);
 						this.animation.stop();
 						this.animation.play();
 						this.animation.paused = true;
