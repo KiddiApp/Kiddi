@@ -43,10 +43,11 @@ let video_content = {
 }
 
 let videos = {
-	color: 'vid_color',
-	rio: 'vid_rio',
-	vid5: 'vid_5',
-	vid7: 'vid_7'
+	color: 'kiddi_color',
+	rio: 'kiddi_rio',
+	vid5: 'kiddi_5',
+	vid7: 'kiddi_7',
+	edit: 'kiddi_edit'
 }
 
 export { video_content, videos };
