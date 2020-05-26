@@ -41,8 +41,7 @@ const cardGameSceneObject = {
 	cardsToCheck: [],
 	matchedCards: [],
 	callCardsMatched: false,
-	flippedCard: null,
-	isFlipping: false,
+	noInteractionAllowed: false,
 
 	init: function() {
 
@@ -86,39 +85,44 @@ const cardGameSceneObject = {
 	},
 
 	interaction: function() {
-		if(this.isFlipping) return;
 		var ref = cardGameSceneObject;
-		var mouse = new THREE.Vector2();
-		mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-		mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+		if(ref.noInteractionAllowed) {
+			console.log("WAIT FOR PREVIOUS CARD TO FLIP");
+			return;
+		} else {
+			console.log("FLIP ME ANOTHER CARD PLEASE");
+			
+			var mouse = new THREE.Vector2();
+			mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+			mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
 
-		ref.raycaster.setFromCamera( mouse, ref.camera );
-		var intersects = ref.raycaster.intersectObjects( ref.sceneCards );
-		var cardData = intersects[0].object.userData;
-		// console.log(cardData.Matched);
-		if(!cardData.Matched && !cardData.isInPlay) {
-			cardData.isInPlay = true;
-			ref.flipCard(intersects[0].object, ref.checkIfMatch);
+			ref.raycaster.setFromCamera( mouse, ref.camera );
+			var intersects = ref.raycaster.intersectObjects( ref.sceneCards );
+			
+			if(intersects.length > 0) {
+				var cardData = intersects[0].object.userData;
+				if(!cardData.Matched && !cardData.isInPlay) {
+					ref.noInteractionAllowed = true;
+					cardData.isInPlay = true;
+					ref.flipCard(intersects[0].object, ref.checkIfMatch);
+				}
+			}
 		}
 	},
 
 	flipCard: function(card, callback) {
-		this.isFlipping = true;
 		new TWEEN.Tween(card.rotation)
 			.to( new THREE.Vector3(card.rotation.x + Math.PI, card.rotation.y, card.rotation.z), 400)
 			.easing(TWEEN.Easing.Cubic.InOut)
 			.start()
 			.onComplete(function() {
-				cardGameSceneObject.flippedCard = card;
-				cardGameSceneObject.isFlipping = false;
-				if(callback) callback();
+				if(callback) callback(card);
 			});
 	},
 
-	checkIfMatch: function() {
+	checkIfMatch: function(card) {
 		var ref = cardGameSceneObject;
-		ref.cardsToCheck.push(ref.flippedCard);
-		ref.flippedCard = null;
+		ref.cardsToCheck.push(card);
 		if(ref.cardsToCheck.length >= 2) {
 			var cardA = ref.cardsToCheck[0].userData;
 			var cardB = ref.cardsToCheck[1].userData;
@@ -133,21 +137,33 @@ const cardGameSceneObject = {
 							card.userData.Matched = false;
 							card.userData.isInPlay = false;
 						});	
+						ref.matchedCards = [];
 						ref.sceneCards = ref.shuffleArray(ref.sceneCards);
 						ref.positionCards();
 					});
 				}
+				cardA.isInPlay = false;
+				cardB.isInPlay = false;
+				ref.noInteractionAllowed = false;
+				ref.resetClickedCards();
 			} else {
-				ref.cardsToCheck.forEach(card => {
-					ref.flipCard(card, null);
-				});
-			}
-
-			cardA.isInPlay = false;
-			cardB.isInPlay = false;
-			ref.cardsToCheck = [];
-			ref.flippedCard = null;
+				setTimeout(function() {
+					ref.cardsToCheck.forEach(card => {
+						ref.flipCard(card, null);
+					});
+					cardA.isInPlay = false;
+					cardB.isInPlay = false;
+					ref.noInteractionAllowed = false;
+					ref.resetClickedCards();
+				}, 1000)
+			}			
+		} else {
+			ref.noInteractionAllowed = false;
 		}
+	},
+
+	resetClickedCards: function() {
+		this.cardsToCheck = [];
 	},
 
 	animate: function(time) { 

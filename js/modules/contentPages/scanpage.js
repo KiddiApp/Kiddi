@@ -44,7 +44,7 @@ let scan_content = {
 		Display(false, this.scanning);
 		this.found_page.innerHTML = ("Página " + page_num.toString());
 		Display(true, this.scan_succes);
-		setTimeout(function() { 			//TODO: CHECK IF THIS IS DESIRED OR THAT USER CLICKS TO CONFIRM
+		setTimeout(function() { 
 			switch (page_num) {
 				case 1:
 					UpdateAppState(states.Video);
