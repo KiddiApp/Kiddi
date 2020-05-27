@@ -40,6 +40,20 @@
 	-o-animation: rotate 8s infinite;
 }
 
+.movelr {
+	animation: movelr 6s infinite;
+	-moz-animation: movelr 6s infinite;
+	-webkit-animation: movelr 6s infinite;
+	-o-animation: movelr 6s infinite;
+}
+
+.blink {
+	animation: blink 1.5s infinite;
+	-moz-animation: blink 1.5s infinite;
+	-webkit-animation: blink 1.5s infinite;
+	-o-animation: blink 1.5s infinite;
+}
+
 @keyframes wiggle {
 	0% { transform: rotate(0deg); } 
 	5% { transform: rotate(-2deg); }
@@ -124,4 +138,47 @@
 	40% { -webkit-transform: rotate(50deg); }
 	70% { -webkit-transform: rotate(-100deg); }
 	100% { -webkit-transform: rotate(0deg); }
+}
+
+@keyframes movelr {
+	0% { transform: translate(0, 0); }
+	5% { transform: translate(-20px, 0); }
+	15% { transform: translate(20px, 0); }
+	20% { transform: translate(0, 0); }
+	70% { transform: translate(0, 0); }
+	75% { transform: translate(20px, 0); }
+	90% { transform: translate(-20px, 0); }
+	95% { transform: translate(0, 0); }
+	100% { transform: translate(0, 0); }
+}
+
+
+@-webkit-keyframes movelr {
+	0% { -webkit-transform: translate(0, 0); }
+	32.5% { -webkit-transform: translate(-20px, 0); }
+	37.5% { -webkit-transform: translate(20px, 0); }
+	40% { -webkit-transform: translate(0, 0); }
+	80% { -webkit-transform: translate(0, 0); }
+	82.5% { -webkit-transform: translate(20px, 0); }
+	87.5% { -webkit-transform: translate(-20px, 0); }
+	90% { -webkit-transform: translate(0, 0); }
+	100% { -webkit-transform: translate(0, 0); }
+}
+
+@keyframes blink {
+	0% { opacity: 1; }
+	20% { opacity: 1; }
+	40% { opacity: 0; }
+	70% { opacity: 0; }
+	90% { opacity: 1; }
+	100% { opacity: 1; }
+}
+
+@-webkit-keyframes blink {
+	0% { opacity: 1; }
+	20% { opacity: 1; }
+	40% { opacity: 0; }
+	70% { opacity: 0; }
+	90% { opacity: 1; }
+	100% { opacity: 1; }
 }

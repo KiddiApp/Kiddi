@@ -8,7 +8,7 @@ import { video_content } from './videopage.js';
 
 let scan_content = {
 	container: document.getElementById("scan_view"),
-	scanning: document.getElementById("scanning"),
+	scanning: document.getElementsByClassName("scanning"),
 	found_page: document.getElementById("found_page_text"),
 	scan_succes: document.getElementById("scan_succes"),
 	Show(callBack) {
@@ -17,11 +17,11 @@ let scan_content = {
 		clouds_manager.hideClouds(clouds.top_left, clouds.top_right, clouds.mid_left, clouds.mid_right, clouds.bottom_center);
 		ShowPopup(1, "!Enfoca el libro con la cámara!", "Some smart sub explaining you what to do and how to react on the results you get.", 1, function() {
 			EnableTracking(true, true);
-			Display(true, scan_content.scanning);
+			scan_content.DisplayScanBanner(true);
 			scanfailtimeout = setTimeout(function() {
 				clearTimeout(scanfailtimeout);
 				EnableTracking(true, false);
-				Display(false, scan_content.scanning);
+				scan_content.DisplayScanBanner(false);
 				ShowPopup(1, null, "We were not able to scan a page. Do you need help?", 2, null);
 			}, scanfailpopupdelay)
 		});
@@ -32,16 +32,24 @@ let scan_content = {
 			clearTimeout(scanfailtimeout); 
 		}
 		HidePopup();
-		Display(false, this.scanning);
+		this.DisplayScanBanner(false);
 		Display(false, this.scan_succes);
 		Display(false, this.container);
 		EnableTracking(false, false);
 		if(callBack) callBack();
 	},
+	
+	DisplayScanBanner(show) {
+		for (let i = 0; i < this.scanning.length; i++) {
+			const element = this.scanning[i];
+			Display(show, element);
+		}
+	}, 
+
 	ShowFoundPage(page_num, optionalData) {
 		if(scanfailtimeout) clearTimeout(scanfailtimeout); 
 		EnableTracking(true, false);
-		Display(false, this.scanning);
+		this.DisplayScanBanner(false);
 		this.found_page.innerHTML = ("Página " + page_num.toString());
 		Display(true, this.scan_succes);
 		setTimeout(function() { 
