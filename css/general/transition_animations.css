@@ -1,0 +1,35 @@
+@keyframes cloud1 {
+	from {
+		left: -4000%;
+	}
+	to {
+		left: -30%;
+	}
+}
+
+@keyframes cloud2 {
+	from {
+		right: -4000%;
+	}
+	to {
+		right: -60%;
+	}
+}
+
+@keyframes cloud3 {
+	from {
+		left: -4000%;
+	}
+	to {
+		left: -55%;
+	}
+}
+
+@keyframes cloud4 {
+	from {
+		right: -4000%;
+	}
+	to {
+		right: -35%;
+	}
+}

@@ -2,7 +2,7 @@ import Display from '../helperFunctions.js';
 import {clouds, clouds_manager } from '../clouds_manager.js';
 
 let information_content = {
-	container: document.getElementById("information"),
+	container: document.getElementById("information_menu"),
 	Show(callBack) {
 		Display(true, this.container);
 		clouds_manager.hideClouds(clouds.top_left, clouds.top_right, clouds.mid_left, clouds.mid_right, clouds.bottom_center);

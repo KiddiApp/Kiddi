@@ -1,18 +1,18 @@
 import Display from './helperFunctions.js';
-import { ShowPopup, HidePopup } from './popup.js';
+import { HidePopup } from './popup.js';
+import homepage_content from './contentPages/homepage.js';
+import instructions_content from './contentPages/instructionspage.js';
 
 let loadingManager = {
 
 	loadingOverlay: document.getElementById("loading_overlay"),
-	toBeLoadedObjectsCount: 8,
+	toBeLoadedObjectsCount: 7,
 	loadedObjectsCount: 0,
 
 	objectHasBeenLoaded: function() { 
 		this.loadedObjectsCount++;
 
-		// console.log("AN OTHER OBJECT HAS BEEN LOADED " + this.loadedObjectsCount);
 		if(this.loadedObjectsCount >= this.toBeLoadedObjectsCount) {
-			// console.log("ALL OBJECTS HAVE BEEN LOADED");
 			this.loadingComplete();
 		}
 	},
@@ -20,6 +20,8 @@ let loadingManager = {
 	loadingComplete: function() {
 		HidePopup();
 		Display(false, this.loadingOverlay);
+		homepage_content.IntroAnimation();
+		instructions_content.AddAnimations();
 	}
 }
 

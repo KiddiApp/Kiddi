@@ -19,6 +19,8 @@
 		<link rel="stylesheet" href="css/boilerplate/animations.css">
 		
 		<link rel="stylesheet" href="css/general/clouds.css">
+		<link rel="stylesheet" href="css/general/transition_animations.css">
+		<link rel="stylesheet" href="css/general/transition.css">
 		<link rel="stylesheet" href="css/general/general.css">
 		<link rel="stylesheet" href="css/general/threejs.css">
 
@@ -51,51 +53,61 @@
 
 		<div class="cover_fullscreen" id="loading_overlay"></div>
 
-		<div class="popup hidden" id="popup_large">
-			<img class="popup_bg" src="Data/Frontend/Images/popup-background-large.png">
+		<!-- <div class="view_container" id="transition_container"> -->
+			<!-- <img class="transition_cloud tcs_1" src="Data/Frontend/Images/Transition/cloud_1.png"> -->
+			<!-- <img class="transition_cloud tcs_2" src="Data/Frontend/Images/Transition/cloud_2.png"> -->
+			<!-- <img class="transition_cloud tcs_3" src="Data/Frontend/Images/Transition/cloud_3.png"> -->
+			<!-- <img class="transition_cloud tcs_4" src="Data/Frontend/Images/Transition/cloud_4.png"> -->
+			<!-- <img class="transition_cloud tcs_5" src="Data/Frontend/Images/Transition/cloud_5.png"> -->
+			<!-- <img class="transition_cloud tcs_6" src="Data/Frontend/Images/Transition/cloud_1.png"> -->
+			<!-- <img class="transition_cloud tcs_7" src="Data/Frontend/Images/Transition/cloud_2.png"> -->
+		<!-- </div> -->
+
+		<div class="popup_scale_in popup hidden" id="popup_large">
+			<img class="popup_bg" src="Data/Frontend/Images/Popup/background-large.png">
 			<div class="popup_information_container">
 				<h2 class="" id="information_title">!Enfoca el libre<br>con la camara!</h2>
 				<p id="large_information_text"></p>
-				<img class="" id="confirm_button_large" src="Data/Frontend/Images/confirm-popup-button-background.png">
+				<img class="" id="confirm_button_large" src="Data/Frontend/Images/General/confirm-button.png">
 				<div class="hidden" id="yes_no_container">
-					<img id="confirm_yes" src="Data/Frontend/Images/yes-popup-button-background.png">
-					<img id="confirm_no" src="Data/Frontend/Images/no-popup-button-background.png">
+					<img id="confirm_yes" src="Data/Frontend/Images/Popup/yes-button.png">
+					<img id="confirm_no" src="Data/Frontend/Images/Popup/no-button.png">
 				</div>
 			</div>
 		</div>
 
-		<div class="popup hidden" id="popup_small">
-			<img class="popup_bg" src="Data/Frontend/Images/popup-background-small.png">
+		<div class="popup_scale_in popup hidden" id="popup_small">
+			<img class="popup_bg" src="Data/Frontend/Images/Popup/background-small.png">
 			<div class="popup_information_container">
 				<h3 id="small_information_text">Some fancy great el popop insta notifications</h3>
-				<img id="confirm_button_small" src="Data/Frontend/Images/confirm-popup-button-background.png">
+				<img id="confirm_button_small" src="Data/Frontend/Images/General/confirm-button.png">
 			</div>
 		</div>
 
 		<div class="view_container" id="clouds_container">
-			<img src="Data/Frontend/Images/cloud-top-left.png" id="top_left_cloud" class="cloud">
-			<img src="Data/Frontend/Images/cloud-top-right.png" id="top_right_cloud" class="cloud">
-			<img src="Data/Frontend/Images/cloud-mid-left.png" id="mid_left_cloud" class="cloud">
-			<img src="Data/Frontend/Images/cloud-mid-right.png" id="mid_right_cloud" class="cloud">
-			<img src="Data/Frontend/Images/cloud-mid-bottom.png" id="mid_bottom_cloud" class="cloud hidden">
+			<img src="Data/Frontend/Images/Background/cloud-top-left.png" id="top_left_cloud" class="cloud">
+			<img src="Data/Frontend/Images/Background/cloud-top-right.png" id="top_right_cloud" class="cloud">
+			<img src="Data/Frontend/Images/Background/cloud-mid-left.png" id="mid_left_cloud" class="cloud">
+			<img src="Data/Frontend/Images/Background/cloud-mid-right.png" id="mid_right_cloud" class="cloud">
+			<img src="Data/Frontend/Images/Background/cloud-mid-bottom.png" id="mid_bottom_cloud" class="cloud hidden">
 		</div>
 
 		<div id="back_button_container" class="hidden">
-			<img id="back_button" src="Data/Frontend/Images/back-button.png">
+			<img id="back_button" src="Data/Frontend/Images/General/back-button.png">
 		</div>
 
 		<div class="view_container" id="home_view">
 			<div id="home_page_grid_container">
-				<img id="grid_item_1" src="Data/Frontend/Images/Kiddi-logo.png">
+				<img id="grid_item_1" class="" src="Data/Frontend/Images/HomePage/Kiddi-logo.png">
 				<div id="grid_item_2" class="text_center">
 					<h1>Bienvenido<br>a KiddiApp</h1>
 					<h3>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium nostrum accusamus, unde excepturi placeat sapiente explicabo.</h3>
 				</div>
 				<div id="grid_item_3">
 					<div id="scan_image" class="wiggle">
-						<img id="scan_background" src="Data/Frontend/Images/Scan-button-background.png">
+						<img id="scan_background" src="Data/Frontend/Images/General/wood-button-background.png">
 						<div id="scan_image_content">
-							<img src="Data/Frontend/Images/camera-icon.png">
+							<img src="Data/Frontend/Images/HomePage/camera-icon.png">
 							<h2>ESCANEAR PÁGINA</h2>
 						</div>
 					</div>
@@ -106,21 +118,21 @@
 
 		<div class="hidden view_container" id="instructions_view">
 			<div id="instructions_text_container">
-				<img src="Data/Frontend/Images/star.png" class="star" id="left_star">
-				<img src="Data/Frontend/Images/star.png" class="star" id="mid_star">
-				<img src="Data/Frontend/Images/star.png" class="star" id="right_star">
+				<img src="Data/Frontend/Images/Instructions/star.png" class="star" id="left_star">
+				<img src="Data/Frontend/Images/Instructions/star.png" class="star" id="mid_star">
+				<img src="Data/Frontend/Images/Instructions/star.png" class="star" id="right_star">
 				<h2 class="text_center">Escanea tu libro de Kiddi y desbloquea los contenidos!</h2>
 				<p class="text_center" id="information_text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis, repellat? Adipisci quibusdam dolore modi veniam temporibus odio cupiditate animi officia neque enim in laborum. Lorem ipsum<br><br>Adipisci quibusdam dolore modi veniam temporibus odio cupiditate animi officia neque enim in laborum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci ullam aspernatur cumque reiciendis.<br><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas dicta sit saepe. Odio accusamus id consequuntur minima, e.</p>
-				<img id="information_plant" src="Data/Frontend/Images/instructions-plant-bottom.png">
+				<img id="information_plant" src="Data/Frontend/Images/Instructions/plant-bottom.png">
 			</div>
 		</div>
 
 		<div class="hidden view_container" id="scan_view">
 			<video id="tracking_video" autoplay muted playsinline></video>
-			<img class="hidden" id="scanning" src="Data/Frontend/Images/scanning-information.png">
+			<img class="hidden" id="scanning" src="Data/Frontend/Images/Scanning/scanning-information.png">
 
 			<div class="hidden" id="scan_succes">
-				<img src="Data/Frontend/Images/found-page-background.png">
+				<img src="Data/Frontend/Images/Scanning/found-page-background.png">
 				<h2 id="found_page_text">Pagina</h2>
 			</div>
 
@@ -141,19 +153,19 @@
 		</div>
 
 		<div class="hidden view_container" id="threejs_canvas">
-			<img class="hidden card_game_deco" id="card_game_butterfly" src="Data/Frontend/Images/cardgame-butterfly-decoration.png">
-			<img class="hidden card_game_deco" id="card_game_mushroom" src="Data/Frontend/Images/cardgame-mushroom-decoration.png">
+			<img class="hidden card_game_deco" id="card_game_butterfly" src="Data/Frontend/Images/Cardgame/butterfly-decoration.png">
+			<img class="hidden card_game_deco" id="card_game_mushroom" src="Data/Frontend/Images/Cardgame/mushroom-decoration.png">
 		</div>  
 
 		<div class="hidden view_container" id="select_character">
 			<h2>Elige a<br>un personaje</h2>
 			<div id="characters">
 				<div class="character" data-character="LapiAnimacion01">
-					<img src="Data/Frontend/Images/Lapi-character-fix.png" data-texture="Data/Models/Animations/D_Lapi_tex.png">
+					<img src="Data/Frontend/Images/PaintingPage/Lapi-character-fix.png" data-texture="Data/Models/Animations/D_Lapi_tex.png">
 					<h2>Lapi</h2>
 				</div>
 				<div class="character" data-character="GombaAnimacion01">
-					<img src="Data/Frontend/Images/Gomba-character-fix.png" data-texture="Data/Models/Animations/D_Gomba_tex.png">
+					<img src="Data/Frontend/Images/PaintingPage/Gomba-character-fix.png" data-texture="Data/Models/Animations/D_Gomba_tex.png">
 					<h2>Gomba</h2>
 				</div>
 			</div>
@@ -164,77 +176,26 @@
 				<canvas id="paint2d"></canvas>
 			</div>
 			<div id="confirm_and_clear_buttons">
-				<img src="Data/Frontend/Images/cancel-button-painting-background.png" id="clear_painting" class="painting_btn">
-				<img src="Data/Frontend/Images/confirm-popup-button-background.png" id="confirm_painting" class="painting_btn">
+				<img src="Data/Frontend/Images/General/cancel-button.png" id="clear_painting" class="painting_btn">
+				<img src="Data/Frontend/Images/General/confirm-button.png" id="confirm_painting" class="painting_btn">
 			</div>
 			<div id="color_selection_container">
 				<div id="color_selection_center">
-					<img src="Data/Frontend/Images/select-color-button-yellow.png" class="color_option" data-color="#f9d46c">
-					<img src="Data/Frontend/Images/select-color-button-blue.png" class="color_option" data-color="#6a90f9">
-					<img src="Data/Frontend/Images/select-color-button-purple.png" class="color_option active_color" data-color="#9770f9">
-					<img src="Data/Frontend/Images/select-color-button-red.png" class="color_option" data-color="#f74387">
-					<img src="Data/Frontend/Images/select-color-button-green.png" class="color_option" data-color="#b3f73f">
+					<img src="Data/Frontend/Images/PaintingPage/select-color-button-yellow.png" class="color_option" data-color="#f9d46c">
+					<img src="Data/Frontend/Images/PaintingPage/select-color-button-blue.png" class="color_option" data-color="#6a90f9">
+					<img src="Data/Frontend/Images/PaintingPage/select-color-button-purple.png" class="color_option active_color" data-color="#9770f9">
+					<img src="Data/Frontend/Images/PaintingPage/select-color-button-red.png" class="color_option" data-color="#f74387">
+					<img src="Data/Frontend/Images/PaintingPage/select-color-button-green.png" class="color_option" data-color="#b3f73f">
 				</div>
 			</div>
 		</div>
 
 		<div class="hidden view_container text_page" id="answers">
-			<img id="answer_arrow" src="Data/Frontend/Images/answers-arrow-top-right-decoration.png">
-			<img id="answer_x" src="Data/Frontend/Images/answers-letter-x-top-right-decoration.png">
-			<img id="answer_d" src="Data/Frontend/Images/answers-letter-d-top-right-decoration.png">
-			<div class="cards_and_title">
-				<h3>Resolución<br>de ejercicios.</h3>
-				<div class="cards_scroll_container">
-					<div class="text_card answers_card">
-						<h4 class="card_identifier">Ejercicio 1</h4>
-						<h2 class="card_main">Some bold text</h2>
-						<p class="card_info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis, voluptas aspernatur. Similique illum, quidem quisquam tempora ad atque fugit quaerat eligendi officia at voluptate tempore suscipit, soluta aut voluptas quod!</p>
-						<img class="card_frog" src="Data/Frontend/Images/textbox-bottom-corner-frog.png">
-					</div>
-					<div class="text_card answers_card">
-						<h4 class="card_identifier">Ejercicio 2</h4>
-						<h2 class="card_main">Some bold text</h2>
-						<p class="card_info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis, voluptas aspernatur. Similique illum, quidem quisquam tempora ad atque fugit quaerat eligendi officia at voluptate tempore suscipit, soluta aut voluptas quod!</p>
-						<img class="card_frog" src="Data/Frontend/Images/textbox-bottom-corner-frog.png">
-					</div>
-					<div class="text_card answers_card">
-						<h4 class="card_identifier">Ejercicio 3</h4>
-						<h2 class="card_main">Some bold text</h2>
-						<p class="card_info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis, voluptas aspernatur. Similique illum, quidem quisquam tempora ad atque fugit quaerat eligendi officia at voluptate tempore suscipit, soluta aut voluptas quod!</p>
-						<img class="card_frog" src="Data/Frontend/Images/textbox-bottom-corner-frog.png">
-					</div>
-				</div>
-				<img id="answer_cactus" src="Data/Frontend/Images/answers-cactus-decoration.png">
-			</div>
+			<!-- TODO: add the new answers style here::: -->
 		</div>
 
-		<div class="hidden view_container text_page" id="information">
-			<img id="info_gold_circle" src="Data/Frontend/Images/information-gold-circle-top-right-decoration.png">
-			<div class="cards_and_title">
-				<h3>Información<br>de salud.</h3>
-				<div class="cards_scroll_container">
-					<div class="text_card information_card">
-						<h4 class="card_identifier">Informaciòn 1</h4>
-						<h2 class="card_main">Some bold text</h2>
-						<p class="card_info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis, voluptas aspernatur. Similique illum, quidem quisquam tempora ad atque fugit quaerat eligendi officia at voluptate tempore suscipit, soluta aut voluptas quod!</p>
-						<img class="card_frog" src="Data/Frontend/Images/textbox-bottom-corner-frog.png">
-					</div>
-					<div class="text_card information_card">
-						<h4 class="card_identifier">Informaciòn 2</h4>
-						<h2 class="card_main">Some bold text</h2>
-						<p class="card_info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis, voluptas aspernatur. Similique illum, quidem quisquam tempora ad atque fugit quaerat eligendi officia at voluptate tempore suscipit, soluta aut voluptas quod!</p>
-						<img class="card_frog" src="Data/Frontend/Images/textbox-bottom-corner-frog.png">
-					</div>
-					<div class="text_card information_card">
-						<h4 class="card_identifier">Informaciòn 3</h4>
-						<h2 class="card_main">Some bold text</h2>
-						<p class="card_info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis, voluptas aspernatur. Similique illum, quidem quisquam tempora ad atque fugit quaerat eligendi officia at voluptate tempore suscipit, soluta aut voluptas quod!</p>
-						<img class="card_frog" src="Data/Frontend/Images/textbox-bottom-corner-frog.png">
-					</div>
-				</div>
-				<img id="info_butterfly" src="Data/Frontend/Images/information-butterfly-decoration.png">
-				<img id="info_forrest" src="Data/Frontend/Images/information-forrest-decoration.png">
-			</div>
+		<div class="hidden view_container text_page" id="information_menu">
+			<!-- TODO: ADD THE MENU HERE -->
 		</div>
 
 

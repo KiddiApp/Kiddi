@@ -31,7 +31,7 @@ const paintedCharacterAnimation = {
 			loader.load('./Data/Models/Animations/'+character_file+'.fbx', function ( fbx ) {
 
 				fbx.rotation.y = Math.PI;
-				if(character_file == "LapiAnimacion01") {
+				if(character_file == ref.character_files[0]) {
 					fbx.scale.set(0.15, 0.15, 0.15);
 					fbx.position.setY(-1);
 				} else {

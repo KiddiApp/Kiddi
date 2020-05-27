@@ -14,7 +14,7 @@
 }
 
 body {
-	background: url(../../Data/Frontend/Images/clouds-main-background.png) no-repeat center center fixed; 
+	background: url(../../Data/Frontend/Images/Background/clouds-main-background.png) no-repeat center center fixed; 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -26,7 +26,7 @@ body {
 }
 
 #loading_overlay {
-	z-index: 3;
+	z-index: 4;
 }
 
 

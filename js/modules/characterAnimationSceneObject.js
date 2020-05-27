@@ -79,7 +79,7 @@ const characterAnimationSceneObject = {
 	}
 }
 
-characterAnimationSceneObject.loadResource();
-characterAnimationSceneObject.init();
+// characterAnimationSceneObject.loadResource();
+// characterAnimationSceneObject.init();
 
 export default characterAnimationSceneObject;

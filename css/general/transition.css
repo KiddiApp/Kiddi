@@ -1,0 +1,65 @@
+#transition_container {
+	z-index: 100; 
+	/* should be 4 */
+}
+
+.transition_cloud {
+	position: absolute;
+	animation-fill-mode: forwards;
+}
+
+.tcs_1 {
+	/* from left */
+	height: 50%;
+	bottom: -10px;
+	animation-name: cloud1;
+	animation-duration: 1s;
+}
+
+.tcs_2 {
+	/* from right */
+	/* right: -60%; */
+	top: -20%;
+	height: 50%;
+	animation-name: cloud2;
+	animation-duration: 1s;
+}
+
+.tcs_3 {
+	/* from left */
+	/* left: -55%; */
+	animation-name: cloud3;
+	animation-duration: 1s;
+	top: 20%;
+	height: 40%;
+}
+
+.tcs_4 {
+	/* from right */
+	/* right: -35%; */
+	animation-name: cloud4;
+	animation-duration: 1s;
+	top: 15%;
+	height: 25%;
+}
+
+.tcs_5 {
+	/* from left */
+	height: 30%;
+	left: -34%;
+	bottom: 30%;
+}
+
+.tcs_6 {
+	/* from right */
+	height: 20%;
+	right: -55%;
+	bottom: 32%;
+}
+
+.tcs_7 {
+	/* from left */
+	height: 30%;
+	bottom: -2%;
+	left: -70%;
+}
