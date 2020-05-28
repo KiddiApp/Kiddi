@@ -8,7 +8,13 @@ const states = {
 	Answers: 6,
 	PaintingCharacterSelection: 7,
 	PaintingPainting: 8,
-	Painting3dAnimation: 9
+	Painting3dAnimation: 9,
+	Information_content_1: 10,
+	Information_content_2: 11,
+	Information_content_3: 12,
+	Information_content_4: 13,
+	Information_content_5: 14,
+	Information_content_5: 15
 }
 
 export default states;

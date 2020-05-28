@@ -42,7 +42,9 @@
 		<link rel="stylesheet" href="css/painting/character_select.css">
 		<link rel="stylesheet" href="css/painting/painting.css">
 
-		<link rel="stylesheet" href="css/answers-information/answer_info.css">
+		<link rel="stylesheet" href="css/answers/answers.css">
+
+		<link rel="stylesheet" href="css/information/menu.css">
 
 
 		<meta name="theme-color" content="#fafafa">
@@ -68,10 +70,10 @@
 			<div class="popup_information_container">
 				<h2 class="" id="information_title">!Enfoca el libre<br>con la camara!</h2>
 				<p id="large_information_text"></p>
-				<img class="movelr" id="confirm_button_large" src="Data/Frontend/Images/General/confirm-button.png">
-				<div class="hidden movelr" id="yes_no_container">
-					<img id="confirm_yes" src="Data/Frontend/Images/Popup/yes-button.png">
-					<img id="confirm_no" src="Data/Frontend/Images/Popup/no-button.png">
+				<img class="rotatepopupbtns" id="confirm_button_large" src="Data/Frontend/Images/General/confirm-button.png">
+				<div class="hidden " id="yes_no_container">
+					<img id="confirm_yes" class="rotatepopupbtns" src="Data/Frontend/Images/Popup/yes-button.png">
+					<img id="confirm_no" class="rotatepopupbtns" src="Data/Frontend/Images/Popup/no-button.png">
 				</div>
 			</div>
 		</div>
@@ -80,7 +82,7 @@
 			<img class="popup_bg" src="Data/Frontend/Images/Popup/background-small.png">
 			<div class="popup_information_container">
 				<h3 id="small_information_text">Some fancy great el popop insta notifications</h3>
-				<img id="confirm_button_small" class="movelr" src="Data/Frontend/Images/General/confirm-button.png">
+				<img id="confirm_button_small" class="rotatepopupbtns" src="Data/Frontend/Images/General/confirm-button.png">
 			</div>
 		</div>
 
@@ -101,7 +103,11 @@
 				<img id="grid_item_1" class="" src="Data/Frontend/Images/HomePage/Kiddi-logo.png">
 				<div id="grid_item_2" class="text_center">
 					<h1>Bienvenido<br>a KiddiApp</h1>
-					<h3>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium nostrum accusamus, unde excepturi placeat sapiente explicabo.</h3>
+					<h3>
+						Encuentra estos iconos
+						<img class="phone-icon" src="Data/Frontend/Images/General/phone-icon.png">
+						<br>en tu libro y apunta sobre él con la cámara del celular para descubrir todas las sorpresas que te esperan.
+					</h3>
 				</div>
 				<div id="grid_item_3">
 					<div id="scan_image" class="wiggle">
@@ -117,12 +123,18 @@
 		</div>
 
 		<div class="hidden view_container" id="instructions_view">
-			<div id="instructions_text_container">
+			<div class="instructions_text_container">
 				<img src="Data/Frontend/Images/Instructions/star.png" class="star" id="left_star">
 				<img src="Data/Frontend/Images/Instructions/star.png" class="star" id="mid_star">
 				<img src="Data/Frontend/Images/Instructions/star.png" class="star" id="right_star">
 				<h2 class="text_center">Escanea tu libro de Kiddi y desbloquea los contenidos!</h2>
-				<p class="text_center" id="information_text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis, repellat? Adipisci quibusdam dolore modi veniam temporibus odio cupiditate animi officia neque enim in laborum. Lorem ipsum<br><br>Adipisci quibusdam dolore modi veniam temporibus odio cupiditate animi officia neque enim in laborum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci ullam aspernatur cumque reiciendis.<br><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas dicta sit saepe. Odio accusamus id consequuntur minima, e.</p>
+				<p class="text_center" id="information_text">
+					KiddiApp te permite acceder a actividades exclusivas del mundo Kiddi. Para activarlas busca las páginas:1, 2, 5, 7, 14 y 15, 17 y 21, en las que aparece este icono. 
+					<img class="phone-icon" id="icon-middle" src="Data/Frontend/Images/General/phone-icon.png"><br><br>
+					Cuando hayas encontrado el icono <img class="phone-icon" id="icon-middle" src="Data/Frontend/Images/General/phone-icon.png"> , pulsa "Escanear página" que da permiso para usar la cámara de tu smartphone. Luego asegúrate de enfocar bien el dibujo.<br><br> 
+					Si no logras usar la cámara, refresca la página para que vuelva a aparecer el cuadro de escaneo. Si aún no se activa el contenido, comprueba que tu celular no se encuentre demasiado cerca de la página. La distancia ideal son de 25 a 30 cm.<br><br>
+					Comprueba también que tu cuadernillo tenga buena luz y que sus páginas no estén dobladas. Recuerda que el escaneo se realiza a través de la cámara, asegúrate que el lente esté limpio y no lo tape algún objeto como la funda del celular. 
+				</p>
 				<img id="information_plant" src="Data/Frontend/Images/Instructions/plant-bottom.png">
 			</div>
 		</div>
@@ -155,18 +167,18 @@
 		</div>
 
 		<div class="hidden view_container" id="threejs_canvas">
-			<img class="hidden card_game_deco" id="card_game_butterfly" src="Data/Frontend/Images/Cardgame/butterfly-decoration.png">
+			<img class="hidden card_game_deco hovering" id="card_game_butterfly" src="Data/Frontend/Images/Cardgame/butterfly-decoration.png">
 			<img class="hidden card_game_deco" id="card_game_mushroom" src="Data/Frontend/Images/Cardgame/mushroom-decoration.png">
 		</div>  
 
 		<div class="hidden view_container" id="select_character">
 			<h2>Elige a<br>un personaje</h2>
 			<div id="characters">
-				<div class="character" data-character="LapiAnimacion01">
+				<div class="character scale_in" data-character="LapiAnimacion01">
 					<img src="Data/Frontend/Images/PaintingPage/Lapi-character-fix.png" data-texture="Data/Models/Animations/D_Lapi_tex.png">
 					<h2>Lapi</h2>
 				</div>
-				<div class="character" data-character="GombaAnimacion01">
+				<div class="character scale_in" data-character="GombaAnimacion01">
 					<img src="Data/Frontend/Images/PaintingPage/Gomba-character-fix.png" data-texture="Data/Models/Animations/D_Gomba_tex.png">
 					<h2>Gomba</h2>
 				</div>
@@ -183,11 +195,11 @@
 			</div>
 			<div id="color_selection_container">
 				<div id="color_selection_center">
-					<img src="Data/Frontend/Images/PaintingPage/select-color-button-yellow.png" class="color_option" data-color="#f9d46c">
-					<img src="Data/Frontend/Images/PaintingPage/select-color-button-blue.png" class="color_option" data-color="#6a90f9">
-					<img src="Data/Frontend/Images/PaintingPage/select-color-button-purple.png" class="color_option active_color" data-color="#9770f9">
-					<img src="Data/Frontend/Images/PaintingPage/select-color-button-red.png" class="color_option" data-color="#f74387">
-					<img src="Data/Frontend/Images/PaintingPage/select-color-button-green.png" class="color_option" data-color="#b3f73f">
+					<img src="Data/Frontend/Images/PaintingPage/select-color-button-yellow.png" style="animation-delay: 0s;" class="color_option movebt" data-color="#f9d46c">
+					<img src="Data/Frontend/Images/PaintingPage/select-color-button-blue.png" style="animation-delay: .2s;" class="color_option movebt" data-color="#6a90f9">
+					<img src="Data/Frontend/Images/PaintingPage/select-color-button-purple.png" style="animation-delay: .4s;" class="color_option movebt active_color" data-color="#9770f9">
+					<img src="Data/Frontend/Images/PaintingPage/select-color-button-red.png" style="animation-delay: .6s;" class="color_option movebt" data-color="#f74387">
+					<img src="Data/Frontend/Images/PaintingPage/select-color-button-green.png" style="animation-delay: .8s;" class="color_option movebt" data-color="#b3f73f">
 				</div>
 			</div>
 		</div>
@@ -197,7 +209,33 @@
 		</div>
 
 		<div class="hidden view_container text_page" id="information_menu">
-			<!-- TODO: ADD THE MENU HERE -->
+			<div class="instructions_text_container text_center">
+				<h2 id="menu_title">Información<br>para padres</h2>
+				<div class="information_button" data-url="10">
+					<img src="Data/Frontend/Images/General/wood-button-background.png">
+					<h2>¿QUÉ ES LA DISLEXIA?</h2>
+				</div>
+				<div class="information_button" data-url="11">
+					<img src="Data/Frontend/Images/General/wood-button-background.png">
+					<h2>¿QUÉ ES EL DALTONISMO?</h2>
+				</div>
+				<div class="information_button" data-url="12">
+					<img src="Data/Frontend/Images/General/wood-button-background.png">
+					<h2>¿QUÉ ES LA DISGRAFÍA?</h2>
+				</div>
+				<div class="information_button" data-url="13">
+					<img src="Data/Frontend/Images/General/wood-button-background.png">
+					<h2>¿QUÉ HACER?</h2>
+				</div>
+				<div class="information_button" data-url="14">
+					<img src="Data/Frontend/Images/General/wood-button-background.png">
+					<h2>CENTROS ESPECIALIZADOS</h2>
+				</div>
+				<div class="information_button" data-url="15">
+					<img src="Data/Frontend/Images/General/wood-button-background.png">
+					<h2>REFERENCIAS</h2>
+				</div>
+			</div>
 		</div>
 
 

@@ -49,3 +49,22 @@ body {
 	right: 0;
 	bottom: 0;
 }
+
+.phone-icon {
+	display: inline;
+	width: 15px;
+	padding: 5px 5px;
+	vertical-align: bottom;
+}
+
+#icon-middle {
+	vertical-align: middle;
+}
+
+#icon-bottom {
+	vertical-align: bottom;
+}
+
+#icon-top {
+	vertical-align: top;
+}

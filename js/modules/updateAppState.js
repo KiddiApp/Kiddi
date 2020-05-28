@@ -9,6 +9,11 @@ import answers_content from './contentPages/answerspage.js';
 import characterselection_content from './contentPages/characterselectionpage.js';
 import painting_content from './contentPages/paintingpage.js';
 import paintedCharacterAnimation_content from './contentPages/paintedCharacterAnimationPage.js';
+import { information_dislexia_content } from './contentPages/information_dislexia.js';
+import { information_colorblindness_content } from './contentPages/information_colorblindness.js';
+import { information_disgraphia_content } from './contentPages/information_disgraphia.js';
+import { information_summary_content } from './contentPages/information_summary.js';
+import { information_references_content } from './contentPages/information_references.js';
 
 let backbtn = document.getElementById("back_button_container");
 
@@ -54,6 +59,18 @@ function StateToContent(state) {
 			return painting_content;
 		case states.Painting3dAnimation:
 			return paintedCharacterAnimation_content;
+		case states.Information_content_1:
+			return information_dislexia_content;
+		case states.Information_content_2:
+			return information_colorblindness_content;
+		case states.Information_content_3:
+			return information_disgraphia_content;
+		case states.Information_content_4:
+			return information_summary_content;
+		case states.Information_content_5:
+			return; //TODO: ask fredo what should be here...
+		case states.Information_content_6:
+			return information_references_content;
 	}
 }
 

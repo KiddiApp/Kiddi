@@ -40,11 +40,18 @@
 	-o-animation: rotate 8s infinite;
 }
 
-.movelr {
-	animation: movelr 6s infinite;
-	-moz-animation: movelr 6s infinite;
-	-webkit-animation: movelr 6s infinite;
-	-o-animation: movelr 6s infinite;
+.rotatepopupbtns {
+	animation: rotatebtn 10s infinite;
+	-moz-animation: rotatebtn 10s infinite;
+	-webkit-animation: rotatebtn 10s infinite;
+	-o-animation: rotatebtn 10s infinite;
+}
+
+.hovering {
+	animation: hovering 30s infinite;
+	-moz-animation: hovering 30s infinite;
+	-webkit-animation: hovering 30s infinite;
+	-o-animation: hovering 30s infinite;
 }
 
 .blink {
@@ -52,6 +59,13 @@
 	-moz-animation: blink 1.5s infinite;
 	-webkit-animation: blink 1.5s infinite;
 	-o-animation: blink 1.5s infinite;
+}
+
+.movebt {
+	animation: movebt .5s forwards ;
+	-moz-animation: movebt .5s forwards;
+	-webkit-animation: movebt .5s forwards;
+	-o-animation: movebt .5s forwards;
 }
 
 @keyframes wiggle {
@@ -131,7 +145,6 @@
 	100% { transform: rotate(0deg); }
 }
 
-
 @-webkit-keyframes rotate {
 	0% { -webkit-transform: rotate(0deg); }
 	20% { -webkit-transform: rotate(100deg); }
@@ -140,28 +153,42 @@
 	100% { -webkit-transform: rotate(0deg); }
 }
 
-@keyframes movelr {
+@keyframes rotatebtn {
+	0% { transform: rotate(0deg); }
+	20% { transform: rotate(0deg); }
+	35% { transform: rotate(20deg); }
+	65% { transform: rotate(-20deg); }
+	80% { transform: rotate(0deg); }
+	100% { transform: rotate(0deg); }
+}
+
+@-webkit-keyframes rotatebtn {
+	0% { -webkit-transform: rotate(0deg); }
+	20% { -webkit-transform: rotate(0deg); }
+	35% { -webkit-transform: rotate(20deg); }
+	65% { -webkit-transform: rotate(-20deg); }
+	80% { -webkit-transform: rotate(0deg); }
+	100% { -webkit-transform: rotate(0deg); }
+}
+
+@keyframes hovering {
 	0% { transform: translate(0, 0); }
-	5% { transform: translate(-20px, 0); }
-	15% { transform: translate(20px, 0); }
-	20% { transform: translate(0, 0); }
-	70% { transform: translate(0, 0); }
-	75% { transform: translate(20px, 0); }
-	90% { transform: translate(-20px, 0); }
-	95% { transform: translate(0, 0); }
+	20% { transform: translate(-10px, -20px); }
+	40% { transform: translate(20px, 5px); }
+	60% { transform: translate(0, 0); }
+	70% { transform: translate(20px, 0); }
+	90% { transform: translate(-10px, 20px); }
 	100% { transform: translate(0, 0); }
 }
 
 
-@-webkit-keyframes movelr {
+@-webkit-keyframes hovering {
 	0% { -webkit-transform: translate(0, 0); }
-	32.5% { -webkit-transform: translate(-20px, 0); }
-	37.5% { -webkit-transform: translate(20px, 0); }
-	40% { -webkit-transform: translate(0, 0); }
-	80% { -webkit-transform: translate(0, 0); }
-	82.5% { -webkit-transform: translate(20px, 0); }
-	87.5% { -webkit-transform: translate(-20px, 0); }
-	90% { -webkit-transform: translate(0, 0); }
+	20% { -webkit-transform: translate(-10px, -20px); }
+	40% { -webkit-transform: translate(20px, 5px); }
+	60% { -webkit-transform: translate(0, 0); }
+	70% { -webkit-transform: translate(20px, 0); }
+	90% { -webkit-transform: translate(-10px, 20px); }
 	100% { -webkit-transform: translate(0, 0); }
 }
 
@@ -181,4 +208,14 @@
 	70% { opacity: 0; }
 	90% { opacity: 1; }
 	100% { opacity: 1; }
+}
+
+@keyframes movebt{
+	0% { margin-bottom: -200px; }
+	100% { margin-bottom: 0; }
+}
+
+@-webkit-keyframes movebt {
+	0% { margin-bottom: -200px; }
+	100% { margin-bottom: 0; }
 }
