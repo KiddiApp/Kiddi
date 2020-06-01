@@ -40,6 +40,7 @@ document.getElementById("confirm_no").addEventListener('click', function() {
 });
 
 function ShowPopup(popup_type, title, information, buttonCount, buttonClickCallback) {
+	PopupStyleManager(true, "popup_scale_in");
 	if(popup_type == 1) {
 		if(title == null) {
 			Display(false, popup_large_title);
@@ -77,8 +78,29 @@ function ShowPopup(popup_type, title, information, buttonCount, buttonClickCallb
 
 function HidePopup() {
 	if(popup_delay) clearTimeout(popup_delay);
-	Display(false, popup_container_large);
-	Display(false, popup_container_small);
+	console.log("REMOVE POPUP PLEASE");
+	PlayRemoveAnimation();
+}
+
+function PlayRemoveAnimation() {
+	PopupStyleManager(false, "popup_scale_in");
+	PopupStyleManager(true, "popup_scale_out");
+	setTimeout(function() {
+		PopupStyleManager(false, "popup_scale_out");
+		Display(false, popup_container_large);
+		Display(false, popup_container_small);
+	}, 500);
+}
+
+function PopupStyleManager(add, style) {
+	if(add) {
+		popup_container_large.classList.add(style);
+		popup_container_small.classList.add(style);
+	} else {
+		popup_container_large.classList.remove(style);
+		popup_container_small.classList.remove(style);		
+	}
+	
 }
 
 export { ShowPopup, HidePopup };

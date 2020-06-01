@@ -1,0 +1,20 @@
+#info_2_head_txt {
+	color: rgb(153, 73, 85);
+	padding: 30px 0;
+}
+
+#color_bold_2 {
+	font-family: senbold;
+	color: rgb(153, 73, 85);
+}
+
+#information_content_2 {
+	background-color: rgb(184, 218, 173);
+}
+
+#background_green {
+	background-image: url(../../Data/Frontend/Images/Information/Page_2/green-background.png);
+	background-position: center top;
+	background-repeat: no-repeat;
+	background-size: 100%;
+}

@@ -26,6 +26,13 @@
 	-o-animation: scaleInPopup .5s ease-in forwards;
 }
 
+.popup_scale_out {
+	animation: scaleOutPopup .5s ease-out forwards;
+	-moz-animation: scaleOutPopup .5s ease-out forwards;
+	-webkit-animation: scaleOutPopup .5s ease-out forwards;
+	-o-animation: scaleOutPopup .5s ease-out forwards;
+}
+
 .scale {
 	animation: scaleInXL 8s infinite;
 	-moz-animation: scaleInXL 8s infinite;
@@ -135,6 +142,20 @@
 	70% { transform: translate(-50%, -50%) scale(1.15); }
 	75% { transform: translate(-50%, -50%) scale(1.15); }
 	100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+@-webkit-keyframes scaleOutPopup {
+	0% { -webkit-transform: translate(-50%, -50%) scale(1); }
+	70% { -webkit-transform: translate(-50%, -50%) scale(1.15); }
+	75% { -webkit-transform: translate(-50%, -50%) scale(1.15); }
+	100% { -webkit-transform: translate(-50%, -50%) scale(0.5); }
+}
+
+@keyframes scaleOutPopup {
+	0% { transform: translate(-50%, -50%) scale(1); }
+	70% { transform: translate(-50%, -50%) scale(1.15); }
+	75% { transform: translate(-50%, -50%) scale(1.15); }
+	100% { transform: translate(-50%, -50%) scale(0.5); }
 }
 
 @keyframes rotate {

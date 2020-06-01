@@ -1,0 +1,39 @@
+.content_margin {
+	box-sizing: border-box;
+	width: 100%;
+	padding: 80px 16.5%;
+}
+
+.content_text {
+	font-family: senregular;
+	font-size: 18px;
+}
+
+.content_bold {
+	font-family: senbold;
+}
+
+.bubble {
+	width: 100%;
+	padding-bottom: 20px;
+}
+
+.info_head_text {
+	font-family: lilita_oneregular;
+	font-size: 30px;
+	line-height: 34px;
+}
+
+.point {
+	padding-top: 18px;
+}
+
+.point_star {
+	width: 15px;
+	margin-top: 4px;
+	float: left;
+}
+
+.point_text {
+	margin-left: 20px;
+}

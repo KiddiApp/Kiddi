@@ -1,0 +1,32 @@
+#yellow_content {
+	position: relative;
+	background: -moz-linear-gradient(0deg, rgba(251,224,146,0) 24%, rgba(251,224,146,1) 26%);
+	background: -webkit-linear-gradient(0deg, rgba(251,224,146,0) 24%, rgba(251,224,146,1) 26%);
+	background: linear-gradient(0deg, rgba(251,224,146,0) 24%, rgba(251,224,146,1) 26%);
+}
+
+#yellow_background_img {
+	background-image: url(../../Data/Frontend/Images/Information/Page_0/yellow-background.png);
+	background-position: center bottom;
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+
+#intro_img {
+	padding-left: 10%;
+	width: 90%;
+}
+
+#block_1 {
+	padding-top: 30px;
+}
+
+#multi_bubbles_0 {
+	padding: 20px 0;
+	width: 100%;
+}
+
+#info_0_head_txt {
+	padding: 30px 0;
+	color: rgb(61, 146, 111	);
+}

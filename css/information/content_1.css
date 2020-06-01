@@ -1,0 +1,21 @@
+#leaf_1 {
+	position: absolute;
+	right: 10%;
+	top: 50px;
+	width: 10%;
+}
+
+#info_1_head_txt {
+	padding: 30px 0;
+	color: rgb(73, 114, 146	);
+}
+
+#flowers_1 {
+	box-sizing: border-box;
+	width: 100%;
+	padding: 40px 15%;
+}
+
+#water_1 {
+	width: 100%;
+}

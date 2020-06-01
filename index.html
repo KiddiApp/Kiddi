@@ -45,6 +45,11 @@
 		<link rel="stylesheet" href="css/answers/answers.css">
 
 		<link rel="stylesheet" href="css/information/menu.css">
+		<link rel="stylesheet" href="css/information/content_general.css">
+		<link rel="stylesheet" href="css/information/content_0.css">
+		<link rel="stylesheet" href="css/information/content_1.css">
+		<link rel="stylesheet" href="css/information/content_2.css">
+		<link rel="stylesheet" href="css/information/content_3.css">
 
 
 		<meta name="theme-color" content="#fafafa">
@@ -53,7 +58,7 @@
 	<body>
 		<div class="cover_fullscreen" id="problem_overlay"></div>
 
-		<div class="cover_fullscreen" id="loading_overlay"></div>
+		<div class="cover_fullscreen hidden" id="loading_overlay"></div>
 
 		<!-- <div class="view_container" id="transition_container"> -->
 			<!-- <img class="transition_cloud tcs_1" src="Data/Frontend/Images/Transition/cloud_1.png"> -->
@@ -94,11 +99,11 @@
 			<img src="Data/Frontend/Images/Background/cloud-mid-bottom.png" id="mid_bottom_cloud" class="cloud hidden">
 		</div>
 
-		<div id="back_button_container" class="hidden">
+		<div id="back_button_container" class="">
 			<img id="back_button" src="Data/Frontend/Images/General/back-button.png">
 		</div>
 
-		<div class="view_container" id="home_view">
+		<div class="view_container hidden" id="home_view">
 			<div id="home_page_grid_container">
 				<img id="grid_item_1" class="" src="Data/Frontend/Images/HomePage/Kiddi-logo.png">
 				<div id="grid_item_2" class="text_center">
@@ -204,11 +209,11 @@
 			</div>
 		</div>
 
-		<div class="hidden view_container text_page" id="answers">
+		<div class="hidden view_container" id="answers">
 			<!-- TODO: add the new answers style here::: -->
 		</div>
 
-		<div class="hidden view_container text_page" id="information_menu">
+		<div class="hidden view_container" id="information_menu">
 			<div class="instructions_text_container text_center">
 				<h2 id="menu_title">Información<br>para padres</h2>
 				<div class="information_button" data-url="10">
@@ -238,6 +243,193 @@
 			</div>
 		</div>
 
+		<div class="view_container hidden" id="information_content_0">
+			<div id="yellow_content">
+				<div class="content_margin" id="yellow_background_img">
+					<img id="intro_img" src="Data/Frontend/Images/Information/Page_0/diseases-intro.png">
+					<p class="content_text" id="block_1">
+							<span class="content_bold">Kiddi World</span> es un nuevo y divertido juego detector interactivo para niños. Con él, podemos identificar de manera oportuna alguna de estas tres condiciones: <span class="content_bold">daltonismo, dislexia y disgrafía.</span><br><br>
+							Los resultados de esta actividad interactiva te ofrecen un reporte de alerta para los niños que pueden requerir atención profesional y especializada para cualquiera de las tres condiciones.
+					</p>
+				</div>
+			</div>
+			<div id="transparent_content">
+				<div class="content_margin">
+					<img class="bubble" src="Data/Frontend/Images/Information/Page_0/bubble-text.png">
+					<p class="content_text" id="block_2">
+						La dislexia o “dificultad de lectura” es un problema frecuente del aprendizaje que causa dificultad para identificar los sonidos del habla y relacionarlos con las letras y las palabras; no obstante, los niños con dislexia tienen una inteligencia y visión normal.<br><br>
+						La dislexia puede afectar los siguientes ámbitos escolares:
+					</p>
+					<img id="multi_bubbles_0" src="Data/Frontend/Images/Information/Page_0/multiple-bubble-text.png">
+					<h2 class="info_head_text" id="info_0_head_txt">¿Cómo puedo saber si mi hijo puede tener dislexia?</h2>
+					<p class="content_text" id="block_3">
+						Una vez que tu hijo esté en la escuela, es posible que los signos y síntomas de la dislexia se hagan más visibles, entre ellos:
+					</p>
+					<div id="points_container">
+						<div class="point">
+							<img class="point_star" src="Data/Frontend/Images/Information/Page_0/star.png">
+							<p class="content_text point_text">
+								Un nivel de lectura muy por debajo del que se espera para la edad.
+							</p>
+						</div>
+						<div class="point">
+							<img class="point_star" src="Data/Frontend/Images/Information/Page_0/star.png">
+							<p class="content_text point_text">
+								Problemas para procesar y comprender lo que escucha.
+							</p>
+						</div>
+						<div class="point">
+							<img class="point_star" src="Data/Frontend/Images/Information/Page_0/star.png">
+							<p class="content_text point_text">
+								Dificultad para encontrar la palabra correcta o formular respuestas a preguntas.
+							</p>
+						</div>
+						<div class="point">
+							<img class="point_star" src="Data/Frontend/Images/Information/Page_0/star.png">
+							<p class="content_text point_text">
+								Problemas para recordar secuencias de cosas.
+							</p>
+						</div>
+						<div class="point">
+							<img class="point_star" src="Data/Frontend/Images/Information/Page_0/star.png">
+							<p class="content_text point_text">
+								Dificultad para ver (y ocasionalmente escuchar) similitudes y diferencias entre letras y palabras.
+							</p>
+						</div>
+						<div class="point">
+							<img class="point_star" src="Data/Frontend/Images/Information/Page_0/star.png">
+							<p class="content_text point_text">
+								Incapacidad para pronunciar una palabra desconocida.
+							</p>
+						</div>
+						<div class="point">
+							<img class="point_star" src="Data/Frontend/Images/Information/Page_0/star.png">
+							<p class="content_text point_text">
+								Dificultad para deletrear.
+							</p>
+						</div>
+						<div class="point">
+							<img class="point_star" src="Data/Frontend/Images/Information/Page_0/star.png">
+							<p class="content_text point_text">
+								Tardar más tiempo del habitual en completar tareas que conllevan leer o escribir.
+							</p>
+						</div>
+						<div class="point">
+							<img class="point_star" src="Data/Frontend/Images/Information/Page_0/star.png">
+							<p class="content_text point_text">
+								Evitar actividades que conllevan leer.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="view_container hidden" id="information_content_1">
+			<div class="content_margin">
+				<img id="leaf_1" src="Data/Frontend/Images/Information/Page_1/leaf.png">
+				<img class="bubble" src="Data/Frontend/Images/Information/Page_1/bubble.png">
+				<p class="content_text">
+					El daltonismo o visión cromática deficiente es una afección en la cual no se pueden ver los colores de manera normal. Ocurre cuando hay un problema con los pigmentos en ciertas células nerviosas del ojo que perciben el color. Estas células se llaman conos y se encuentran en la capa de tejido sensible a la luz que recubre la parte posterior del ojo, llamada retina. El daltonismo suele ser hereditario y es una afección de por vida. Y aunque los hombres son más propensos que las mujeres a nacer con este trastorno, la mayoría de quienes lo padecen pueden adaptarse.
+				</p>
+				<h2 class="info_head_text" id="info_1_head_txt">¿Cómo puedo saber si mi hijo puede tener daltonismo?</h2>
+				<p class="content_text">
+					Los síntomas varían de una persona a otra, pero pueden incluir:
+				</p>
+				<div id="points_container">
+					<div class="point">
+						<img class="point_star" src="Data/Frontend/Images/Information/Page_1/star.png">
+						<p class="content_text point_text">
+							Dificultad para ver los colores y su brillo en la forma usual.
+						</p>
+					</div>
+					<div class="point">
+						<img class="point_star" src="Data/Frontend/Images/Information/Page_1/star.png">
+						<p class="content_text point_text">
+							Incapacidad para establecer la diferencia entre sombras del mismo color o de colores similares.
+						</p>
+					</div>
+					<div class="point">
+						<img class="point_star" src="Data/Frontend/Images/Information/Page_1/star.png">
+						<p class="content_text point_text">
+							No distinguen entre diferentes tonalidades de rojo y verde, azul y amarillo o cualquier color.
+						</p>
+					</div>
+				</div>
+				<img id="flowers_1" src="Data/Frontend/Images/Information/Page_1/flowers.png">
+				<p class="content_text">
+					A menudo, los síntomas son tan leves que las personas no saben que padecen daltonismo. Un padre puede notar signos de daltonismo cuando su pequeño hijo está aprendiendo los nombres de los colores.<br><br>
+					En casos graves, se pueden presentar movimientos rápidos de los ojos de un lado a otro (nistagmo) y otros síntomas.
+				</p>
+			</div>
+			<img id="water_1" src="Data/Frontend/Images/Information/Page_1/water.png">
+		</div>
+
+		<div class="view_container" id="information_content_2">
+			<div class="content_margin" id="background_green">
+				<img class="bubble" src="Data/Frontend/Images/Information/Page_2/bubble.png">
+				<p class="content_text">
+					La disgrafía es la dificultad para escribir letras a mano. Esta condición puede interferir con el aprendizaje de deletrear palabras y la rapidez con la que se escribe un texto. Los niños con disgrafía pueden presentar dificultad en la escritura, para deletrear o ambas condiciones al mismo tiempo. Los problemas para trazar las letras pueden complicar el aprendizaje de la ortografía. Es por lo que muchos chicos con disgrafía tienen mala ortografía.
+				</p>
+				<h2 class="info_head_text" id="info_2_head_txt">¿Cómo puedo saber si mi hijo puede tener disgrafía?</h2>
+				<p class="content_text">
+					Algunos niños con disgrafía hacen inversiones (cambian la dirección de las letras a lo largo del eje vertical o del eje horizontal, de tal modo que la letra queda al revés) o transposiciones (la secuencia de las letras en una palabra la colocan fuera de orden). Estos errores no son causas sino síntomas de los problemas de escritura.<br><br>
+					<span id="color_bold_2">Además:</span><br>
+					Los niños pueden tener dificultades con algunas de estas destrezas clave:
+				</p>
+				<div id="points_container">
+					<div class="point">
+						<img class="point_star" src="Data/Frontend/Images/Information/Page_2/star.png">
+						<p class="content_text point_text">
+							Formar las letras.
+						</p>
+					</div>
+					<div class="point">
+						<img class="point_star" src="Data/Frontend/Images/Information/Page_2/star.png">
+						<p class="content_text point_text">
+							Espaciar correctamente las letras en la página.
+						</p>
+					</div>
+					<div class="point">
+						<img class="point_star" src="Data/Frontend/Images/Information/Page_2/star.png">
+						<p class="content_text point_text">
+							Escribir en línea recta.
+						</p>
+					</div>
+					<div class="point">
+						<img class="point_star" src="Data/Frontend/Images/Information/Page_2/star.png">
+						<p class="content_text point_text">
+							Hacer las letras del tamaño correcto.
+						</p>
+					</div>
+					<div class="point">
+						<img class="point_star" src="Data/Frontend/Images/Information/Page_2/star.png">
+						<p class="content_text point_text">
+							Sostener el papel con una mano mientras escribe con la otra.
+						</p>
+					</div>
+					<div class="point">
+						<img class="point_star" src="Data/Frontend/Images/Information/Page_2/star.png">
+						<p class="content_text point_text">
+							Sostener y controlar un lápiz u otra herramienta para escribir.
+						</p>
+					</div>
+					<div class="point">
+						<img class="point_star" src="Data/Frontend/Images/Information/Page_2/star.png">
+						<p class="content_text point_text">
+							Ejercer la presión apropiada sobre el papel cvon la herramienta usada para escribir.
+						</p>
+					</div>
+					<div class="point">
+						<img class="point_star" src="Data/Frontend/Images/Information/Page_2/star.png">
+						<p class="content_text point_text">
+							Mantener la postura y posición correcta del brazo para escribir.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
 
 		<script>
 			var scanfailpopupdelay = 180000;
@@ -254,11 +446,11 @@
 		<script src="js/webcam_ar_tracking.js" type="module"></script>
 		<script src="js/main.js" type="module"></script>
 
-		<script>
+		<!-- <script>
 			window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
 			ga('create', 'UA-XXXXX-Y', 'auto'); ga('set','transport','beacon'); ga('send', 'pageview')
 		</script>
-		<script src="https://www.google-analytics.com/analytics.js" async></script>
+		<script src="https://www.google-analytics.com/analytics.js" async></script> -->
 	</body>
 
 </html>
