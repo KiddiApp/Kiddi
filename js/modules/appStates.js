@@ -14,7 +14,7 @@ const states = {
 	Information_content_3: 12,
 	Information_content_4: 13,
 	Information_content_5: 14,
-	Information_content_5: 15
+	Information_content_6: 15
 }
 
 export default states;

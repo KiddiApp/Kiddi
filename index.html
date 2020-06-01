@@ -50,6 +50,7 @@
 		<link rel="stylesheet" href="css/information/content_1.css">
 		<link rel="stylesheet" href="css/information/content_2.css">
 		<link rel="stylesheet" href="css/information/content_3.css">
+		<link rel="stylesheet" href="css/information/content_4.css">
 
 
 		<meta name="theme-color" content="#fafafa">
@@ -58,7 +59,7 @@
 	<body>
 		<div class="cover_fullscreen" id="problem_overlay"></div>
 
-		<div class="cover_fullscreen hidden" id="loading_overlay"></div>
+		<div class="cover_fullscreen" id="loading_overlay"></div>
 
 		<!-- <div class="view_container" id="transition_container"> -->
 			<!-- <img class="transition_cloud tcs_1" src="Data/Frontend/Images/Transition/cloud_1.png"> -->
@@ -103,7 +104,7 @@
 			<img id="back_button" src="Data/Frontend/Images/General/back-button.png">
 		</div>
 
-		<div class="view_container hidden" id="home_view">
+		<div class="view_container" id="home_view">
 			<div id="home_page_grid_container">
 				<img id="grid_item_1" class="" src="Data/Frontend/Images/HomePage/Kiddi-logo.png">
 				<div id="grid_item_2" class="text_center">
@@ -148,7 +149,6 @@
 			<video id="tracking_video" autoplay muted playsinline></video>
 			<img class="hidden scanning" src="Data/Frontend/Images/Scanning/banner.png">
 			<img class="hidden scanning blink" src="Data/Frontend/Images/Scanning/banner-text.png">
-			<!-- <img class="hidden" id="scanning" src="Data/Frontend/Images/Scanning/scanning-information.png"> -->
 
 			<div class="hidden" id="scan_succes">
 				<img src="Data/Frontend/Images/Scanning/found-page-background.png">
@@ -209,8 +209,98 @@
 			</div>
 		</div>
 
-		<div class="hidden view_container" id="answers">
-			<!-- TODO: add the new answers style here::: -->
+		<div class="view_container hidden" id="answers">
+			<img id="answer_cloud_top" src="Data/Frontend/Images/Answers/top-cloud.png">
+			<img class="page_bubble" src="Data/Frontend/Images/Answers/page-4-header.png">
+			<h4 class="bubble_sub_title" id="sub_color_green">El mensaje dice lo<br>siguiente:</h4>
+			<p class="content_text" id="p_4_text">Hola Lapi, soy Bolsa, te veo en el valle de las letras con Inko. Tiene un problema: su casa esta muy desordenada.</p>
+			<img class="page_bubble" src="Data/Frontend/Images/Answers/page-6-header.png">
+			<h4 class="bubble_sub_title" id="sub_color_blue">El camino correcto</h4>
+			<img class="answer_img_l" src="Data/Frontend/Images/Answers/road.png">
+			<img class="page_bubble" src="Data/Frontend/Images/Answers/page-89-header.png">
+			<h4 class="bubble_sub_title" id="sub_color_red">Las 5 diferencias</h4>
+			<img class="answer_img_l" src="Data/Frontend/Images/Answers/difference-top.png">
+			<img class="answer_img_l" style="padding-top: 10px;" src="Data/Frontend/Images/Answers/difference-bottom.png">
+			<img id="flower_answers" src="Data/Frontend/Images/Information/Page_4/flower.png">
+			<div id="page_11_wrapper">
+				<img id="page_11_header_text" src="Data/Frontend/Images/Answers/page-11-header-text.png">
+				<img id="crossword_table" src="Data/Frontend/Images/Answers/crossword-locations.png">
+				<img id="crossword_words" src="Data/Frontend/Images/Answers/crossword-words.png">
+				<img id="mega_cloud" src="Data/Frontend/Images/Answers/cloud-mid.png">
+			</div>
+			<div id="footer_answers">
+				<div id="footer_answers_img">
+					<div class="answers_page_wrapper">
+						<img id="answer_page_imgs_1" src="Data/Frontend/Images/Answers/page-12-header.png">
+						<img id="answer_page_imgs_2" src="Data/Frontend/Images/Answers/page-12-icon.png">
+					</div>
+					<div class="answer_points_container">
+						<div class="point">
+							<img class="point_star" src="Data/Frontend/Images/Answers/star.png">
+							<p class="content_text point_text">
+								¿Que tiene en la mano derecha?<br>
+								<span class="color_text_answer">Un aro verde</span>
+							</p>
+						</div>
+						<div class="point">
+							<img class="point_star" src="Data/Frontend/Images/Answers/star.png">
+							<p class="content_text point_text">
+								¿De qué color es la casa que está detrás de él?<br>
+								<span class="color_text_answer">Café</span>
+							</p>
+						</div>
+						<div class="point">
+							<img class="point_star" src="Data/Frontend/Images/Answers/star.png">
+							<p class="content_text point_text">
+								¿Qué forma tiene la ventana superior de la casa?<br>
+								<span class="color_text_answer">Redonda</span>
+							</p>
+						</div>
+						<div class="point">
+							<img class="point_star" src="Data/Frontend/Images/Answers/star.png">
+							<p class="content_text point_text">
+								¿Qué animal está a un lado de su pie?<br>
+								<span class="color_text_answer">Una catarina</span>
+							</p>
+						</div>
+					</div>
+					<div class="answers_page_wrapper">
+						<img id="answer_page_imgs_1" src="Data/Frontend/Images/Answers/page-15-header.png">
+						<img id="answer_page_imgs_2" src="Data/Frontend/Images/Answers/page-15-icon.png">
+					</div>
+					<div class="answer_points_container">
+						<div class="point">
+							<img class="point_star" src="Data/Frontend/Images/Information/Page_2/star.png">
+							<p class="content_text point_text">
+								¿Que tiene en la mano derecha?<br>
+								<span class="color_text_answer_2">Un aro verde</span>
+							</p>
+						</div>
+						<div class="point">
+							<img class="point_star" src="Data/Frontend/Images/Information/Page_2/star.png">
+							<p class="content_text point_text">
+								¿De qué color es la casa que está detrás de él?<br>
+								<span class="color_text_answer_2">Café</span>
+							</p>
+						</div>
+						<div class="point">
+							<img class="point_star" src="Data/Frontend/Images/Information/Page_2/star.png">
+							<p class="content_text point_text">
+								¿Qué forma tiene la ventana superior de la casa?<br>
+								<span class="color_text_answer_2">Redonda</span>
+							</p>
+						</div>
+						<div class="point">
+							<img class="point_star" src="Data/Frontend/Images/Information/Page_2/star.png">
+							<p class="content_text point_text">
+								¿Qué animal está a un lado de su pie?<br>
+								<span class="color_text_answer_2">Una catarina</span>
+							</p>
+						</div>
+					</div>
+				</div>
+				<img id="bottom_bush" src="Data/Frontend/Images/Answers/bush.png">
+			</div>
 		</div>
 
 		<div class="hidden view_container" id="information_menu">
@@ -248,8 +338,8 @@
 				<div class="content_margin" id="yellow_background_img">
 					<img id="intro_img" src="Data/Frontend/Images/Information/Page_0/diseases-intro.png">
 					<p class="content_text" id="block_1">
-							<span class="content_bold">Kiddi World</span> es un nuevo y divertido juego detector interactivo para niños. Con él, podemos identificar de manera oportuna alguna de estas tres condiciones: <span class="content_bold">daltonismo, dislexia y disgrafía.</span><br><br>
-							Los resultados de esta actividad interactiva te ofrecen un reporte de alerta para los niños que pueden requerir atención profesional y especializada para cualquiera de las tres condiciones.
+						<span class="content_bold">Kiddi World</span> es un nuevo y divertido juego detector interactivo para niños. Con él, podemos identificar de manera oportuna alguna de estas tres condiciones: <span class="content_bold">daltonismo, dislexia y disgrafía.</span><br><br>
+						Los resultados de esta actividad interactiva te ofrecen un reporte de alerta para los niños que pueden requerir atención profesional y especializada para cualquiera de las tres condiciones.
 					</p>
 				</div>
 			</div>
@@ -365,7 +455,7 @@
 			<img id="water_1" src="Data/Frontend/Images/Information/Page_1/water.png">
 		</div>
 
-		<div class="view_container" id="information_content_2">
+		<div class="view_container hidden" id="information_content_2">
 			<div class="content_margin" id="background_green">
 				<img class="bubble" src="Data/Frontend/Images/Information/Page_2/bubble.png">
 				<p class="content_text">
@@ -426,6 +516,82 @@
 							Mantener la postura y posición correcta del brazo para escribir.
 						</p>
 					</div>
+				</div> 
+			</div>
+		</div>
+
+		<div class="view_container hidden" id="information_content_3">
+			<img id="witch_3" src="Data/Frontend/Images/Information/Page_3/witch-text.png">
+			<img id="cloud_text_3" src="Data/Frontend/Images/Information/Page_3/cloud-text.png">
+			<div class="content_margin" id="content_3_margin">
+				<p class="content_text">
+					<span class="color_b_t">Disgrafia</span><br>
+					Terapias: el principal tratamiento para los problemas con la escritura es la terapia ocupacional. Los terapeutas pueden ayudar a mejorar las habilidades de escritura y la terapia física con la postura y la posición del brazo.<br><br>
+					<span class="color_b_t">Daltonismo</span><br>
+					Si sospechas que tu hijo tiene problemas para distinguir determinados colores o que su visión cromática está cambiando, consulta con un especialista para que lo examine. Es importante hacerles a los niños exámenes oculares de manera frecuente, principalmente las pruebas de la visión cromática.<br><br>
+					<span class="color_b_t">Dislexia</span><br>
+					Aunque la dislexia no tiene cura, la detección y atención temprana producen los mejores resultados. En ocasiones, la dislexia no se diagnostica durante años y permanece sin ser identificada hasta la etapa adulta, pero nunca es tarde para buscar ayuda.
+					De no ser atendida, la dislexia puede derivar en rezago escolar y rechazo social derivado de burlas de compañeros por problemas de lectura y escritura.
+				</p>
+			</div>
+			<img id="bush_3" src="Data/Frontend/Images/Information/Page_3/bush.png">
+		</div>
+
+		<div class="view_container hidden" id="information_content_4">
+			<div class="content_margin">
+				<h2 class="info_head_text" id="head_txt_4">¿A qué centros de atención especializada podrías acudir para recibir ayuda?</h2>
+				<p class="content_text">
+					<span class="color_bold_4">Instituto de Oftalmología F.A.P. Conde de Valenciana</span><br>
+					Dirección: Chimalpopoca 14, Col. Obrera, C.P. 06800. Entre Eje Central y Bolívar, a una cuadra del metro Doctores. Ciudad de México.<br>
+					<span class="bold_black_4">Teléfono: 55 5442 1700.</span><br><br>
+					
+					<span class="color_bold_4">Hospital de la Luz</span><br>
+					Dirección: Ezequiel Montes 135, Col. Tabacalera, C.P. 06030. Ciudad de México.<br>
+					<span class="bold_black_4">Teléfono: 55 5128 1140,<br>ext. 618 y 619.</span><br><br>
+					
+					<span class="color_bold_4">Asociación para Evitar la Ceguera en México I.A.P</span><br>
+					Dirección: Vicente García Torres 46, Col. Barrio San Lucas, C.P. 04030.<br>
+					<span class="bold_black_4">Coyoacán, Ciudad de México.<br>Teléfono: 55 1084 1400.</span><br><br>
+				</p>
+				<img id="info_leafs_4" src="Data/Frontend/Images/Information/Page_4/leaves.png">
+				<img class="bubble" src="Data/Frontend/Images/Information/Page_4/bubble.png">
+				<p class="content_text">
+					Este ejercicio ayuda a la lectura y la concentración de los niños ya que al asociar los iconos y las letras, se agiliza su mente. Les ayudará en el aprendizaje diario y así evitar malos resultados académicos.<br><br>
+					Realizar ejercicios de concentración ayudará a los niños en el aprendizaje diario y así evitar malos resultados académicos.<br><br>
+					Escribir a mano contribuye a la rapidez en el trazado y control de movimiento, lo que favorece una mayor velocidad en la ejecución y la transformación de los pensamientos al lenguaje escrito.
+				</p>
+				<div id="points_container">
+					<div class="point">
+						<img class="point_star" src="Data/Frontend/Images/Information/Page_4/star.png">
+						<p class="content_text point_text">
+							Es un ejercicio para el cerebro que potencia la memoria y el entendimiento.
+						</p>
+					</div>
+					<div class="point">
+						<img class="point_star" src="Data/Frontend/Images/Information/Page_4/star.png">
+						<p class="content_text point_text">
+							El hábito de la lectura permite descubrir nuevas palabras, enriquecer su vocabulario y fomenta el desarrollo de habilidades lingüísticas.
+						</p>
+					</div>
+					<div class="point">
+						<img class="point_star" src="Data/Frontend/Images/Information/Page_4/star.png">
+						<p class="content_text point_text">
+							La caligrafía es sumamente importante para el aprendizaje de las letras, de la motricidad fina y de la percepción visual.
+						</p>
+					</div>
+				</div>
+				<div id="bf_4_container">
+					<img id="flower_4" src="Data/Frontend/Images/Information/Page_4/flower.png">
+					<img id="beetle_4" src="Data/Frontend/Images/Information/Page_4/beetle.png">
+				</div>
+			</div>
+			<div id="footer_container_4">
+				<div class="content_margin">
+					<h2 class="info_head_text" id="footer_head_txt_4">Bibliografía</h2>
+					<p class="content_text">
+						Varela J. Aprender a leer: Programa Kantor para niños en edad preescolar, Guadalajara Jal. México: Universidad de Guadalajara. 2008.<br><br>
+						Recuperado de: <a id="footer_txt_4" href="https://www.uv.mx/rmipe/files/2019/07/Aprender-a-leer-Programa-Kantor-para-ninos-en-edad-preescolar.pdf">https://www.uv.mx/rmipe/files/2019/07/Aprender-a-leer-Programa-Kantor-para-ninos-en-edad-preescolar.pdf</a>
+					</p>
 				</div>
 			</div>
 		</div>

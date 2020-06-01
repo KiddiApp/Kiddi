@@ -68,7 +68,7 @@ function StateToContent(state) {
 		case states.Information_content_4:
 			return information_summary_content;
 		case states.Information_content_5:
-			return; //TODO: ask fredo what should be here...
+			return information_references_content;
 		case states.Information_content_6:
 			return information_references_content;
 	}

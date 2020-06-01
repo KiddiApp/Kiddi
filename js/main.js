@@ -22,7 +22,13 @@ back_button.addEventListener('click', () => {
 		case states.Painting3dAnimation:
 			UpdateAppState(states.PaintingPainting);
 			break;
-		default:
+		case states.Information_content_1:
+		case states.Information_content_2:
+		case states.Information_content_3:
+		case states.Information_content_4:
+		case states.Information_content_5:
+		case states.Information_content_6:
+			UpdateAppState(states.Information);
 			break;
 	}
 });
