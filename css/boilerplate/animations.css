@@ -75,6 +75,20 @@
 	-o-animation: movebt .5s forwards;
 }
 
+.moveminimalbt {
+	animation: moveminimalbt 30s infinite ;
+	-moz-animation: moveminimalbt 30s infinite;
+	-webkit-animation: moveminimalbt 30s infinite;
+	-o-animation: moveminimalbt 30s infinite;
+}
+
+.moveminimallr {
+	animation: moveminimallr 30s infinite ;
+	-moz-animation: moveminimallr 30s infinite;
+	-webkit-animation: moveminimallr 30s infinite;
+	-o-animation: moveminimallr 30s infinite;
+}
+
 @keyframes wiggle {
 	0% { transform: rotate(0deg); } 
 	5% { transform: rotate(-2deg); }
@@ -239,4 +253,33 @@
 @-webkit-keyframes movebt {
 	0% { margin-bottom: -200px; }
 	100% { margin-bottom: 0; }
+}
+
+
+@keyframes moveminimalbt{
+	0% { transform: translate(0, 0); }
+	30% { transform: translate(0, 5px); }
+	70% { transform: translate(0, -5px); }
+	100% { transform: translate(0, 0); }
+}
+
+@-webkit-keyframes moveminimalbt {
+	0% { -webkit-transform: translate(0, 0); }
+	30% { -webkit-transform: translate(0, 5px); }
+	70% { -webkit-transform: translate(0, -5px); }
+	100% { -webkit-transform: translate(0, 0); }
+}
+
+@keyframes moveminimallr{
+	0% { transform: translate(0, 0); }
+	30% { transform: translate(5px, 0); }
+	70% { transform: translate(-5px, 0); }
+	100% { transform: translate(0, 0); }
+}
+
+@-webkit-keyframes moveminimallr {
+	0% { -webkit-transform: translate(0, 0); }
+	30% { -webkit-transform: translate(5px, 0); }
+	70% { -webkit-transform: translate(-5px, 0); }
+	100% { -webkit-transform: translate(0, 0); }
 }

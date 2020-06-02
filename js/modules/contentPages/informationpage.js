@@ -42,6 +42,9 @@ let information_content = {
 						break;
 				}
 			});
+			setTimeout(() => {
+				element.classList.add( (Math.random() < .5) ? "moveminimalbt" : "moveminimallr");
+			}, Math.random() * 30000);
 		}
 	}
 }

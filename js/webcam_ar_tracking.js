@@ -56,19 +56,27 @@ var pw, ph;
 var ox, oy;
 var w, h;
 
+var trackerIndex = 0;
+
 function MainLoop() {
 	context_process.fillStyle = "black";
 	context_process.fillRect(0, 0, pw, ph);
 	context_process.drawImage(video, 0, 0, vw, vh, ox, oy, w, h);
 	const img_data = context_process.getImageData(0, 0, pw, ph);
 
-	nft_tracker_objects.forEach(tracker_object => {
-		if(tracker_object) {
-			tracker_object.Update(img_data);
-		}
-	});
+	// one per frame smoother but getting match my take longer. 
+	nft_tracker_objects[trackerIndex].Update(img_data);
+	trackerIndex++;
+	if(trackerIndex >= nft_tracker_objects.length) {
+		trackerIndex = 0;
+	}
+	// all together in one frame and slow but instant 
+	// nft_tracker_objects.forEach(tracker_object => {
+	// 	if(tracker_object) {
+	// 		tracker_object.Update(img_data);
+	// 	}
+	// });
 
-	// console.log("AR IS TRACKING");
 	if(useTracking)	requestAnimationFrame(MainLoop);
 }
 

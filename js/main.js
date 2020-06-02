@@ -49,7 +49,6 @@ let dev_buttons = document.getElementsByClassName("dev_button");
 for (let i = 0; i < dev_buttons.length; i++) {
 	const element = dev_buttons[i];
 	element.addEventListener('click', function() {
-		element.id
 		switch (element.id) {
 			case "dev_to_paint":
 				UpdateAppState(states.PaintingCharacterSelection);

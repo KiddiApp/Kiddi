@@ -2,6 +2,7 @@ import Display from './helperFunctions.js';
 import { HidePopup } from './popup.js';
 import homepage_content from './contentPages/homepage.js';
 import instructions_content from './contentPages/instructionspage.js';
+import { cloudsTransition } from './cloudsTransition.js';
 
 let loadingManager = {
 
@@ -19,9 +20,11 @@ let loadingManager = {
 
 	loadingComplete: function() {
 		HidePopup();
-		Display(false, this.loadingOverlay);
-		homepage_content.IntroAnimation();
-		instructions_content.AddAnimations();
+		cloudsTransition.CloudCover(() => {
+			Display(false, this.loadingOverlay);
+			homepage_content.IntroAnimation();
+			instructions_content.AddAnimations();
+		});
 	}
 }
 

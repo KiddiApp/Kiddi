@@ -48,10 +48,28 @@ const cardGameSceneObject = {
 		this.camera.position.set( 0, 200, 0 );
 		this.camera.lookAt( 0, 0, 0 );
 
-		var hemiLight = new THREE.HemisphereLight( 0xffffff, 0x444444 );
-		hemiLight.position.set( 0, 300, 0 );
-		this.scene.add( hemiLight );
+		var dirLight = new THREE.DirectionalLight( 0xffffff, 1.4);
+		dirLight.castShadow = true; 
+		dirLight.position.set( 10, 10, 0 );
+		this.scene.add( dirLight );
 
+		dirLight.shadow.mapSize.width = 512;  
+		dirLight.shadow.mapSize.height = 512; 
+		dirLight.shadow.camera.near = 0.5;    
+		dirLight.shadow.camera.far = 500;  
+
+		var geometry = new THREE.PlaneGeometry( 2000, 2000, 200 );
+		geometry.rotateX(Math.PI/2);
+		var material = new THREE.MeshPhongMaterial({ 
+			opacity: 0,
+			transparent: true,
+			color: 0xffffff,
+			side: THREE.DoubleSide 
+		});
+		var plane = new THREE.Mesh( geometry, material );
+		plane.receiveShadow = true;
+		plane.position.y = -10;
+		this.scene.add( plane );
 	},
 
 	loadResources: function() {
@@ -87,11 +105,8 @@ const cardGameSceneObject = {
 	interaction: function() {
 		var ref = cardGameSceneObject;
 		if(ref.noInteractionAllowed) {
-			console.log("WAIT FOR PREVIOUS CARD TO FLIP");
 			return;
 		} else {
-			console.log("FLIP ME ANOTHER CARD PLEASE");
-			
 			var mouse = new THREE.Vector2();
 			mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
 			mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
@@ -238,6 +253,7 @@ const cardGameSceneObject = {
 			card.userData.MatchGroupId = id;
 			card.userData.Matched = false;
 			card.userData.isInPlay = false;
+			card.castShadow = true;
 			this.sceneCards.push(card);	
 			this.scene.add(card);
 		}

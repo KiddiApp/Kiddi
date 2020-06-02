@@ -13,17 +13,20 @@ let popup_confirm_yes_no = document.getElementById("yes_no_container");
 
 let popup_delay = null;
 let popup_callback = null;
+let popup_is_visible = false;
 
 popup_confirm_ok_large.addEventListener('click', function() {
-	if(popup_callback) popup_callback();
-	popup_callback = null;
-	HidePopup();
+	HidePopup(function() {
+		if(popup_callback) popup_callback();
+		popup_callback = null;
+	});
 });
 
 popup_confirm_ok_small.addEventListener('click', function() {
-	if(popup_callback) popup_callback();
-	popup_callback = null;
-	HidePopup();
+	HidePopup(function() {
+		if(popup_callback) popup_callback();
+		popup_callback = null;
+	});
 });
 
 document.getElementById("confirm_yes").addEventListener('click', function() {
@@ -40,6 +43,7 @@ document.getElementById("confirm_no").addEventListener('click', function() {
 });
 
 function ShowPopup(popup_type, title, information, buttonCount, buttonClickCallback) {
+	popup_is_visible = true;
 	PopupStyleManager(true, "popup_scale_in");
 	if(popup_type == 1) {
 		if(title == null) {
@@ -76,19 +80,24 @@ function ShowPopup(popup_type, title, information, buttonCount, buttonClickCallb
 	if(buttonClickCallback) popup_callback = buttonClickCallback;
 }
 
-function HidePopup() {
+function HidePopup(callback) {
 	if(popup_delay) clearTimeout(popup_delay);
-	console.log("REMOVE POPUP PLEASE");
-	PlayRemoveAnimation();
+	PlayRemoveAnimation(callback);
 }
 
-function PlayRemoveAnimation() {
+function PlayRemoveAnimation(callback) {
+	if(!popup_is_visible) return;
+	
 	PopupStyleManager(false, "popup_scale_in");
 	PopupStyleManager(true, "popup_scale_out");
 	setTimeout(function() {
 		PopupStyleManager(false, "popup_scale_out");
 		Display(false, popup_container_large);
 		Display(false, popup_container_small);
+		popup_is_visible = false;
+		setTimeout(function() {
+			if(callback) callback();
+		}, 100);
 	}, 500);
 }
 

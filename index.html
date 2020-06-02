@@ -19,7 +19,6 @@
 		<link rel="stylesheet" href="css/boilerplate/animations.css">
 		
 		<link rel="stylesheet" href="css/general/clouds.css">
-		<link rel="stylesheet" href="css/general/transition_animations.css">
 		<link rel="stylesheet" href="css/general/transition.css">
 		<link rel="stylesheet" href="css/general/general.css">
 		<link rel="stylesheet" href="css/general/threejs.css">
@@ -45,6 +44,8 @@
 		<link rel="stylesheet" href="css/answers/answers.css">
 
 		<link rel="stylesheet" href="css/information/menu.css">
+		<link rel="stylesheet" href="css/information/menu_small.css">
+
 		<link rel="stylesheet" href="css/information/content_general.css">
 		<link rel="stylesheet" href="css/information/content_0.css">
 		<link rel="stylesheet" href="css/information/content_1.css">
@@ -61,15 +62,16 @@
 
 		<div class="cover_fullscreen" id="loading_overlay"></div>
 
-		<!-- <div class="view_container" id="transition_container"> -->
-			<!-- <img class="transition_cloud tcs_1" src="Data/Frontend/Images/Transition/cloud_1.png"> -->
-			<!-- <img class="transition_cloud tcs_2" src="Data/Frontend/Images/Transition/cloud_2.png"> -->
-			<!-- <img class="transition_cloud tcs_3" src="Data/Frontend/Images/Transition/cloud_3.png"> -->
-			<!-- <img class="transition_cloud tcs_4" src="Data/Frontend/Images/Transition/cloud_4.png"> -->
-			<!-- <img class="transition_cloud tcs_5" src="Data/Frontend/Images/Transition/cloud_5.png"> -->
-			<!-- <img class="transition_cloud tcs_6" src="Data/Frontend/Images/Transition/cloud_1.png"> -->
-			<!-- <img class="transition_cloud tcs_7" src="Data/Frontend/Images/Transition/cloud_2.png"> -->
-		<!-- </div> -->
+		<div class="view_container" id="transition_container">
+			<div class="white_transition_bg"></div>
+			<img class="transition_cloud cloud_start_1" data-cloud-id="1" src="Data/Frontend/Images/Transition/cloud_1.png">
+			<img class="transition_cloud cloud_start_2" data-cloud-id="2" src="Data/Frontend/Images/Transition/cloud_2.png">
+			<img class="transition_cloud cloud_start_3" data-cloud-id="3" src="Data/Frontend/Images/Transition/cloud_3.png">
+			<img class="transition_cloud cloud_start_4" data-cloud-id="4" src="Data/Frontend/Images/Transition/cloud_4.png">
+			<img class="transition_cloud cloud_start_5" data-cloud-id="5" src="Data/Frontend/Images/Transition/cloud_5.png">
+			<img class="transition_cloud cloud_start_6" data-cloud-id="6" src="Data/Frontend/Images/Transition/cloud_1.png">
+			<img class="transition_cloud cloud_start_7" data-cloud-id="7" src="Data/Frontend/Images/Transition/cloud_2.png">
+		</div>
 
 		<div class="popup_scale_in popup hidden" id="popup_large">
 			<img class="popup_bg" src="Data/Frontend/Images/Popup/background-large.png">
@@ -100,7 +102,7 @@
 			<img src="Data/Frontend/Images/Background/cloud-mid-bottom.png" id="mid_bottom_cloud" class="cloud hidden">
 		</div>
 
-		<div id="back_button_container" class="">
+		<div id="back_button_container" class="hidden">
 			<img id="back_button" src="Data/Frontend/Images/General/back-button.png">
 		</div>
 
@@ -221,13 +223,13 @@
 			<h4 class="bubble_sub_title" id="sub_color_red">Las 5 diferencias</h4>
 			<img class="answer_img_l" src="Data/Frontend/Images/Answers/difference-top.png">
 			<img class="answer_img_l" style="padding-top: 10px;" src="Data/Frontend/Images/Answers/difference-bottom.png">
-			<img id="flower_answers" src="Data/Frontend/Images/Information/Page_4/flower.png">
+			<img id="flower_answers" class="rotatepopupbtns" src="Data/Frontend/Images/Information/Page_4/flower.png">
 			<div id="page_11_wrapper">
 				<img id="page_11_header_text" src="Data/Frontend/Images/Answers/page-11-header-text.png">
 				<img id="crossword_table" src="Data/Frontend/Images/Answers/crossword-locations.png">
 				<img id="crossword_words" src="Data/Frontend/Images/Answers/crossword-words.png">
-				<img id="mega_cloud" src="Data/Frontend/Images/Answers/cloud-mid.png">
 			</div>
+			<img id="mega_cloud" src="Data/Frontend/Images/Answers/cloud-mid.png">
 			<div id="footer_answers">
 				<div id="footer_answers_img">
 					<div class="answers_page_wrapper">
@@ -417,7 +419,7 @@
 
 		<div class="view_container hidden" id="information_content_1">
 			<div class="content_margin">
-				<img id="leaf_1" src="Data/Frontend/Images/Information/Page_1/leaf.png">
+				<img id="leaf_1" class="hovering" src="Data/Frontend/Images/Information/Page_1/leaf.png">
 				<img class="bubble" src="Data/Frontend/Images/Information/Page_1/bubble.png">
 				<p class="content_text">
 					El daltonismo o visión cromática deficiente es una afección en la cual no se pueden ver los colores de manera normal. Ocurre cuando hay un problema con los pigmentos en ciertas células nerviosas del ojo que perciben el color. Estas células se llaman conos y se encuentran en la capa de tejido sensible a la luz que recubre la parte posterior del ojo, llamada retina. El daltonismo suele ser hereditario y es una afección de por vida. Y aunque los hombres son más propensos que las mujeres a nacer con este trastorno, la mayoría de quienes lo padecen pueden adaptarse.
@@ -446,7 +448,7 @@
 						</p>
 					</div>
 				</div>
-				<img id="flowers_1" src="Data/Frontend/Images/Information/Page_1/flowers.png">
+				<img id="flowers_1" class="wiggle" src="Data/Frontend/Images/Information/Page_1/flowers.png">
 				<p class="content_text">
 					A menudo, los síntomas son tan leves que las personas no saben que padecen daltonismo. Un padre puede notar signos de daltonismo cuando su pequeño hijo está aprendiendo los nombres de los colores.<br><br>
 					En casos graves, se pueden presentar movimientos rápidos de los ojos de un lado a otro (nistagmo) y otros síntomas.
@@ -521,8 +523,8 @@
 		</div>
 
 		<div class="view_container hidden" id="information_content_3">
-			<img id="witch_3" src="Data/Frontend/Images/Information/Page_3/witch-text.png">
-			<img id="cloud_text_3" src="Data/Frontend/Images/Information/Page_3/cloud-text.png">
+			<img id="witch_3" class="hovering" src="Data/Frontend/Images/Information/Page_3/witch-text.png">
+			<img id="cloud_text_3" class="moveminimalbt" src="Data/Frontend/Images/Information/Page_3/cloud-text.png">
 			<div class="content_margin" id="content_3_margin">
 				<p class="content_text">
 					<span class="color_b_t">Disgrafia</span><br>
@@ -553,7 +555,7 @@
 					Dirección: Vicente García Torres 46, Col. Barrio San Lucas, C.P. 04030.<br>
 					<span class="bold_black_4">Coyoacán, Ciudad de México.<br>Teléfono: 55 1084 1400.</span><br><br>
 				</p>
-				<img id="info_leafs_4" src="Data/Frontend/Images/Information/Page_4/leaves.png">
+				<img id="info_leafs_4" class="wiggle" src="Data/Frontend/Images/Information/Page_4/leaves.png">
 				<img class="bubble" src="Data/Frontend/Images/Information/Page_4/bubble.png">
 				<p class="content_text">
 					Este ejercicio ayuda a la lectura y la concentración de los niños ya que al asociar los iconos y las letras, se agiliza su mente. Les ayudará en el aprendizaje diario y así evitar malos resultados académicos.<br><br>
@@ -581,8 +583,8 @@
 					</div>
 				</div>
 				<div id="bf_4_container">
-					<img id="flower_4" src="Data/Frontend/Images/Information/Page_4/flower.png">
-					<img id="beetle_4" src="Data/Frontend/Images/Information/Page_4/beetle.png">
+					<img id="flower_4" class="hovering" src="Data/Frontend/Images/Information/Page_4/flower.png">
+					<img id="beetle_4" class="hovering" src="Data/Frontend/Images/Information/Page_4/beetle.png">
 				</div>
 			</div>
 			<div id="footer_container_4">

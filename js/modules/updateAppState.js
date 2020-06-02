@@ -14,6 +14,8 @@ import { information_colorblindness_content } from './contentPages/information_c
 import { information_disgraphia_content } from './contentPages/information_disgraphia.js';
 import { information_summary_content } from './contentPages/information_summary.js';
 import { information_references_content } from './contentPages/information_references.js';
+import { cloudsTransition } from './cloudsTransition.js';
+import Display from './helperFunctions.js';
 
 let backbtn = document.getElementById("back_button_container");
 
@@ -21,14 +23,16 @@ let currentContent = homepage_content;
 let currentState = states.HomePage;
 
 function UpdateAppState(state) {
-	if(state != states.HomePage) backbtn.classList.remove("hidden");
-	else backbtn.classList.add("hidden");
+	if(state != states.HomePage) Display(true, backbtn);
+	else Display(false, backbtn);
 
 	if(currentState != state) {
 		currentState = state;
-		currentContent.Hide(function() {
-			currentContent = StateToContent(state);
-			currentContent.Show();
+		cloudsTransition.CloudCover(() => {
+			currentContent.Hide(function() {
+				currentContent = StateToContent(state);
+				currentContent.Show();
+			});
 		});
 	}
 }

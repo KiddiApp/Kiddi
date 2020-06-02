@@ -53,16 +53,14 @@ function SetInitInformation(deviceInformation) {
 	if(deviceInformation.supported) {
 		if(deviceInformation.orientationCorrect) {
 			HideFullscreenOverlay();
-			ShowPopup(1, "Loading the KiddiApp experience!", "This can take a little bit because we need to load some awesome features", 0, null);
+			ShowPopup(1, "Espera unos segundos.", "Se están cargando las aventuras que Kiddi World tiene preparadas para ti.", 0, null);
 		} else {
 			ShowFullscreenOverlay();
 			ShowPopup(1, "Sorry your browser doesn't support our App.", "If you are viewing this app on a mobile device in landscape mode please rotate your device to portait mode.", 0, null);
 		}
 	} else {
 		ShowFullscreenOverlay();
-		ShowPopup(1, 
-			"Sorry your browser doesn't support our App.", "canvas: " + Modernizr.canvas + " WEBGL: " + Modernizr.webgl +
-			" Usermedia: " + Modernizr.getusermedia + " GRID: " + Modernizr.cssgrid + " PEER: " + Modernizr.peerconnection, 0, null);
+		ShowPopup(1, "Sorry your browser doesn't support our App.", "This has to do with the fact that some of the technologies used in this app are not supported by your current device or browser. Maybe try a different mobile device.", 0, null);
 	}
 }
 
