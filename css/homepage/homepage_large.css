@@ -1,0 +1,36 @@
+@media (min-width: 600px) {
+	#grid_item_1 {
+		width: 55%;
+		margin-left: 22.5%;
+	}
+
+	#grid_item_2 h1 {
+		line-height: 55px;
+		font-size: 65px;
+		padding: 15px 0 10px 0;
+	}
+
+	#grid_item_2 h3 {
+		padding: 40px 0 40px 0;
+		font-size: 20px;
+	}
+
+	.phone-icon {
+		width: 20px;
+	}
+
+	#scan_image {
+		width: 60%;
+		margin: 0 0 0 20%;
+		padding: 0;
+	}
+	
+	#scan_image_content h2 {
+		font-size: 24px;
+	}
+
+	#help_needed {
+		padding-top: 20px;
+		font-size: 20px;
+	}
+}

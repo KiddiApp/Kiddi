@@ -13,12 +13,15 @@ let appinfo = {
 	},
 	DeviceSupportedAndCorrectScreenSize() {
 		if(this.DeviceFeaturesSupported()) {
-			if(this.isMobile) {
-				if(window.innerWidth <= 600 && window.innerWidth < window.innerHeight) return { supported: true, orientationCorrect: true };
+			console.log("Device supported");
+			if(this.isTablet || (window.innerWidth > 600 && window.innerWidth < 1400)) {
+				console.log("Is tablet");
+				if(window.innerWidth <= 1400 && window.innerWidth < window.innerHeight) return { supported: true, orientationCorrect: true };
 				else return { supported: true, orientationCorrect: false };
 			}
-			if(this.isTablet) {
-				if(window.innerWidth <= 1400) return { supported: true, orientationCorrect: true };
+			else if(this.isMobile) {
+				console.log("Is mobile");
+				if(window.innerWidth <= 600 && window.innerWidth < window.innerHeight) return { supported: true, orientationCorrect: true };
 				else return { supported: true, orientationCorrect: false };
 			}
 			else return { supported: false, orientationCorrect: false };
@@ -28,7 +31,7 @@ let appinfo = {
 	}
 }
 
-if(appinfo.isMobile) {
+if(appinfo.isMobile || appinfo.isTablet) {
 	if(Modernizr.deviceorientation) {
 		window.addEventListener("orientationchange", function() {
 			setTimeout(() => {
@@ -53,7 +56,7 @@ function SetInitInformation(deviceInformation) {
 	if(deviceInformation.supported) {
 		if(deviceInformation.orientationCorrect) {
 			HideFullscreenOverlay();
-			ShowPopup(1, "Espera unos segundos.", "Se están cargando las aventuras que Kiddi World tiene preparadas para ti.", 0, null);
+			// ShowPopup(1, "Espera unos segundos.", "Se están cargando las aventuras que Kiddi World tiene preparadas para ti.", 0, null);
 		} else {
 			ShowFullscreenOverlay();
 			ShowPopup(1, "Sorry your browser doesn't support our App.", "If you are viewing this app on a mobile device in landscape mode please rotate your device to portait mode.", 0, null);

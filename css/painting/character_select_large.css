@@ -1,0 +1,11 @@
+@media (min-width: 600px) {
+	
+	#select_character h2 {
+		font-size: 45px;
+		line-height: 48px;
+	}
+
+	#characters {
+		width: 70%;
+	}
+}

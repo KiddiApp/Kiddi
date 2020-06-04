@@ -2,6 +2,10 @@
 	color: rgb(255, 180, 17);
 }
 
+#no_pad_bottom {
+	padding-bottom: 0;
+}
+
 .information_button {
 	position: relative;
 	width: 100%;

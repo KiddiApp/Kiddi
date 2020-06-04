@@ -1,0 +1,26 @@
+@media (min-width: 600px) {
+
+	.star {
+		width: 30px;
+	}
+
+	.instructions_text_container h2 {
+		font-size: 42px;
+		line-height: 42px;
+	}
+
+	.instructions_text_container p {
+		font-size: 20px;
+	}
+
+	#information_plant {
+		height: 10%;
+	}
+
+	.instructions_text_container {
+		box-sizing: border-box;
+		min-height: 70%;
+		padding: 0 0 42% 0;
+		margin: 30% 17% 0 17%;
+	}
+}

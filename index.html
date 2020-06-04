@@ -31,20 +31,26 @@
 		<link rel="stylesheet" href="css/homepage/index.css">
 		<link rel="stylesheet" href="css/homepage/extra_small.css">
 		<link rel="stylesheet" href="css/homepage/medium_small.css">
+		<link rel="stylesheet" href="css/homepage/homepage_large.css">
 
 		<link rel="stylesheet" href="css/explaination/explaination.css">
+		<link rel="stylesheet" href="css/explaination/explain_large.css">
 
 		<link rel="stylesheet" href="css/scanning/scanning.css">
+		<link rel="stylesheet" href="css/scanning/scan_large.css">
 
 		<link rel="stylesheet" href="css/cardgame/cardgame.css">
 
 		<link rel="stylesheet" href="css/painting/character_select.css">
+		<link rel="stylesheet" href="css/painting/character_select_large.css">
 		<link rel="stylesheet" href="css/painting/painting.css">
+		<link rel="stylesheet" href="css/painting/painting_large.css">
 
 		<link rel="stylesheet" href="css/answers/answers.css">
 
 		<link rel="stylesheet" href="css/information/menu.css">
 		<link rel="stylesheet" href="css/information/menu_small.css">
+		<link rel="stylesheet" href="css/information/menu_large.css">
 
 		<link rel="stylesheet" href="css/information/content_general.css">
 		<link rel="stylesheet" href="css/information/content_0.css">
@@ -60,9 +66,9 @@
 	<body>
 		<div class="cover_fullscreen" id="problem_overlay"></div>
 
-		<div class="cover_fullscreen" id="loading_overlay"></div>
+		<div class="cover_fullscreen hidden" id="loading_overlay"></div>
 
-		<div class="view_container" id="transition_container">
+		<div class="view_container hidden" id="transition_container">
 			<div class="white_transition_bg"></div>
 			<img class="transition_cloud cloud_start_1" data-cloud-id="1" src="Data/Frontend/Images/Transition/cloud_1.png">
 			<img class="transition_cloud cloud_start_2" data-cloud-id="2" src="Data/Frontend/Images/Transition/cloud_2.png">
@@ -106,7 +112,7 @@
 			<img id="back_button" src="Data/Frontend/Images/General/back-button.png">
 		</div>
 
-		<div class="view_container" id="home_view">
+		<div class="view_container hidden" id="home_view">
 			<div id="home_page_grid_container">
 				<img id="grid_item_1" class="" src="Data/Frontend/Images/HomePage/Kiddi-logo.png">
 				<div id="grid_item_2" class="text_center">
@@ -211,7 +217,7 @@
 			</div>
 		</div>
 
-		<div class="view_container hidden" id="answers">
+		<div class="view_container" id="answers">
 			<img id="answer_cloud_top" src="Data/Frontend/Images/Answers/top-cloud.png">
 			<img class="page_bubble" src="Data/Frontend/Images/Answers/page-4-header.png">
 			<h4 class="bubble_sub_title" id="sub_color_green">El mensaje dice lo<br>siguiente:</h4>
@@ -306,7 +312,7 @@
 		</div>
 
 		<div class="hidden view_container" id="information_menu">
-			<div class="instructions_text_container text_center">
+			<div class="instructions_text_container text_center" id="no_pad_bottom">
 				<h2 id="menu_title">Información<br>para padres</h2>
 				<div class="information_button" data-url="10">
 					<img src="Data/Frontend/Images/General/wood-button-background.png">

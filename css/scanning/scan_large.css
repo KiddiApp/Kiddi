@@ -1,0 +1,9 @@
+@media (min-width: 600px) {
+
+	.scanning {
+		position: absolute;
+		left: 10%;
+		bottom: 5%;
+		width: 60%;
+	}
+}
