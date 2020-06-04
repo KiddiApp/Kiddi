@@ -1,0 +1,30 @@
+@media (min-width: 600px) {
+	.content_margin {
+		width: 100%;
+		padding: 80px 20%;
+	}
+
+	.content_text {
+		font-size: 20px;
+	}
+
+	.bubble {
+		width: 80%;
+		margin-left: 10%;
+		padding-bottom: 20px;
+	}
+
+	.info_head_text {
+		font-size: 34px;
+		line-height: 38px;
+	}
+
+	.point_star {
+		width: 20px;
+		margin-top: 5px;
+	}
+	
+	.point_text {
+		margin-left: 30px;
+	}
+}

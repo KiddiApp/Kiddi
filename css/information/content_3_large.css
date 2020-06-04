@@ -1,0 +1,11 @@
+@media (min-width: 600px) {
+	#witch_3 {
+		padding: 100px 10% 40px 10%;
+		width: 80%;
+	}
+	
+	#cloud_text_3 {
+		width: 80%;
+		margin-left: 10%;
+	}
+}
