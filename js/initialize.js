@@ -1,4 +1,5 @@
 import { ShowPopup, HidePopup } from './modules/popup.js';
+import { loadingManager } from './modules/contentLoader.js';
 
 let md = new MobileDetect(window.navigator.userAgent);
 
@@ -36,6 +37,7 @@ if(appinfo.isMobile || appinfo.isTablet) {
 		window.addEventListener("orientationchange", function() {
 			setTimeout(() => {
 				SetInitInformation(appinfo.DeviceSupportedAndCorrectScreenSize());
+				loadingManager.loadingComplete();
 			}, 200);
 		}, false);
 	}
@@ -68,3 +70,4 @@ function SetInitInformation(deviceInformation) {
 }
 
 SetInitInformation(appinfo.DeviceSupportedAndCorrectScreenSize());
+export { appinfo };
