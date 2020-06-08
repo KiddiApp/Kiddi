@@ -22,8 +22,9 @@ let painting_content = {
 
 	SetcanvasSize: function(gomba) {
 		if(gomba) {
-			this.canvas.setAttribute('width', window.innerWidth);
-			this.canvas.setAttribute('height', window.innerWidth);
+			var scaled = window.innerWidth * 1.6967688484;
+			this.canvas.setAttribute('width', scaled);
+			this.canvas.setAttribute('height', scaled);
 			this.canvasmask.style.height = window.innerWidth + 'px';
 		} else {
 			var scaled = window.innerWidth * 1.2549019608;

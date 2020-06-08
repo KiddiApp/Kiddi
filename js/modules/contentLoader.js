@@ -8,7 +8,7 @@ import { appinfo } from '../initialize.js';
 let loadingManager = {
 
 	loadingOverlay: document.getElementById("loading_overlay"),
-	toBeLoadedObjectsCount: 7,
+	toBeLoadedObjectsCount: 12,
 	loadedObjectsCount: 0,
 
 	objectHasBeenLoaded: function() { 

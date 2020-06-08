@@ -7,7 +7,7 @@ const paintedCharacterAnimation = {
 	
 	character_files: [
 		"LapiAnimacion01",
-		"GombaAnimacion01"
+		"Gomba_Animacion_v3"
 	],
 	characters: [],
 	active_character: null,

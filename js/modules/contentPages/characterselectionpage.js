@@ -13,7 +13,7 @@ let characterselection_content = {
 		for (let i = 0; i < this.characters.length; i++) {
 			const character = this.characters[i];
 			character.addEventListener('click', function() {
-				painting_content.SetcanvasSize((character.dataset.character == "GombaAnimacion01") ? true : false );
+				painting_content.SetcanvasSize((character.dataset.character == "Gomba_Animacion_v3") ? true : false );
 				paintSceneObject.clearCanvas();
 				paintSceneObject.setbgimage(character.getElementsByTagName('img')[0].dataset.texture);
 				paintedCharacterAnimation.setActiveCharacter(character.dataset.character);
