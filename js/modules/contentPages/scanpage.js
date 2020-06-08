@@ -55,16 +55,23 @@ let scan_content = {
 		setTimeout(function() { 
 			switch (page_num) {
 				case 1:
+				case 2:
+				case 5:
+				case 7:
+				case 14:
 					UpdateAppState(states.Video);
 					if(optionalData != null) video_content.SetAndPlayVideoSource(optionalData);
 					break;
-				case 2:
+				case 11:
 					UpdateAppState(states.CardGame);
 					break;
-				case 3:
+				case 17:
 					UpdateAppState(states.PaintingCharacterSelection);
 					break;
-				case 17:
+				case 18:
+					UpdateAppState(states.Answers);
+					break;
+				case 21:
 					UpdateAppState(states.Information);
 					break;
 			}

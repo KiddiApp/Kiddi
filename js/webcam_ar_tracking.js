@@ -23,28 +23,48 @@ var context_process = canvas_process.getContext('2d');
 
 let base_nft_url = "./Data/DataNFT/";
 let nft_objects = [
-	"page1",
-	"page2",
-	"page3",
-	"page17"
+	"page_1",
+	"page_2",
+	"page_5",
+	"page_7",
+	"page_11",
+	"page_14",
+	"page_17",
+	"page_18",
+	"page_21",
 ];
 
 let nft_tracker_objects = [];
 
 function OnTriggerFound(e) {
-	// console.log(e);
+	console.log(e);
 	switch (e) {
-		case "page1":
-			scan_content.ShowFoundPage(1, videos.rio);
+		case "page_1":
+			scan_content.ShowFoundPage(1, videos.vid5);
 			break;
-		case "page2":
-			scan_content.ShowFoundPage(2, null);
+		case "page_2":
+			scan_content.ShowFoundPage(2, videos.edit);
 			break;
-		case "page3":
-			scan_content.ShowFoundPage(3, null);
+		case "page_5":
+			scan_content.ShowFoundPage(5, videos.rio);
 			break;
-		case "page17":
+		case "page_7":
+			scan_content.ShowFoundPage(7, videos.color);
+			break;
+		case "page_11":
+			scan_content.ShowFoundPage(11, null);
+			break;
+		case "page_14":
+			scan_content.ShowFoundPage(14, videos.vid7);
+			break;
+		case "page_17":
 			scan_content.ShowFoundPage(17, null);
+			break;
+		case "page_18":
+			scan_content.ShowFoundPage(18, null);
+			break;
+		case "page_21":
+			scan_content.ShowFoundPage(21, null);
 			break;
 		default:
 			break;
