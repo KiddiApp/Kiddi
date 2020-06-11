@@ -15,14 +15,14 @@ let scan_content = {
 		Display(true, this.container);
 		EnableTracking(true, false);
 		clouds_manager.hideClouds(clouds.top_left, clouds.top_right, clouds.mid_left, clouds.mid_right, clouds.bottom_center);
-		ShowPopup(1, "!Enfoca el libro con la cámara!", "Some smart sub explaining you what to do and how to react on the results you get.", 1, function() {
+		ShowPopup(1, "¡Enfoca el libro con la cámara!", 'Apunta al ícono <img id="scan-phone-icon" src="Data/Frontend/Images/General/phone-icon.png"> y descubre la sorpresa escondida en esta página.', 1, function() {
 			EnableTracking(true, true);
 			scan_content.DisplayScanBanner(true);
 			scanfailtimeout = setTimeout(function() {
 				clearTimeout(scanfailtimeout);
 				EnableTracking(true, false);
 				scan_content.DisplayScanBanner(false);
-				ShowPopup(1, null, "We were not able to scan a page. Do you need help?", 2, null);
+				ShowPopup(1, null, "You were not able to scan a page do you need help?", 2, null);
 			}, scanfailpopupdelay)
 		});
 		if(callBack) callBack();

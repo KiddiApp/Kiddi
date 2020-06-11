@@ -15,7 +15,7 @@ const cardGameSceneObject = {
 			set: 0
 		},
 		{
-			texture: 'feather_card',
+			texture: 'flower_card',
 			set: 1
 		},
 		{

@@ -38,9 +38,16 @@
 	color: #73cfff;
 }
 
+#scan-phone-icon {
+	display: inline;
+	width: 15px;
+	padding: 0px 5px;
+	vertical-align: baseline;
+}
+
 /* TODO: remove after dev */
 
-.dev_button {
+/* .dev_button {
 	padding: 5px;
 	color: red;
 }
@@ -49,4 +56,4 @@
 	position: fixed;
 	left: 0;
 	top: 50px;
-}
+} */

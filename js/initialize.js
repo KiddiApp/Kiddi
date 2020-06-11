@@ -61,11 +61,15 @@ function SetInitInformation(deviceInformation) {
 			ShowPopup(1, "Espera unos segundos.", "Se están cargando las aventuras que Kiddi World tiene preparadas para ti.", 0, null);
 		} else {
 			ShowFullscreenOverlay();
-			ShowPopup(1, "Sorry your browser doesn't support our App.", "If you are viewing this app on a mobile device in landscape mode please rotate your device to portait mode.", 0, null);
+			ShowPopup(1, "Kiddi App no funciona horizontalmente", "Si intentas navegar de forma horizontal, por favor regresa tu dispositivo a posición vertical.", 1, () => {
+				HidePopup();
+			});
 		}
 	} else {
 		ShowFullscreenOverlay();
-		ShowPopup(1, "Sorry your browser doesn't support our App.", "This has to do with the fact that some of the technologies used in this app are not supported by your current device or browser. Maybe try a different mobile device.", 0, null);
+		ShowPopup(1, "El navegador es incompatible", "Lo sentimos, parece que este dispositivo no soporta algunas tecnologías de Kiddi App. ¿Puedes intentar con otro?", 1, () => {
+			HidePopup();
+		});
 	}
 }
 

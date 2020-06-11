@@ -38,7 +38,7 @@ document.getElementById("confirm_no").addEventListener('click', function() {
 	HidePopup();
 	clearTimeout(scanfailtimeout);
 	scanfailtimeout = setTimeout(function() {
-		ShowPopup(1, null, "We were not able to scan a page. Do you need help?", 2, null);
+		ShowPopup(1, null, "", 2, null);
 	}, scanfailpopupdelay);
 });
 
