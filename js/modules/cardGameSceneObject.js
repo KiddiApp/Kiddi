@@ -49,27 +49,27 @@ const cardGameSceneObject = {
 		this.camera.lookAt( 0, 0, 0 );
 
 		var dirLight = new THREE.DirectionalLight( 0xffffff, 1.4);
-		dirLight.castShadow = true; 
-		dirLight.position.set( 10, 10, 0 );
+		// dirLight.castShadow = true; 
+		dirLight.position.set( 10, 10, 10 );
 		this.scene.add( dirLight );
 
-		dirLight.shadow.mapSize.width = 512;  
-		dirLight.shadow.mapSize.height = 512; 
-		dirLight.shadow.camera.near = 0.5;    
-		dirLight.shadow.camera.far = 500;  
+		// dirLight.shadow.mapSize.width = 512;  
+		// dirLight.shadow.mapSize.height = 512; 
+		// dirLight.shadow.camera.near = 0.5;    
+		// dirLight.shadow.camera.far = 500;  
 
-		var geometry = new THREE.PlaneGeometry( 2000, 2000, 200 );
-		geometry.rotateX(Math.PI/2);
-		var material = new THREE.MeshPhongMaterial({ 
-			opacity: 0,
-			transparent: true,
-			color: 0xffffff,
-			side: THREE.DoubleSide 
-		});
-		var plane = new THREE.Mesh( geometry, material );
-		plane.receiveShadow = true;
-		plane.position.y = -10;
-		this.scene.add( plane );
+		// var geometry = new THREE.PlaneGeometry( 2000, 2000, 200 );
+		// geometry.rotateX(Math.PI/2);
+		// var material = new THREE.MeshPhongMaterial({ 
+			// opacity: 1,
+			// transparent: true,
+			// color: 0xffffff,
+			// side: THREE.DoubleSide 
+		// });
+		// var plane = new THREE.Mesh( geometry, material );
+		// plane.receiveShadow = true;
+		// plane.position.y = -10;
+		// this.scene.add( plane );
 	},
 
 	loadResources: function() {
@@ -77,7 +77,7 @@ const cardGameSceneObject = {
 		var loader = new FBXLoader();
 
 		ref.textureLoader.load(ref.basePath + 'card-bg.png', function(tex) {
-			ref.materials.back.tex = new THREE.MeshPhongMaterial({ map: tex });
+			ref.materials.back.tex = new THREE.MeshBasicMaterial({ map: tex });
 			ref.materials.back.loaded = true;
 
 			loader.load('./Data/Models/Cards/kiddi-card.FBX', function ( fbx ) {
@@ -247,9 +247,14 @@ const cardGameSceneObject = {
 	addLoadedTexturedCards: function(obj, id, tex) {
 		for (let i = 0; i < 2; i++) {
 			var matsClone = obj.material.slice();
-			var card = new THREE.Mesh(obj.geometry, matsClone);
+            var card = new THREE.Mesh(obj.geometry, matsClone);
+            console.log(card.material);
 			card.material[0] = this.materials.back.tex;
-			card.material[1] = tex;
+            card.material[1] = tex;
+            for (let i = 2; i < card.material.length; i++) {
+               card.material[i] = new THREE.MeshBasicMaterial({color: 0xffffff});    
+            }
+
 			card.userData.MatchGroupId = id;
 			card.userData.Matched = false;
 			card.userData.isInPlay = false;
