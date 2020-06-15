@@ -146,7 +146,7 @@ const cardGameSceneObject = {
 				cardB.Matched = true;
 				ref.matchedCards = ref.matchedCards.concat(ref.cardsToCheck);
 				if(ref.matchedCards.length >= ref.sceneCards.length) {
-					ShowPopup(2, true, "!Genial,<br> lo lograste!", 1, function() {
+					ShowPopup(2, true, "¡Genial,<br> lo lograste!", 1, function() {
 						ref.matchedCards.forEach(card => {
 							ref.flipCard(card, null);
 							card.userData.Matched = false;
