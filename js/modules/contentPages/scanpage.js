@@ -22,7 +22,7 @@ let scan_content = {
 				clearTimeout(scanfailtimeout);
 				EnableTracking(true, false);
 				scan_content.DisplayScanBanner(false);
-				ShowPopup(1, null, "You were not able to scan a page do you need help?", 2, null);
+				ShowPopup(1, 'Página no detectada', 'No se ha podido escanear el ícono de Kiddi App <img id="scan-phone-icon" src="Data/Frontend/Images/General/phone-icon.png">. ¿Necesitas ayuda?', 2, null);
 			}, scanfailpopupdelay)
 		});
 		if(callBack) callBack();

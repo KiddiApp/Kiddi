@@ -46,6 +46,19 @@
 	padding:30px 0;
 }
 
-#footer_txt_4 {
-	word-break: break-all;
+.footer_circle {
+    width: 5px;
+    margin-top: 10px;
+	float: left;
+}
+
+.footer_point {
+    padding: 0;
+}
+
+.bold_url {
+    color: #000;
+    text-decoration: none;
+    word-break: break-all;
+    font-family: senbold;
 }

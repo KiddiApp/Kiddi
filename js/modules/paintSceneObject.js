@@ -157,7 +157,8 @@ const paintSceneObject = {
 			this.context.lineWidth = this.paintRadius;
 			this.context.stroke();
 			this.context.closePath();
-		}
+        }
+        this.context.drawImage(this.bgImage, 0, 0, this.canvas.offsetWidth, this.canvas.offsetWidth);
 	},
 }
 

@@ -38,7 +38,7 @@ document.getElementById("confirm_no").addEventListener('click', function() {
 	HidePopup();
 	clearTimeout(scanfailtimeout);
 	scanfailtimeout = setTimeout(function() {
-		ShowPopup(1, null, "", 2, null);
+		ShowPopup(1, 'Página no detectada', 'No se ha podido escanear el ícono de Kiddi App <img id="scan-phone-icon" src="Data/Frontend/Images/General/phone-icon.png">. ¿Necesitas ayuda?', 2, null);
 	}, scanfailpopupdelay);
 });
 

@@ -68,5 +68,4 @@ instructions_button.addEventListener('click', function() {
 // 				break;
 // 		}
 // 	});
-	
 // }
