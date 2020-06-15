@@ -30,13 +30,16 @@ const paintedCharacterAnimation = {
 		this.character_files.forEach(character_file => {
 			loader.load('./Data/Models/Animations/'+character_file+'.fbx', function ( fbx ) {
 
-				fbx.rotation.y = Math.PI;
+                var delay;
+                fbx.rotation.y = Math.PI;
 				if(character_file == ref.character_files[0]) {
 					fbx.scale.set(0.15, 0.15, 0.15);
-					fbx.position.setY(-1);
+                    fbx.position.setY(-1);
+                    delay = 1000;
 				} else {
 					fbx.scale.set(0.22, 0.22, 0.22);
-					fbx.position.setY(-1);
+                    fbx.position.setY(-1);
+                    delay = 0;
 				}
 
 				const character_option = {
@@ -52,7 +55,7 @@ const paintedCharacterAnimation = {
 							character_option.animation.paused = true;
 							animationtimeout = setTimeout(function() {
 								ref.playActiveCharacterAnimation();
-							}, 1000);
+							}, delay);
 						});
 						this.animation.paused = true;
 						this.animation.play();
