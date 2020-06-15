@@ -248,7 +248,7 @@ const cardGameSceneObject = {
 		for (let i = 0; i < 2; i++) {
 			var matsClone = obj.material.slice();
             var card = new THREE.Mesh(obj.geometry, matsClone);
-            console.log(card.material);
+            // console.log(card.material);
 			card.material[0] = this.materials.back.tex;
             card.material[1] = tex;
             for (let i = 2; i < card.material.length; i++) {
