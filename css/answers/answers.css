@@ -71,9 +71,9 @@
 }
 
 #footer_answers {
-	background: -moz-linear-gradient(0deg, rgba(162, 198, 151, 1) 65%, rgba(162, 198, 151, 0) 69%);
-	background: -webkit-linear-gradient(0deg, rgba(162, 198, 151, 1) 65%, rgba(162, 198, 151, 0) 69%);
-	background: linear-gradient(0deg, rgba(162, 198, 151, 1) 65%, rgba(162, 198, 151, 0) 69%);
+	background: -moz-linear-gradient(0deg, rgba(155, 189, 145, 1) 65%, rgba(162, 198, 151, 0) 69%);
+	background: -webkit-linear-gradient(0deg, rgba(155, 189, 145, 1) 65%, rgba(162, 198, 151, 0) 69%);
+	background: linear-gradient(0deg, rgba(155, 189, 145, 1) 65%, rgba(162, 198, 151, 0) 69%);
 }
 
 #footer_answers_img {

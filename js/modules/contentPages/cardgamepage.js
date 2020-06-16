@@ -11,7 +11,7 @@ let cardgame_content = {
 		this.DisplayDecos(true);
 		Display(true, this.container);
 		console.log("Going to show popup");
-		ShowPopup(2, true, "!Busca<br>las parejas!");
+		ShowPopup(2, true, "¡Busca<br>las parejas!");
 		this.scene = cardGameSceneObject;
 		this.container.getElementsByTagName('canvas')[0].addEventListener('click', this.scene.interaction);
 		StartScene(this.scene);

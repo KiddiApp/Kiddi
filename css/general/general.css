@@ -33,8 +33,10 @@ body {
 #back_button_container {
 	z-index: 1;
 	position: fixed;
-	top: 30px;
-	left: 30px;
+	top: 50px;
+    left: 30px;
+    opacity: 1;
+    transition: opacity 0.3s;
 }
 
 #back_button_container img {

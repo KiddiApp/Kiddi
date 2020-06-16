@@ -672,7 +672,26 @@
 		<script>
 			var scanfailpopupdelay = 180000;
 			var scanfailtimeout = null;
-			var animationtimeout = null;
+            var animationtimeout = null;
+            
+
+            var scrollbackbtn = document.getElementById("back_button_container");
+            console.log(scrollbackbtn);
+            var timer = null;
+            
+            var contentcontainers = document.getElementsByClassName("view_container");
+            for (let i = 0; i < contentcontainers.length; i++) {
+                contentcontainers[i].addEventListener('scroll', function() {
+                    scrollbackbtn.style.opacity = 0;//classList.add("hidden");
+                    if(timer !== null) {
+                        clearTimeout(timer);        
+                    }
+                    timer = setTimeout(function() {
+                        scrollbackbtn.style.opacity = 1;//classList.remove("hidden");
+                    }, 150);
+                }, false);
+            }
+
 		</script>
 
 		<script src="js/initialize.js" type="module"></script>

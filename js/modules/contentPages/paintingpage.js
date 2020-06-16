@@ -41,7 +41,7 @@ let painting_content = {
 		paintSceneObject.clearAnimationBg();
 		paintSceneObject.setbgimage();
 		paintSceneObject.redraw();
-		ShowPopup(2, null, "!Pinta con el dedo por encima!");
+		ShowPopup(2, null, "¡Pinta con el dedo por encima!");
 		if(callBack) callBack();
 	}, 
 	Hide(callBack) {

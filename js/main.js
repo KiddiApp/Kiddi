@@ -55,7 +55,7 @@ instructions_button.addEventListener('click', function() {
 // 				break;
 // 			case "dev_to_video":
 // 				UpdateAppState(states.Video);
-// 				video_content.SetAndPlayVideoSource(videos.rio);
+// 				video_content.SetAndPlayVideoSource(videos.vid7);
 // 				break;
 // 			case "dev_to_card":
 // 				UpdateAppState(states.CardGame);
