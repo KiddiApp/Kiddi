@@ -13,8 +13,6 @@ let video_content = {
 
     init() {
         this.video_element.addEventListener('ended', function() {
-            console.log("video finished");
-            video_content.StopVideo();
             UpdateAppState(states.HomePage);
         }, false);
     },
@@ -34,8 +32,10 @@ let video_content = {
 		this.video_source.setAttribute('src', 'Data/Videos/' + source + '.mp4');
         this.video_element.load();
         // check if this works....
+        // console.log("video started loading");
         this.video_element.addEventListener('canplaythrough', function() {
-            this.video_element.play();
+            // console.log("video has enough data to play");
+            video_content.video_element.play();
         }, false);
 	},
 	StopVideo() {
@@ -52,6 +52,8 @@ let video_content = {
 		if(callBack) callBack();
 	}
 }
+
+video_content.init();
 
 let videos = {
 	color: 'kiddi_color',
