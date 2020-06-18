@@ -1,6 +1,8 @@
 import Display from '../helperFunctions.js';
 // import { StartScene, StopScene } from '../threejs_setup.js';
 import characterAnimationSceneObject from '../characterAnimationSceneObject.js';
+import { UpdateAppState } from '../updateAppState.js';
+import states from '../appStates.js';
 
 let video_content = {
 	container: document.getElementById("video_container"),
@@ -9,6 +11,13 @@ let video_content = {
 	video_source: document.getElementById("video_source"),
 	scene: characterAnimationSceneObject,
 
+    init() {
+        this.video_element.addEventListener('ended', function() {
+            console.log("video finished");
+            video_content.StopVideo();
+            UpdateAppState(states.HomePage);
+        }, false);
+    },
 	Show(callBack) {
 		Display(true, this.container);
 		// Display(true, this.character_animation);
@@ -23,9 +32,11 @@ let video_content = {
 	}, 
 	SetAndPlayVideoSource(source) { 
 		this.video_source.setAttribute('src', 'Data/Videos/' + source + '.mp4');
-		this.video_element.load();
-		this.video_element.play();
-
+        this.video_element.load();
+        // check if this works....
+        this.video_element.addEventListener('canplaythrough', function() {
+            this.video_element.play();
+        }, false);
 	},
 	StopVideo() {
 		this.video_element.pause();

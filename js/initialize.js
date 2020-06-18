@@ -58,7 +58,7 @@ function SetInitInformation(deviceInformation) {
 	if(deviceInformation.supported) {
 		if(deviceInformation.orientationCorrect) {
 			HideFullscreenOverlay();
-			ShowPopup(1, "Espera unos segundos.", "Se están cargando las aventuras que Kiddi World tiene preparadas para ti.", 0, null);
+			ShowPopup(1, "Espera unos segundos", "Se están cargando las aventuras que Kiddi World tiene preparadas para ti.", 0, null);
 		} else {
 			ShowFullscreenOverlay();
 			ShowPopup(1, "Kiddi App no funciona horizontalmente", "Si intentas navegar de forma horizontal, por favor regresa tu dispositivo a posición vertical.", 1, () => {
