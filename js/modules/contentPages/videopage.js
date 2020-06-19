@@ -3,6 +3,7 @@ import Display from '../helperFunctions.js';
 import characterAnimationSceneObject from '../characterAnimationSceneObject.js';
 import { UpdateAppState } from '../updateAppState.js';
 import states from '../appStates.js';
+import { ShowPopup, HidePopup } from '../popup.js';
 
 let video_content = {
 	container: document.getElementById("video_container"),
@@ -13,6 +14,8 @@ let video_content = {
 
     init() {
         this.video_element.addEventListener('ended', function() {
+            video_content.closeFullscreen(this);
+            this.removeAttribute("controls");
             UpdateAppState(states.HomePage);
         }, false);
     },
@@ -31,18 +34,30 @@ let video_content = {
 	SetAndPlayVideoSource(source) { 
 		this.video_source.setAttribute('src', 'Data/Videos/' + source + '.mp4');
         this.video_element.load();
-        // check if this works....
-        console.log("video started loading");
+
         this.video_element.addEventListener('canplaythrough', function() {
-            console.log("video has enough data to play");
             video_content.video_element.setAttribute("controls","controls");
             video_content.video_element.play();
+            video_content.video_element.removeEventListener("canplaythrough");
         }, false);
 	},
 	StopVideo() {
 		this.video_element.pause();
 		this.video_element.currentTime = 0;
-	},
+    },
+    
+    closeFullscreen(el) {
+        console.log(el);
+        if (el.exitFullscreen) {
+            el.exitFullscreen();
+        } else if (el.mozCancelFullScreen) { 
+            el.mozCancelFullScreen();
+        } else if (el.webkitExitFullscreen) { 
+            el.webkitExitFullscreen();
+        } else if (el.msExitFullscreen) {
+            el.msExitFullscreen();
+        }
+    },
 
 	Hide(callBack) {
 		this.StopVideo();
