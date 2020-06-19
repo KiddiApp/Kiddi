@@ -32,9 +32,10 @@ let video_content = {
 		this.video_source.setAttribute('src', 'Data/Videos/' + source + '.mp4');
         this.video_element.load();
         // check if this works....
-        // console.log("video started loading");
+        console.log("video started loading");
         this.video_element.addEventListener('canplaythrough', function() {
-            // console.log("video has enough data to play");
+            console.log("video has enough data to play");
+            video_content.video_element.setAttribute("controls","controls");
             video_content.video_element.play();
         }, false);
 	},
