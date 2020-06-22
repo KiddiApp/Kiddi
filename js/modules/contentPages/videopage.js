@@ -2,6 +2,8 @@ import Display from '../helperFunctions.js';
 import characterAnimationSceneObject from '../characterAnimationSceneObject.js';
 import { UpdateAppState } from '../updateAppState.js';
 import states from '../appStates.js';
+import { SetInitInformation, appinfo } from '../../initialize.js';
+import { loadingManager } from '../contentLoader.js';
 
 let video_content = {
 	container: document.getElementById("video_container"),
@@ -18,6 +20,12 @@ let video_content = {
                 video_content.closeFullscreen(vidEl);
                 vidEl.removeAttribute("controls");
                 UpdateAppState(states.HomePage);
+                
+                // dirty fix -> test
+                setTimeout(() => {
+                    SetInitInformation(appinfo.DeviceSupportedAndCorrectScreenSize());
+                    loadingManager.loadingComplete();
+                }, 2000);
             }, 1500);
         }, false);
     },

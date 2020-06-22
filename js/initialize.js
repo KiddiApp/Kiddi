@@ -1,5 +1,7 @@
 import { ShowPopup, HidePopup } from './modules/popup.js';
 import { loadingManager } from './modules/contentLoader.js';
+import { GetCurrentState } from './modules/updateAppState.js';
+import states from './modules/appStates.js';
 
 let md = new MobileDetect(window.navigator.userAgent);
 
@@ -36,8 +38,10 @@ if(appinfo.isMobile || appinfo.isTablet) {
 	if(Modernizr.deviceorientation) {
 		window.addEventListener("orientationchange", function() {
 			setTimeout(() => {
-				SetInitInformation(appinfo.DeviceSupportedAndCorrectScreenSize());
-				loadingManager.loadingComplete();
+                if(GetCurrentState() != states.Video) {
+                    SetInitInformation(appinfo.DeviceSupportedAndCorrectScreenSize());
+                    loadingManager.loadingComplete();
+                }
 			}, 200);
 		}, false);
 	}
@@ -74,4 +78,4 @@ function SetInitInformation(deviceInformation) {
 }
 
 SetInitInformation(appinfo.DeviceSupportedAndCorrectScreenSize());
-export { appinfo };
+export { SetInitInformation, appinfo };
