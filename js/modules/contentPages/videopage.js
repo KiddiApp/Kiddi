@@ -13,16 +13,10 @@ let video_content = {
     init() {
         this.video_element.addEventListener('ended', function() {
             var vidEl = this;
-            console.log("video ended");
-            console.log("wait for 1.5 seconds");
-            console.log("remove canplaythrough event");
             video_content.video_element.removeEventListener("canplaythrough", video_content.CanPlay, false);
             setTimeout(() => {
-                console.log("close fullscreen");
                 video_content.closeFullscreen(vidEl);
-                console.log("remove controls");
                 vidEl.removeAttribute("controls");
-                console.log("go back to homepage");
                 UpdateAppState(states.HomePage);
             }, 1500);
         }, false);
@@ -32,22 +26,15 @@ let video_content = {
 		if(callBack) callBack();
 	}, 
 	SetAndPlayVideoSource(source) { 
-        console.log("Set video source");
 		this.video_source.setAttribute('src', 'Data/Videos/' + source + '.mp4');
         this.video_element.load();
-
-        console.log("add canplaythrough event");
         this.video_element.addEventListener('canplaythrough', this.CanPlay, false);
     },
     CanPlay() {
-        console.log("PLAY VIDEO");
-        console.log("add video controls");
         video_content.video_element.setAttribute("controls","controls");
-        console.log("play video");
         video_content.video_element.play();
     },
 	StopVideo() {
-        console.log("pause, set video to time 0 and remove src url");
 		this.video_element.pause();
         this.video_element.currentTime = 0;
         this.video_source.setAttribute('src', '');
