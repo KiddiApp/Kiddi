@@ -45,27 +45,27 @@ instructions_button.addEventListener('click', function() {
 
 // TODO: REMOVE LATER ONLY FOR DEV
 
-let dev_buttons = document.getElementsByClassName("dev_button");
-for (let i = 0; i < dev_buttons.length; i++) {
-	const element = dev_buttons[i];
-	element.addEventListener('click', function() {
-		switch (element.id) {
-			case "dev_to_paint":
-				UpdateAppState(states.PaintingCharacterSelection);
-				break;
-			case "dev_to_video":
-				UpdateAppState(states.Video);
-				video_content.SetAndPlayVideoSource(videos.vid7);
-				break;
-			case "dev_to_card":
-				UpdateAppState(states.CardGame);
-				break;
-			case "dev_to_information":
-				UpdateAppState(states.Information);
-				break;
-			case "dev_to_answers":
-				UpdateAppState(states.Answers);
-				break;
-		}
-	});
-}
+// let dev_buttons = document.getElementsByClassName("dev_button");
+// for (let i = 0; i < dev_buttons.length; i++) {
+// 	const element = dev_buttons[i];
+// 	element.addEventListener('click', function() {
+// 		switch (element.id) {
+// 			case "dev_to_paint":
+// 				UpdateAppState(states.PaintingCharacterSelection);
+// 				break;
+// 			case "dev_to_video":
+// 				UpdateAppState(states.Video);
+// 				video_content.SetAndPlayVideoSource(videos.vid7);
+// 				break;
+// 			case "dev_to_card":
+// 				UpdateAppState(states.CardGame);
+// 				break;
+// 			case "dev_to_information":
+// 				UpdateAppState(states.Information);
+// 				break;
+// 			case "dev_to_answers":
+// 				UpdateAppState(states.Answers);
+// 				break;
+// 		}
+// 	});
+// }

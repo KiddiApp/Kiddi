@@ -13,14 +13,16 @@
 		font-size: 20px;
 	}
 
-	#information_plant {
-		height: 10%;
-	}
+	/* #information_plant {
+		width: 70%;
+        margin-left: 15%;
+        padding-top: 100px;
+	} */
 
 	.instructions_text_container {
 		box-sizing: border-box;
 		min-height: 70%;
-		padding: 0 0 42% 0;
+		/* padding: 0 0 42% 0; */
 		margin: 30% 17% 0 17%;
 	}
 }

@@ -14,22 +14,17 @@ let video_content = {
 
     init() {
         this.video_element.addEventListener('ended', function() {
-            var vidEl = this;
-            video_content.video_element.removeEventListener("canplaythrough", video_content.CanPlay, false);
             setTimeout(() => {
-                video_content.closeFullscreen(vidEl);
-                vidEl.removeAttribute("controls");
                 UpdateAppState(states.HomePage);
                 
-                // dirty fix -> test
-                setTimeout(() => {
-                    if(!appinfo.DeviceSupportedAndCorrectScreenSize().orientationCorrect) {
-                        ShowFullscreenOverlay();
-                        ShowPopup(1, "Kiddi App no funciona horizontalmente", "Si intentas navegar de forma horizontal, por favor regresa tu dispositivo a posición vertical.", 1, () => {
-                            HidePopup();
-                        });
-                    }
-                }, 1000);
+                // setTimeout(() => {
+                //     if(!appinfo.DeviceSupportedAndCorrectScreenSize().orientationCorrect) {
+                //         ShowFullscreenOverlay();
+                //         ShowPopup(1, "Kiddi App no funciona horizontalmente", "Si intentas navegar de forma horizontal, por favor regresa tu dispositivo a posición vertical.", 1, () => {
+                //             HidePopup();
+                //         });
+                //     }
+                // }, 1000);
             }, 1500);
         }, false);
     },
@@ -47,6 +42,9 @@ let video_content = {
         video_content.video_element.play();
     },
 	StopVideo() {
+        this.video_element.removeEventListener("canplaythrough", video_content.CanPlay, false);
+        this.closeFullscreen(this.video_element);
+        this.video_element.removeAttribute("controls");
 		this.video_element.pause();
         this.video_element.currentTime = 0;
         this.video_source.setAttribute('src', '');
@@ -66,7 +64,15 @@ let video_content = {
 
 	Hide(callBack) {
 		this.StopVideo();
-		Display(false, this.container);
+        Display(false, this.container);
+        
+        if(!appinfo.DeviceSupportedAndCorrectScreenSize().orientationCorrect) {
+            ShowFullscreenOverlay();
+            ShowPopup(1, "Kiddi App no funciona horizontalmente", "Si intentas navegar de forma horizontal, por favor regresa tu dispositivo a posición vertical.", 1, () => {
+                HidePopup();
+            });
+        }
+
 		if(callBack) callBack();
 	}
 }

@@ -1,16 +1,19 @@
 #information_plant {
-	position: absolute;
+	/* position: absolute;
 	bottom: 0;
 	height: 5%;
 	left: 50%;
-	transform: translate(-50%, 0);
+    transform: translate(-50%, 0); */
+    width: 70%;
+    margin-left: 15%;
+    padding-top: 100px;
 }
 
 .instructions_text_container {
 	position: relative;
 	width: 66%;
 	margin: 30% 17% 0 17%;
-	padding-bottom: 20%;
+	/* padding-bottom: 20%; */
 }
 
 .star {
