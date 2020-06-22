@@ -78,4 +78,4 @@ function SetInitInformation(deviceInformation) {
 }
 
 SetInitInformation(appinfo.DeviceSupportedAndCorrectScreenSize());
-export { SetInitInformation, appinfo };
+export { ShowFullscreenOverlay, SetInitInformation, appinfo };

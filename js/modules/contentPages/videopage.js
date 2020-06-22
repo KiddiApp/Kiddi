@@ -2,8 +2,8 @@ import Display from '../helperFunctions.js';
 import characterAnimationSceneObject from '../characterAnimationSceneObject.js';
 import { UpdateAppState } from '../updateAppState.js';
 import states from '../appStates.js';
-import { SetInitInformation, appinfo } from '../../initialize.js';
-import { loadingManager } from '../contentLoader.js';
+import { ShowFullscreenOverlay, appinfo } from '../../initialize.js';
+import { ShowPopup, HidePopup } from '../popup.js';
 
 let video_content = {
 	container: document.getElementById("video_container"),
@@ -23,9 +23,13 @@ let video_content = {
                 
                 // dirty fix -> test
                 setTimeout(() => {
-                    SetInitInformation(appinfo.DeviceSupportedAndCorrectScreenSize());
-                    loadingManager.loadingComplete();
-                }, 2000);
+                    if(!appinfo.DeviceSupportedAndCorrectScreenSize().orientationCorrect) {
+                        ShowFullscreenOverlay();
+                        ShowPopup(1, "Kiddi App no funciona horizontalmente", "Si intentas navegar de forma horizontal, por favor regresa tu dispositivo a posición vertical.", 1, () => {
+                            HidePopup();
+                        });
+                    }
+                }, 1000);
             }, 1500);
         }, false);
     },
