@@ -1,9 +1,7 @@
 import Display from '../helperFunctions.js';
-// import { StartScene, StopScene } from '../threejs_setup.js';
 import characterAnimationSceneObject from '../characterAnimationSceneObject.js';
 import { UpdateAppState } from '../updateAppState.js';
 import states from '../appStates.js';
-import { ShowPopup, HidePopup } from '../popup.js';
 
 let video_content = {
 	container: document.getElementById("video_container"),
@@ -14,40 +12,48 @@ let video_content = {
 
     init() {
         this.video_element.addEventListener('ended', function() {
-            video_content.closeFullscreen(this);
-            this.removeAttribute("controls");
-            UpdateAppState(states.HomePage);
+            var vidEl = this;
+            console.log("video ended");
+            console.log("wait for 1.5 seconds");
+            console.log("remove canplaythrough event");
+            video_content.video_element.removeEventListener("canplaythrough", video_content.CanPlay, false);
+            setTimeout(() => {
+                console.log("close fullscreen");
+                video_content.closeFullscreen(vidEl);
+                console.log("remove controls");
+                vidEl.removeAttribute("controls");
+                console.log("go back to homepage");
+                UpdateAppState(states.HomePage);
+            }, 1500);
         }, false);
     },
 	Show(callBack) {
 		Display(true, this.container);
-		// Display(true, this.character_animation);
-		// StartScene(this.scene);
-		// this.scene.play(function () {
-			// StopScene();
-			// Display(false, video_content.character_animation);
-			
-		// });
-
 		if(callBack) callBack();
 	}, 
 	SetAndPlayVideoSource(source) { 
+        console.log("Set video source");
 		this.video_source.setAttribute('src', 'Data/Videos/' + source + '.mp4');
         this.video_element.load();
 
-        this.video_element.addEventListener('canplaythrough', function() {
-            video_content.video_element.setAttribute("controls","controls");
-            video_content.video_element.play();
-            video_content.video_element.removeEventListener("canplaythrough");
-        }, false);
-	},
+        console.log("add canplaythrough event");
+        this.video_element.addEventListener('canplaythrough', this.CanPlay, false);
+    },
+    CanPlay() {
+        console.log("PLAY VIDEO");
+        console.log("add video controls");
+        video_content.video_element.setAttribute("controls","controls");
+        console.log("play video");
+        video_content.video_element.play();
+    },
 	StopVideo() {
+        console.log("pause, set video to time 0 and remove src url");
 		this.video_element.pause();
-		this.video_element.currentTime = 0;
+        this.video_element.currentTime = 0;
+        this.video_source.setAttribute('src', '');
     },
     
     closeFullscreen(el) {
-        console.log(el);
         if (el.exitFullscreen) {
             el.exitFullscreen();
         } else if (el.mozCancelFullScreen) { 
@@ -61,9 +67,6 @@ let video_content = {
 
 	Hide(callBack) {
 		this.StopVideo();
-		// this.scene.stop();
-		// StopScene();
-		// Display(false, this.character_animation);
 		Display(false, this.container);
 		if(callBack) callBack();
 	}
